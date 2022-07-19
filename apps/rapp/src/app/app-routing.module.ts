@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'nx', component: NxWelcomeComponent },
   {
     path: '',
-    loadChildren: () => import('@routing/layout').then((m) => m.LayoutModule),
+    loadChildren: () => import('@rapp/layout').then((m) => m.LayoutModule),
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

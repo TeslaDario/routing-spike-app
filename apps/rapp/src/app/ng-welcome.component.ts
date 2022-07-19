@@ -3,7 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 /* eslint-disable */
 
 @Component({
-  selector: 'routing-ng-welcome',
+  selector: 'ng-welcome',
   template: `<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
     <!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
     <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->

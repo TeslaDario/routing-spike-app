@@ -3,6 +3,6 @@
   "version": 2,
   "projects": {
     "layout": "libs/layout",
-    "routing": "apps/routing"
+    "rapp": "apps/rapp"
   }
 }

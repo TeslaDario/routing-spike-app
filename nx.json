@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "routing",
+  "npmScope": "rapp",
   "affected": {
     "defaultBase": "main"
   },
@@ -18,20 +18,13 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     }
   },
   "generators": {
@@ -49,5 +42,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "routing"
+  "defaultProject": "rapp"
 }

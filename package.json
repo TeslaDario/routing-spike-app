@@ -1,5 +1,5 @@
 {
-  "name": "routing",
+  "name": "rapp",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "run-server": "npm run build && http-server dist/apps/routing",
+    "run-server": "npm run build && http-server dist/apps/rapp",
     "fix": "nx format --all"
   },
   "private": true,
