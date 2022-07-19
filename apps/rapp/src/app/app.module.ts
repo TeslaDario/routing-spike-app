@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CoreStoreModule } from '@rapp/core/store';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +25,19 @@ import { NxWelcomeComponent } from './nx-welcome.component';
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000',
         }),
+        StoreModule.forRoot(
+            {},
+            {
+                metaReducers: !environment.production ? [] : [],
+                runtimeChecks: {
+                    strictActionImmutability: true,
+                    strictStateImmutability: true,
+                },
+            }
+        ),
+        EffectsModule.forRoot([]),
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
+        CoreStoreModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

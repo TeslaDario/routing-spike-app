@@ -1,0 +1,22 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/core/store/src",
+    "prefix": "rapp",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/core/store"],
+            "options": {
+                "jestConfig": "libs/core/store/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["libs/core/store/**/*.ts", "libs/core/store/**/*.html"]
+            }
+        }
+    },
+    "tags": []
+}
