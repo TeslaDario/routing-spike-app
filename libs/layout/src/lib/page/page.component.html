@@ -1,20 +1,27 @@
 <div class="page-wrapper">
     <rapp-toolbar>
-        <rapp-navbar></rapp-navbar>
-        <h1>Title</h1>
+        <rapp-navbar *ngIf="(layoutMode$ | async) !== 'single'; else titleTempl"></rapp-navbar>
+        <ng-template #titleTempl>
+            <h1 class="toolbar-title">{{ title }}</h1>
+        </ng-template>
 
         <span class="spacer"></span>
 
-        <button mat-icon-button>
-            <mat-icon>notifications_none</mat-icon>
-        </button>
+        <div class="toolbar-right">
+            <button mat-icon-button>
+                <mat-icon>notifications_none</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
     </rapp-toolbar>
 
     <rapp-content>
         <ng-content></ng-content>
     </rapp-content>
 
-    <rapp-toolbar>
-        <rapp-navbar></rapp-navbar>
+    <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
+        <rapp-navbar class="spacer"></rapp-navbar>
     </rapp-toolbar>
 </div>

@@ -1,1 +1,12 @@
-<rapp-page> Home </rapp-page>
+<rapp-page title="Home">
+    <div class="home-wrapper">
+        <img class="logo" src="assets/icons/icon-72x72.png" />
+        <div class="home-item-wrapper">
+            <ng-container *ngFor="let item of items">
+                <div class="home-item">
+                    <p>{{ item }}</p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</rapp-page>

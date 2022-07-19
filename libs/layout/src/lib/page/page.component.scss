@@ -9,5 +9,22 @@
 
     rapp-content {
         flex: 1 1 100%;
+        overflow: scroll;
+    }
+
+    .toolbar-right {
+        flex-shrink: 0;
+        .mat-icon {
+            height: 28px;
+            width: 28px;
+            font-size: 28px;
+            color: $light;
+        }
+    }
+
+    .toolbar-title {
+        flex-shrink: 0;
+        margin: 0;
+        font-weight: 600;
     }
 }

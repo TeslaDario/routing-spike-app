@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { CoreStoreEffects } from './+state/core-store.effects';
-import { CoreStoreFacade } from './+state/core-store.facade';
-import * as fromCoreStore from './+state/core-store.reducer';
+import { CoreStoreEffects } from './core-store.effects';
+import { CoreStoreFacade } from './core-store.facade';
+import * as fromCoreStore from './core-store.reducer';
 
 @NgModule({
     imports: [

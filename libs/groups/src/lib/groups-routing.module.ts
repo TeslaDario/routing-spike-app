@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PostRouteComponent } from '@rapp/shared';
 import { GroupsComponent } from './groups.component';
 
-const routes: Routes = [{ path: '', component: GroupsComponent }];
+const routes: Routes = [
+    { path: ':groupId/post/:postId', component: PostRouteComponent },
+    { path: '', component: GroupsComponent },
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

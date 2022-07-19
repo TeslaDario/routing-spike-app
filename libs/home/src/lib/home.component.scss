@@ -1,0 +1,52 @@
+@use 'apps/rapp/src/assets/styles' as *;
+
+.home-wrapper {
+    --column-count: 4;
+    --size: min(150px, 23vw);
+
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+
+    .logo {
+        height: 100px;
+        padding: 20px 0;
+    }
+
+    .home-item-wrapper {
+        display: grid;
+        grid-template-columns: repeat(var(--column-count), var(--size));
+        grid-gap: 20px;
+        justify-content: center;
+        padding: 20px 0;
+    }
+
+    .home-item {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        height: var(--size);
+        border: 1px solid;
+        border-color: rgba($light, 0.5);
+        border-radius: 20px;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $light;
+        }
+    }
+
+    @media (max-width: $m) {
+        .home-item-wrapper {
+            --column-count: 3;
+            --size: min(150px, 30vw);
+        }
+    }
+
+    @media (max-width: $s) {
+        .home-item-wrapper {
+            --column-count: 2;
+            --size: min(150px, 45vw);
+        }
+    }
+}
