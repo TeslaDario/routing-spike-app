@@ -1,3 +1,22 @@
 {
-  "singleQuote": true
+    "trailingComma": "es5",
+    "printWidth": 120,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "overrides": [
+        {
+            "files": "*/**/*.html",
+            "options": { "parser": "angular" }
+        },
+        {
+            "files": "*/**/*.json",
+            "options": {
+                "trailingComma": "none"
+            }
+        }
+    ]
 }

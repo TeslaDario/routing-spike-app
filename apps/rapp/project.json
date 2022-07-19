@@ -1,97 +1,93 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "sourceRoot": "apps/rapp/src",
-  "prefix": "rapp",
-  "targets": {
-    "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/apps/rapp",
-        "index": "apps/rapp/src/index.html",
-        "main": "apps/rapp/src/main.ts",
-        "polyfills": "apps/rapp/src/polyfills.ts",
-        "tsConfig": "apps/rapp/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/rapp/src/favicon.ico",
-          "apps/rapp/src/assets",
-          "apps/rapp/src/manifest.webmanifest"
-        ],
-        "styles": [
-          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-          "apps/rapp/src/styles.scss"
-        ],
-        "scripts": [],
-        "serviceWorker": true,
-        "ngswConfigPath": "apps/rapp/ngsw-config.json"
-      },
-      "configurations": {
-        "production": {
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "sourceRoot": "apps/rapp/src",
+    "prefix": "rapp",
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/rapp",
+                "index": "apps/rapp/src/index.html",
+                "main": "apps/rapp/src/main.ts",
+                "polyfills": "apps/rapp/src/polyfills.ts",
+                "tsConfig": "apps/rapp/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": ["apps/rapp/src/favicon.ico", "apps/rapp/src/assets", "apps/rapp/src/manifest.webmanifest"],
+                "styles": [
+                    "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                    "apps/rapp/src/styles.scss"
+                ],
+                "scripts": [],
+                "serviceWorker": true,
+                "ngswConfigPath": "apps/rapp/ngsw-config.json"
             },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
-            }
-          ],
-          "fileReplacements": [
-            {
-              "replace": "apps/rapp/src/environments/environment.ts",
-              "with": "apps/rapp/src/environments/environment.prod.ts"
-            }
-          ],
-          "outputHashing": "all"
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/rapp/src/environments/environment.ts",
+                            "with": "apps/rapp/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
         },
-        "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
-          "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
-        }
-      },
-      "defaultConfiguration": "production"
-    },
-    "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
-      "configurations": {
-        "production": {
-          "browserTarget": "rapp:build:production"
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "rapp:build:production"
+                },
+                "development": {
+                    "browserTarget": "rapp:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
         },
-        "development": {
-          "browserTarget": "rapp:build:development"
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "rapp:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["apps/rapp/**/*.ts", "apps/rapp/**/*.html"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/rapp"],
+            "options": {
+                "jestConfig": "apps/rapp/jest.config.ts",
+                "passWithNoTests": true
+            }
         }
-      },
-      "defaultConfiguration": "development"
     },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
-      "options": {
-        "browserTarget": "rapp:build"
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["apps/rapp/**/*.ts", "apps/rapp/**/*.html"]
-      }
-    },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/rapp"],
-      "options": {
-        "jestConfig": "apps/rapp/jest.config.ts",
-        "passWithNoTests": true
-      }
-    }
-  },
-  "tags": []
+    "tags": []
 }

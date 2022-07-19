@@ -1,8 +1,13 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
-  "projects": {
-    "layout": "libs/layout",
-    "rapp": "apps/rapp"
-  }
+    "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+    "version": 2,
+    "projects": {
+        "chat": "libs/chat",
+        "groups": "libs/groups",
+        "home": "libs/home",
+        "layout": "libs/layout",
+        "newsfeed": "libs/newsfeed",
+        "rapp": "apps/rapp",
+        "shared": "libs/shared"
+    }
 }

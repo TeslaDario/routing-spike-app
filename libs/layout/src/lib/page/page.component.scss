@@ -1,0 +1,13 @@
+@use 'apps/rapp/src/assets/styles' as *;
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    overflow: hidden;
+
+    rapp-content {
+        flex: 1 1 100%;
+    }
+}

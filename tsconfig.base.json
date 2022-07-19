@@ -1,22 +1,27 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@rapp/layout": ["libs/layout/src/index.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@rapp/chat": ["libs/chat/src/index.ts"],
+            "@rapp/groups": ["libs/groups/src/index.ts"],
+            "@rapp/home": ["libs/home/src/index.ts"],
+            "@rapp/layout": ["libs/layout/src/index.ts"],
+            "@rapp/newsfeed": ["libs/newsfeed/src/index.ts"],
+            "@rapp/shared": ["libs/shared/src/index.ts"]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
 }
