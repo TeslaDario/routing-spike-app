@@ -9,6 +9,7 @@ import { NgWelcomeComponent } from './ng-welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { LayoutModule } from '@routing/layout';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, NgWelcomeComponent],
@@ -23,6 +24,7 @@ import { MaterialModule } from './material.module';
       registrationStrategy: 'registerWhenStable:30000',
     }),
     MaterialModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

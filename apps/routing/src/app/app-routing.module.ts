@@ -6,6 +6,10 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 const routes: Routes = [
   { path: 'ng', component: NgWelcomeComponent },
   { path: 'nx', component: NxWelcomeComponent },
+  {
+    path: '',
+    loadChildren: () => import('@routing/layout').then((m) => m.LayoutModule),
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
