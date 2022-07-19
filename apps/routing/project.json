@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/routing",
         "index": "apps/routing/src/index.html",
@@ -20,9 +18,7 @@
           "apps/routing/src/assets",
           "apps/routing/src/manifest.webmanifest"
         ],
-        "styles": [
-          "apps/routing/src/styles.scss"
-        ],
+        "styles": ["apps/routing/src/styles.scss"],
         "scripts": [],
         "serviceWorker": true,
         "ngswConfigPath": "apps/routing/ngsw-config.json"
@@ -81,17 +77,12 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/routing/**/*.ts",
-          "apps/routing/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/routing/**/*.ts", "apps/routing/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/routing"
-      ],
+      "outputs": ["coverage/apps/routing"],
       "options": {
         "jestConfig": "apps/routing/jest.config.ts",
         "passWithNoTests": true
