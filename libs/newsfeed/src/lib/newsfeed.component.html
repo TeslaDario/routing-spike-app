@@ -1,3 +1,14 @@
 <rapp-page title="News">
-    <rapp-post-feed [posts]="posts"></rapp-post-feed>
+    <rapp-toolbar-right>
+        <button mat-icon-button>
+            <mat-icon class="toolbar-icon">notifications_none</mat-icon>
+        </button>
+        <button mat-icon-button class="ml-4">
+            <mat-icon class="toolbar-icon">search</mat-icon>
+        </button>
+    </rapp-toolbar-right>
+
+    <rapp-content>
+        <rapp-post-feed [posts]="posts"></rapp-post-feed>
+    </rapp-content>
 </rapp-page>

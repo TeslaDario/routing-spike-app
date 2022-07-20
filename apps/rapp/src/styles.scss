@@ -1,3 +1,5 @@
+@use 'apps/rapp/src/assets/styles' as *;
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -11,4 +13,17 @@ body {
 
 .spacer {
     flex: 1 1 100%;
+}
+.ml-4 {
+    margin-left: 4px !important;
+}
+.mr-4 {
+    margin-right: 4px !important;
+}
+
+.mat-icon.toolbar-icon {
+    height: 28px;
+    width: 28px;
+    font-size: 28px;
+    color: $light;
 }

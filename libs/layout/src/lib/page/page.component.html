@@ -7,19 +7,14 @@
 
         <span class="spacer"></span>
 
-        <div class="toolbar-right">
-            <button mat-icon-button>
-                <mat-icon>notifications_none</mat-icon>
-            </button>
-            <button mat-icon-button>
-                <mat-icon>search</mat-icon>
-            </button>
+        <div class="toolbar-right-wrapper">
+            <ng-content select="rapp-toolbar-right"></ng-content>
         </div>
     </rapp-toolbar>
 
-    <rapp-content>
-        <ng-content></ng-content>
-    </rapp-content>
+    <div class="content-wrapper">
+        <ng-content select="rapp-content"></ng-content>
+    </div>
 
     <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
         <rapp-navbar class="spacer"></rapp-navbar>

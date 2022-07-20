@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NgWelcomeComponent } from './ng-welcome.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
-const routes: Routes = [
+export const AppRoutes = RouterModule.forRoot([
     { path: 'ng', component: NgWelcomeComponent },
     { path: 'nx', component: NxWelcomeComponent },
     {
@@ -23,10 +22,4 @@ const routes: Routes = [
         loadChildren: () => import('@rapp/chat').then((m) => m.ChatModule),
     },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },
-];
-
-@NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
-})
-export class AppRoutingModule {}
+]);

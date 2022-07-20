@@ -8,8 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CoreStoreModule } from '@rapp/core/store';
 import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routes';
 import { NgWelcomeComponent } from './ng-welcome.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
@@ -18,7 +18,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        AppRoutingModule,
+        AppRoutes,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the application is stable
