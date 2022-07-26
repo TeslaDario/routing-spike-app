@@ -14,6 +14,7 @@ body {
 .spacer {
     flex: 1 1 100%;
 }
+
 .ml-4 {
     margin-left: 4px !important;
 }
@@ -26,4 +27,8 @@ body {
     width: 28px;
     font-size: 28px;
     color: $light;
+}
+
+.cdk-overlay-backdrop + .cdk-global-overlay-wrapper + .cdk-overlay-backdrop {
+    background: transparent;
 }

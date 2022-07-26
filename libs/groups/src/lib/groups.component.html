@@ -1,1 +1,10 @@
-<rapp-page title="Groups"> </rapp-page>
+<rapp-page title="Groups">
+    <rapp-content>
+        <rapp-split-page [activeSide]="splitSideActive">
+            <!-- <router-outlet split-left name="splitLeft"></router-outlet> -->
+            <rapp-group-list split-left></rapp-group-list>
+            <router-outlet split-right></router-outlet>
+            <!-- <rapp-group split-right></rapp-group> -->
+        </rapp-split-page>
+    </rapp-content>
+</rapp-page>

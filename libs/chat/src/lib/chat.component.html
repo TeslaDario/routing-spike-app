@@ -1,1 +1,8 @@
-<rapp-page title="Chat"> </rapp-page>
+<rapp-page title="Chat">
+    <rapp-content>
+        <rapp-split-page [activeSide]="splitSideActive">
+            <rapp-chat-list split-left></rapp-chat-list>
+            <router-outlet split-right></router-outlet>
+        </rapp-split-page>
+    </rapp-content>
+</rapp-page>

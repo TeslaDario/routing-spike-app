@@ -1,0 +1,11 @@
+<div class="chat-overview-wrapper">
+    <ng-container *ngFor="let message of messages">
+        <div class="message-item" [ngClass]="{ 'from-me': message.fromMe }">
+            <rapp-avatar *ngIf="!message.fromMe"></rapp-avatar>
+            <div class="message">
+                <h3>{{ message.autor }}</h3>
+                <p>{{ message.body }}</p>
+            </div>
+        </div>
+    </ng-container>
+</div>

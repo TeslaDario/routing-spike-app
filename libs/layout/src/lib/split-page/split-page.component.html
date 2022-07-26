@@ -1,0 +1,9 @@
+<div class="split-page-wrapper" [ngClass]="['page-' + ((layoutMode$ | async) ?? 'single'), activeSide + '-active']">
+    <div class="split-left">
+        <ng-content select="[split-left]"></ng-content>
+    </div>
+
+    <div class="split-right">
+        <ng-content select="[split-right]"></ng-content>
+    </div>
+</div>

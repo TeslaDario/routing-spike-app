@@ -1,0 +1,14 @@
+<div class="chat-list-wrapper">
+    <div class="chat-list-header">
+        <h1>CHATS</h1>
+        <button mat-mini-fab color="primary" (click)="addChat()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <ng-container *ngFor="let chat of chats">
+        <div matRipple class="chat-item" [routerLink]="['/messages', chat.id]" routerLinkActive="active">
+            <rapp-avatar></rapp-avatar>
+            <h3>{{ chat.name }}</h3>
+        </div>
+    </ng-container>
+</div>

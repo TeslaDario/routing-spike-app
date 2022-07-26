@@ -1,10 +1,20 @@
 @use 'apps/rapp/src/assets/styles' as *;
 
+:host {
+    width: $leftSideWidth;
+
+    &.navbar-spread {
+        width: 100%;
+        .navbar-wrapper {
+            justify-content: space-around;
+        }
+    }
+}
+
 .navbar-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
 
     .nav-item {
         display: flex;

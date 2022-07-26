@@ -1,5 +1,16 @@
 <div class="navbar-wrapper">
-    <div class="nav-item" routerLink="/home" routerLinkActive="active">
+    <ng-container *ngFor="let tab of tabs">
+        <div
+            class="nav-item"
+            [routerLink]="tab.param ? [tab.route, tab.param] : [tab.route]"
+            [class.active]="tab.active"
+        >
+            <mat-icon>{{ tab.icon }}</mat-icon>
+            <span class="nav-item-name">{{ tab.name }}</span>
+        </div>
+    </ng-container>
+
+    <!-- <div class="nav-item" routerLink="/home" routerLinkActive="active">
         <mat-icon>home</mat-icon>
         <span class="nav-item-name">home</span>
     </div>
@@ -11,8 +22,8 @@
         <mat-icon>groups</mat-icon>
         <span class="nav-item-name">groups</span>
     </div>
-    <div class="nav-item" routerLink="/chat" routerLinkActive="active">
+    <div class="nav-item" routerLink="/messages" routerLinkActive="active">
         <mat-icon>chat</mat-icon>
         <span class="nav-item-name">chat</span>
-    </div>
+    </div> -->
 </div>

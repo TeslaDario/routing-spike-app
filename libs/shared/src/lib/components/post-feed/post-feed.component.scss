@@ -1,0 +1,14 @@
+.post-feed-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .add-post {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        z-index: 1;
+    }
+}

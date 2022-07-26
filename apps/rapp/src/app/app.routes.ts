@@ -1,10 +1,6 @@
 import { RouterModule } from '@angular/router';
-import { NgWelcomeComponent } from './ng-welcome.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 export const AppRoutes = RouterModule.forRoot([
-    { path: 'ng', component: NgWelcomeComponent },
-    { path: 'nx', component: NxWelcomeComponent },
     {
         path: 'home',
         loadChildren: () => import('@rapp/home').then((m) => m.HomeModule),
@@ -18,7 +14,7 @@ export const AppRoutes = RouterModule.forRoot([
         loadChildren: () => import('@rapp/groups').then((m) => m.GroupsModule),
     },
     {
-        path: 'chat',
+        path: 'messages',
         loadChildren: () => import('@rapp/chat').then((m) => m.ChatModule),
     },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },

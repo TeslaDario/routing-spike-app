@@ -17,6 +17,6 @@
     </div>
 
     <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
-        <rapp-navbar class="spacer"></rapp-navbar>
+        <rapp-navbar [spread]="true"></rapp-navbar>
     </rapp-toolbar>
 </div>

@@ -1,0 +1,9 @@
+<div class="post-feed-wrapper">
+    <div class="add-post">
+        <button mat-raised-button color="primary" (click)="addPost()">
+            <mat-icon>add</mat-icon>
+            <span>Post</span>
+        </button>
+    </div>
+    <rapp-post *ngFor="let post of posts" [post]="post"></rapp-post>
+</div>

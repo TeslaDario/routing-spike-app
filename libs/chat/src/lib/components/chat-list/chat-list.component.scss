@@ -1,0 +1,30 @@
+@use 'apps/rapp/src/assets/styles' as *;
+
+.chat-list-wrapper {
+    .chat-list-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .chat-item {
+        display: flex;
+        flex-direction: revert;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 6px 15px;
+        cursor: pointer;
+
+        &.active {
+            background-color: rgba($light, 0.25);
+        }
+
+        &:hover:not(.active) {
+            background-color: rgba($light, 0.1);
+        }
+
+        h3 {
+            margin: 0 0 0 15px;
+        }
+    }
+}

@@ -10,11 +10,9 @@ import { CoreStoreModule } from '@rapp/core/store';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
-import { NgWelcomeComponent } from './ng-welcome.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 @NgModule({
-    declarations: [AppComponent, NxWelcomeComponent, NgWelcomeComponent],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

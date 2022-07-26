@@ -1,17 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CoreStoreFacade } from '@rapp/core/store';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'rapp-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     title = 'Routing App';
-
-    constructor(private storeFacade: CoreStoreFacade) {}
-
-    ngOnInit() {
-        this.storeFacade.init();
-    }
 }

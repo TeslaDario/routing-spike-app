@@ -1,0 +1,8 @@
+<div class="group-list-wrapper">
+    <ng-container *ngFor="let group of groups">
+        <div matRipple class="group-item" [routerLink]="['/groups', group.id]" routerLinkActive="active">
+            <rapp-avatar></rapp-avatar>
+            <h3>{{ group.groupName }}</h3>
+        </div>
+    </ng-container>
+</div>
