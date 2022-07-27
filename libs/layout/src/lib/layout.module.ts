@@ -6,6 +6,7 @@ import { ContentComponent } from './components/content/content.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ToolbarRightComponent } from './components/toolbar/toolbar-right.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.components';
+import { LayoutDirective } from './layout.directive';
 import { PageComponent } from './page/page.component';
 import { SplitPageComponent } from './split-page/split-page.component';
 
@@ -17,8 +18,9 @@ import { SplitPageComponent } from './split-page/split-page.component';
         ToolbarRightComponent,
         NavbarComponent,
         ContentComponent,
+        LayoutDirective,
     ],
     imports: [CommonModule, RouterModule, MaterialModule],
-    exports: [PageComponent, SplitPageComponent, ContentComponent, ToolbarRightComponent],
+    exports: [PageComponent, SplitPageComponent, ContentComponent, ToolbarRightComponent, LayoutDirective],
 })
 export class LayoutModule {}

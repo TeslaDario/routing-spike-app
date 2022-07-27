@@ -9,6 +9,7 @@
         "layout": "libs/layout",
         "newsfeed": "libs/newsfeed",
         "rapp": "apps/rapp",
-        "shared": "libs/shared"
+        "shared": "libs/shared",
+        "users": "libs/users"
     }
 }

@@ -1,9 +1,9 @@
 <div class="chat-overview-wrapper">
     <ng-container *ngFor="let message of messages">
         <div class="message-item" [ngClass]="{ 'from-me': message.fromMe }">
-            <rapp-avatar *ngIf="!message.fromMe"></rapp-avatar>
+            <rapp-avatar *ngIf="!message.fromMe" (click)="openProfile(message.author?.id)"></rapp-avatar>
             <div class="message">
-                <h3>{{ message.autor }}</h3>
+                <h3 (click)="openProfile(message.author?.id)">{{ message.author?.name }}</h3>
                 <p>{{ message.body }}</p>
             </div>
         </div>

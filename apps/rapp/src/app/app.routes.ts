@@ -17,5 +17,11 @@ export const AppRoutes = RouterModule.forRoot([
         path: 'messages',
         loadChildren: () => import('@rapp/chat').then((m) => m.ChatModule),
     },
+
+    {
+        path: 'users',
+        outlet: 'dialog',
+        loadChildren: () => import('@rapp/users').then((m) => m.UsersModule),
+    },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },
 ]);

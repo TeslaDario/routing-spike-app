@@ -19,9 +19,12 @@
 
         .details {
             margin-left: 10px;
+            flex: 1 1 100%;
         }
-        .autor {
-            margin: 0;
+        .author {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
         }
     }
 

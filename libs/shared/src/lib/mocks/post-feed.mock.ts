@@ -27,7 +27,7 @@ export const MOCK_GROUPS: Group[] = [
 export const MOCK_POSTS: Post[] = [
     {
         id: 'p1',
-        autor: 'John Doe',
+        userId: 'u1',
         groupId: 'g1',
         image: 'assets/icons/icon-72x72.png',
         body: 'This is some dummy text...',
@@ -35,7 +35,7 @@ export const MOCK_POSTS: Post[] = [
     },
     {
         id: 'p2',
-        autor: 'John Doe',
+        userId: 'u1',
         groupId: 'g3',
         body: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
 Lorem Ipsum has been the industryx's standard dummy text ever since the 1500s, 
@@ -59,7 +59,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'p3',
-        autor: 'John Doe',
+        userId: 'u1',
         groupId: 'g2',
         image: 'assets/icons/icon-72x72.png',
         body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
@@ -67,7 +67,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'p4',
-        autor: 'John Doe',
+        userId: 'u1',
         groupId: 'g1',
         image: 'assets/icons/icon-72x72.png',
         body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
@@ -75,7 +75,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'p5',
-        autor: 'John Doe',
+        userId: 'u1',
         groupId: 'g1',
         image: 'assets/icons/icon-72x72.png',
         body: 'This is some dummy text...',
@@ -83,7 +83,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'p6',
-        autor: 'John Doe',
+        userId: 'u1',
         groupId: 'g2',
         image: 'assets/icons/icon-72x72.png',
         body: 'This is some dummy text...',
@@ -91,7 +91,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'p7',
-        autor: 'John Doe',
+        userId: 'u1',
         groupId: 'g1',
         image: 'assets/icons/icon-72x72.png',
         body: 'This is some dummy text...',
@@ -99,7 +99,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'p8',
-        autor: 'John Doe',
+        userId: 'u1',
         groupId: 'g3',
         image: 'assets/icons/icon-72x72.png',
         body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",

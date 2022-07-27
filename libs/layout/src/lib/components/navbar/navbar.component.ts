@@ -47,7 +47,10 @@ export class NavbarComponent implements OnDestroy {
     private _destroyed$ = new Subject();
 
     constructor(private coreStoreFacade: CoreStoreFacade, private route: ActivatedRoute) {
+        // without root page
         this.route.parent?.url.pipe(takeUntil(this._destroyed$)).subscribe((url) => {
+        // with root page
+        // this.route.parent?.parent?.url.pipe(takeUntil(this._destroyed$)).subscribe((url) => {
             this.tabs = this.tabs.map((t) => ({ ...t, active: t.route === '/' + url[0].path }));
         });
 

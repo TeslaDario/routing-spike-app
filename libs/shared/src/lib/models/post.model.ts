@@ -2,7 +2,7 @@ import { Group } from './group.model';
 
 export interface Post {
     id: string;
-    autor: string;
+    userId: string;
     groupId: Group['id'];
     image?: string;
     body: string;

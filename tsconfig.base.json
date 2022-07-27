@@ -21,7 +21,8 @@
             "@rapp/home": ["libs/home/src/index.ts"],
             "@rapp/layout": ["libs/layout/src/index.ts"],
             "@rapp/newsfeed": ["libs/newsfeed/src/index.ts"],
-            "@rapp/shared": ["libs/shared/src/index.ts"]
+            "@rapp/shared": ["libs/shared/src/index.ts"],
+            "@rapp/users": ["libs/users/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

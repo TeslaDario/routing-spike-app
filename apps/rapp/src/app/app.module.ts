@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +37,7 @@ import { AppRoutes } from './app.routes';
         EffectsModule.forRoot([]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
         CoreStoreModule,
+        MatDialogModule, // must be in app.module because of router-outlet name="dialog"
     ],
     providers: [],
     bootstrap: [AppComponent],

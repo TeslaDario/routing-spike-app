@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { MOCK_GROUPS } from '../../../mocks';
-import { Group, Post } from '../../../models';
+import { MOCK_USERS } from '../../../mocks/users.mock';
+import { Group, Post, User } from '../../../models';
 
 @Component({
     selector: 'rapp-post',
@@ -13,6 +15,7 @@ export class PostComponent {
         this._post = p;
         if (p.id) {
             this.group = MOCK_GROUPS.find((g) => g.id === p.groupId);
+            this.author = MOCK_USERS.find((u) => u.id === p.userId);
         }
     }
     get post(): Post {
@@ -20,4 +23,11 @@ export class PostComponent {
     }
     @Input() inFeed = true;
     group: Group | undefined;
+    author!: User | undefined;
+
+    constructor(private router: Router) {}
+
+    openProfile() {
+        this.router.navigate([{ outlets: { dialog: ['users', this.author?.id] } }]);
+    }
 }

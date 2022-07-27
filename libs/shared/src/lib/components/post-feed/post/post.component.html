@@ -1,12 +1,12 @@
 <div class="post" [ngClass]="{ 'post-overview': !inFeed }">
     <div class="post-header">
-        <rapp-avatar></rapp-avatar>
+        <rapp-avatar (click)="openProfile()"></rapp-avatar>
         <div class="details">
-            <p class="autor">
-                <span>{{ post.autor }}</span>
-                <span> > </span>
-                <a [routerLink]="['/groups', post.groupId]">{{ group?.groupName }}</a>
-            </p>
+            <div class="author">
+                <div matRipple (click)="openProfile()">{{ author?.name }}</div>
+                <span class="small-spacer">></span>
+                <div matRipple [routerLink]="['/groups', post.groupId]">{{ group?.groupName }}</div>
+            </div>
             <span class="date">{{ post.createdAt | date }}</span>
         </div>
     </div>

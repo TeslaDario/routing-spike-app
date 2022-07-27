@@ -31,7 +31,7 @@ export const MOCK_CHATS: Chat[] = [
 export const MOCK_MESSAGES: Message[] = [
     {
         id: 'm1',
-        autor: 'John Doe',
+        userId: 'u1',
         fromMe: false,
         chatId: 'c1',
         image: 'assets/icons/icon-72x72.png',
@@ -40,7 +40,7 @@ export const MOCK_MESSAGES: Message[] = [
     },
     {
         id: 'm2',
-        autor: 'John Doe',
+        userId: 'u1',
         fromMe: false,
         chatId: 'c3',
         body: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -65,7 +65,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'm3',
-        autor: 'John Doe',
+        userId: 'u1',
         fromMe: false,
         chatId: 'c2',
         image: 'assets/icons/icon-72x72.png',
@@ -74,7 +74,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'm4',
-        autor: 'John Doe',
+        userId: 'u1',
         fromMe: true,
         chatId: 'c1',
         image: 'assets/icons/icon-72x72.png',
@@ -83,7 +83,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'm5',
-        autor: 'John Doe',
+        userId: 'u1',
         fromMe: true,
         chatId: 'c1',
         image: 'assets/icons/icon-72x72.png',
@@ -92,7 +92,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'm6',
-        autor: 'John Doe',
+        userId: 'u1',
         fromMe: false,
         chatId: 'c2',
         image: 'assets/icons/icon-72x72.png',
@@ -101,7 +101,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'm7',
-        autor: 'John Doe',
+        userId: 'u1',
         fromMe: false,
         chatId: 'c1',
         image: 'assets/icons/icon-72x72.png',
@@ -110,7 +110,7 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
     },
     {
         id: 'm8',
-        autor: 'John Doe',
+        userId: 'u1',
         fromMe: false,
         chatId: 'c3',
         image: 'assets/icons/icon-72x72.png',

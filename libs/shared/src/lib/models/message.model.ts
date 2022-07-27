@@ -2,7 +2,7 @@ import { Chat } from './chat.model';
 
 export interface Message {
     id: string;
-    autor: string;
+    userId: string;
     fromMe: boolean;
     chatId: Chat['id'];
     image?: string;
