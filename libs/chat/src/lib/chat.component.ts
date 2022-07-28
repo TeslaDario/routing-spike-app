@@ -11,7 +11,7 @@ export class ChatComponent implements OnDestroy {
     splitSideActive!: SplitSideActive;
     private _destroyed$ = new Subject();
 
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private router: Router, private route: ActivatedRoute) {
         this.router.events
             .pipe(
                 takeUntil(this._destroyed$),

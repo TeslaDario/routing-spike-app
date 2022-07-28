@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Chat, DialogOneComponent, MOCK_CHATS } from '@rapp/shared';
+import { Router } from '@angular/router';
+import { Chat, MOCK_CHATS } from '@rapp/shared';
 
 @Component({
     selector: 'rapp-chat-list',
@@ -10,17 +11,19 @@ import { Chat, DialogOneComponent, MOCK_CHATS } from '@rapp/shared';
 export class ChatListComponent {
     chats: Chat[] = MOCK_CHATS;
 
-    constructor(public dialog: MatDialog) {}
+    constructor(private router: Router, private dialog: MatDialog) {}
 
     addChat() {
-        const dialogRef = this.dialog.open(DialogOneComponent, {
-            width: '90vw',
-            maxWidth: '90vw',
-            height: '80vh',
-        });
+        this.router.navigate(['messages', { outlets: { dialog: ['create-chat'] } }]);
 
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log('[CHAT] The dialog one was closed');
-        });
+        // const dialogRef = this.dialog.open(DialogOneComponent, {
+        //     width: '90vw',
+        //     maxWidth: '90vw',
+        //     height: '80vh',
+        // });
+
+        // dialogRef.afterClosed().subscribe((result) => {
+        //     console.log('[CHAT] The dialog one was closed');
+        // });
     }
 }

@@ -1,1 +1,1 @@
-export const __ = ''
+export * from './url-without-auxiliary-route';

@@ -1,1 +1,1 @@
-export const ___ = '';
+export * from './dialog.service';

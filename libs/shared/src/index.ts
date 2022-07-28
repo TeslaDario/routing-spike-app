@@ -1,6 +1,7 @@
 export * from './lib/components/avatar/avatar.module';
 export * from './lib/components/dialog';
 export * from './lib/components/post-feed';
+export * from './lib/guards';
 export * from './lib/material.module';
 export * from './lib/mocks';
 export * from './lib/models';
