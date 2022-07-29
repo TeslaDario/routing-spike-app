@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CoreStoreFacade } from '@rapp/core/store';
+import { StoreFacade } from '@rapp/store';
 
 @Component({
     selector: 'rapp-page',
@@ -8,7 +8,7 @@ import { CoreStoreFacade } from '@rapp/core/store';
 })
 export class PageComponent {
     @Input() title = '';
-    layoutMode$ = this.facade.getLayoutMode();
+    layoutMode$ = this.storeFacade.getMode();
 
-    constructor(private facade: CoreStoreFacade) {}
+    constructor(private storeFacade: StoreFacade) {}
 }

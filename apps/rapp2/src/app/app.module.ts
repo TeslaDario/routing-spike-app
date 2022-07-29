@@ -7,6 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppStoreModule } from '@rapp/store';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -35,8 +36,14 @@ import { AppRoutes } from './app.routes';
         ),
         EffectsModule.forRoot([]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
-        StoreModule,
-        MatDialogModule, // must be in app.module because of router-outlet name="dialog"
+        AppStoreModule,
+        MatDialogModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000',
+        }), // must be in app.module because of router-outlet name="dialog"
     ],
     providers: [],
     bootstrap: [AppComponent],

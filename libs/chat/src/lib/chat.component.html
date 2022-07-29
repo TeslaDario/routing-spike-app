@@ -1,8 +1,8 @@
 <rapp-page title="Chat">
     <rapp-content>
-        <rapp-split-page [activeSide]="splitSideActive">
-            <rapp-chat-list split-left></rapp-chat-list>
-            <router-outlet split-right></router-outlet>
-        </rapp-split-page>
+        <rapp-combined-view>
+            <rapp-chat-list></rapp-chat-list>
+            <router-outlet rappCombinedViewDetail [active]="outlet.isActivated" #outlet="outlet"></router-outlet>
+        </rapp-combined-view>
     </rapp-content>
 </rapp-page>

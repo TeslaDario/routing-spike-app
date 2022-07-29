@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CoreStoreFacade } from '@rapp/core/store';
 import { MOCK_CHATS, MOCK_GROUPS } from '@rapp/shared';
+import { StoreFacade } from '@rapp/store';
 import { Subject, takeUntil } from 'rxjs';
 
 export interface NavTab {
@@ -46,16 +46,16 @@ export class NavbarComponent implements OnDestroy {
     ];
     private _destroyed$ = new Subject();
 
-    constructor(private coreStoreFacade: CoreStoreFacade, private route: ActivatedRoute) {
+    constructor(private storeFacade: StoreFacade, private route: ActivatedRoute) {
         // without root page
         this.route.parent?.url.pipe(takeUntil(this._destroyed$)).subscribe((url) => {
-        // with root page
-        // this.route.parent?.parent?.url.pipe(takeUntil(this._destroyed$)).subscribe((url) => {
+            // with root page
+            // this.route.parent?.parent?.url.pipe(takeUntil(this._destroyed$)).subscribe((url) => {
             this.tabs = this.tabs.map((t) => ({ ...t, active: t.route === '/' + url[0].path }));
         });
 
-        this.coreStoreFacade
-            .getLayoutMode()
+        this.storeFacade
+            .getMode()
             .pipe(takeUntil(this._destroyed$))
             .subscribe((mode) => {
                 if (mode === 'split') {

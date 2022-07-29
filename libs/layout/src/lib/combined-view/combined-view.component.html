@@ -1,0 +1,14 @@
+<div
+    class="combined-view"
+    [class.combined-view--show-detail-in-single-view]="(layoutMode$ | async) === 'single' && detail.active"
+>
+    <div class="combined-view-master" [style.flexBasis.px]="masterWidth$ | async">
+        <ng-content></ng-content>
+    </div>
+    <div class="combined-view-detail" [class.active]="detail.active" [style.flexBasis.px]="detailWidth$ | async">
+        <ng-content select="rapp-combined-view-detail, [rappCombinedViewDetail]"></ng-content>
+        <div *ngIf="(layoutMode$ | async) === 'split' && !detail.active" class="combined-view-detail__empty">
+            Detail not selected!
+        </div>
+    </div>
+</div>

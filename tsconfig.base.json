@@ -16,12 +16,12 @@
         "baseUrl": ".",
         "paths": {
             "@rapp/chat": ["libs/chat/src/index.ts"],
-            "@rapp/core/store": ["libs/core/store/src/index.ts"],
             "@rapp/groups": ["libs/groups/src/index.ts"],
             "@rapp/home": ["libs/home/src/index.ts"],
             "@rapp/layout": ["libs/layout/src/index.ts"],
             "@rapp/newsfeed": ["libs/newsfeed/src/index.ts"],
             "@rapp/shared": ["libs/shared/src/index.ts"],
+            "@rapp/store": ["libs/store/src/index.ts"],
             "@rapp/users": ["libs/users/src/index.ts"]
         }
     },

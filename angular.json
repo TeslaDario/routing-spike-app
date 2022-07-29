@@ -3,13 +3,14 @@
     "version": 2,
     "projects": {
         "chat": "libs/chat",
-        "core-store": "libs/core/store",
         "groups": "libs/groups",
         "home": "libs/home",
         "layout": "libs/layout",
         "newsfeed": "libs/newsfeed",
         "rapp": "apps/rapp",
+        "rapp2": "apps/rapp2",
         "shared": "libs/shared",
+        "store": "libs/store",
         "users": "libs/users"
     }
 }
