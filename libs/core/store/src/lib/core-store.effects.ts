@@ -14,11 +14,13 @@ export class CoreStoreEffects {
                 startWith(window.innerWidth),
                 map((width) => {
                     if (this.deviceDetector.isMobile() || width < 768) {
+                        document.body.dataset['mode'] = 'single';
                         // document.documentElement.style.setProperty('--page-mode', 'single');
                         // document.documentElement.style.setProperty('--dialog-width', '100vw');
                         // document.documentElement.style.setProperty('--dialog-height', '100vh');
                         return CoreStoreActions.setLayoutSingleMode();
                     } else {
+                        document.body.dataset['mode'] = 'split';
                         // document.documentElement.style.setProperty('--page-mode', 'split');
                         // document.documentElement.style.setProperty('--dialog-width', '90vw');
                         // document.documentElement.style.setProperty('--dialog-height', '90vh');
