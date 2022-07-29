@@ -1,18 +1,19 @@
-import { Directive, ElementRef, Renderer2 } from '@angular/core';
-import { CoreStoreFacade } from '@rapp/core/store';
+import { Directive, ElementRef, OnDestroy } from '@angular/core';
+import { CoreStoreEffects, CoreStoreFacade } from '@rapp/core/store';
+import { Subscription } from 'rxjs';
 
 @Directive({ selector: '[rappLayout]' })
-export class LayoutDirective {
-    constructor(private coreStoreFacade: CoreStoreFacade, private elRef: ElementRef, private renderer: Renderer2) {
-        console.log('dsa', this.elRef);
-        this.coreStoreFacade.getLayoutMode().subscribe((mode) => {
-            if (mode === 'single') {
-                this.renderer.addClass(this.elRef.nativeElement, 'page-layout-single');
-                this.renderer.removeClass(this.elRef.nativeElement, 'page-layout-split');
-            } else {
-                this.renderer.addClass(this.elRef.nativeElement, 'page-layout-split');
-                this.renderer.removeClass(this.elRef.nativeElement, 'page-layout-single');
-            }
+export class LayoutDirective implements OnDestroy {
+    private sub!: Subscription;
+
+    constructor(private coreStoreFacade: CoreStoreFacade, private elRef: ElementRef<HTMLElement>) {
+        this.sub = this.coreStoreFacade.getLayoutMode().subscribe((mode) => {
+            console.log('mode', mode);
+            CoreStoreEffects.setMode(this.elRef.nativeElement, mode);
         });
+    }
+
+    ngOnDestroy(): void {
+        this.sub?.unsubscribe();
     }
 }

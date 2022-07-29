@@ -1,5 +1,4 @@
 import { RouterModule } from '@angular/router';
-// import { DialogGuard } from '@rapp/shared';
 import { ChatComponent } from './chat.component';
 import { ChatOverviewComponent } from './components/chat-overview/chat-overview.component';
 import { CreateChatComponent } from './components/create-chat/create-chat.component';

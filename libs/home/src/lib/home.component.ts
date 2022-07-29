@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'rapp-home',
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent {
     items = ['item 1', 'item 2', 'item 3', 'item 4', 'item 5', 'item 6', 'item 7', 'item 8', 'item 9', 'item 10'];
 
-    constructor(private router: Router, private route: ActivatedRoute) {}
+    constructor(private router: Router) {}
 
     openProfile() {
         this.router.navigate([{ outlets: { profile: ['users', 'me'] } }]);

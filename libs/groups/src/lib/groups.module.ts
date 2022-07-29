@@ -3,20 +3,13 @@ import { NgModule } from '@angular/core';
 import { LayoutModule } from '@rapp/layout';
 import { AvatarModule, MaterialModule, PostFeedModule } from '@rapp/shared';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
-import { GroupInfoCopyComponent } from './components/group-info/group-info.component-copy';
 import { GroupListComponent } from './components/group-list/group-list.component';
 import { GroupOverviewComponent } from './components/group-overview/group-overview.component';
 import { GroupsComponent } from './groups.component';
 import { GroupsRoutes } from './groups.routes';
 
 @NgModule({
-    declarations: [
-        GroupsComponent,
-        GroupListComponent,
-        GroupOverviewComponent,
-        GroupInfoComponent,
-        GroupInfoCopyComponent,
-    ],
+    declarations: [GroupsComponent, GroupListComponent, GroupOverviewComponent, GroupInfoComponent, GroupInfoComponent],
     imports: [CommonModule, GroupsRoutes, MaterialModule, LayoutModule, AvatarModule, PostFeedModule],
 })
 export class GroupsModule {}

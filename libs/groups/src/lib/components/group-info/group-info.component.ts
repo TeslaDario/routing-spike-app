@@ -1,14 +1,14 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalComponent } from '@rapp/layout';
 
 @Component({
     selector: 'rapp-group-info',
     template: `
-        <ng-template #dialog>
+        <rapp-modal #modal>
             <ng-container *ngIf="activeScreen === 'info'">
                 <div mat-dialog-title>
-                    <button mat-icon-button mat-dialog-close="back" color="primary">
+                    <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
                         <mat-icon>arrow_back</mat-icon>
                     </button>
                     GROUP INFO
@@ -26,7 +26,7 @@ import { ActivatedRoute, Router } from '@angular/router';
                 </div>
 
                 <div mat-dialog-actions>
-                    <button mat-flat-button mat-dialog-close="back" color="primary">CLOSE</button>
+                    <button mat-flat-button (click)="modal.ref.close('back')" color="primary">CLOSE</button>
                 </div>
             </ng-container>
 
@@ -38,31 +38,22 @@ import { ActivatedRoute, Router } from '@angular/router';
                 </div>
 
                 <div mat-dialog-actions>
-                    <button mat-flat-button mat-dialog-close="back" color="primary">CLOSE</button>
+                    <button mat-flat-button (click)="modal.ref.close('back')" color="primary">CLOSE</button>
                 </div>
             </ng-container>
-        </ng-template>
+        </rapp-modal>
     `,
 })
 export class GroupInfoComponent implements AfterViewInit {
-    @ViewChild('dialog') template!: TemplateRef<GroupInfoComponent>;
+    @ViewChild('modal') modal!: ModalComponent;
     activeScreen: 'info' | 'members' = 'info';
 
-    constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) {
+    constructor(private router: Router) {
         console.log('GroupInfoComponent - constructor');
     }
 
     ngAfterViewInit() {
-        const ref = this.dialog.open(this.template, {
-            width: '90vw',
-            maxWidth: '90vw',
-            height: '80vh',
-            disableClose: true,
-            closeOnNavigation: false,
-            // id: this.route.snapshot.url[0].path,
-        });
-
-        ref.backdropClick().subscribe(() => {
+        this.modal.ref.backdropClick().subscribe(() => {
             console.log('GroupInfoComponent - backdrop clicked', this.activeScreen);
             if (this.activeScreen !== 'info') {
                 this.activeScreen = 'info';
@@ -70,9 +61,8 @@ export class GroupInfoComponent implements AfterViewInit {
             }
             window.history.back();
         });
-        ref.afterClosed().subscribe((result) => {
+        this.modal.ref.afterClosed().subscribe((result) => {
             console.log('GroupInfoComponent - close mat dialog', result);
-
             if (result === 'back') {
                 window.history.back();
             }

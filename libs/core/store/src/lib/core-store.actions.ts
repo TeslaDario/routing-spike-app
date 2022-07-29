@@ -1,4 +1,4 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { ICoreState } from './core-store.reducer';
 
-export const setLayoutSingleMode = createAction('[LAYOUT Mode] Single');
-export const setLayoutSplitMode = createAction('[LAYOUT Mode] Split');
+export const setLayoutMode = createAction('[LAYOUT Mode]', props<{ mode: ICoreState['layoutMode'] }>());

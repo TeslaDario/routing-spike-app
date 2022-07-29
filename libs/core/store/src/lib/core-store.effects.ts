@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect } from '@ngrx/effects';
+import { createEffect } from '@ngrx/effects';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { debounceTime, fromEvent, map, merge, startWith } from 'rxjs';
 import * as CoreStoreActions from './core-store.actions';
+import { ICoreState } from './core-store.reducer';
 
 @Injectable()
 export class CoreStoreEffects {
@@ -13,37 +14,18 @@ export class CoreStoreEffects {
                 map((event: Event) => (event.target as Window).innerWidth),
                 startWith(window.innerWidth),
                 map((width) => {
-                    if (this.deviceDetector.isMobile() || width < 768) {
-                        document.body.dataset['mode'] = 'single';
-                        // document.documentElement.style.setProperty('--page-mode', 'single');
-                        // document.documentElement.style.setProperty('--dialog-width', '100vw');
-                        // document.documentElement.style.setProperty('--dialog-height', '100vh');
-                        return CoreStoreActions.setLayoutSingleMode();
-                    } else {
-                        document.body.dataset['mode'] = 'split';
-                        // document.documentElement.style.setProperty('--page-mode', 'split');
-                        // document.documentElement.style.setProperty('--dialog-width', '90vw');
-                        // document.documentElement.style.setProperty('--dialog-height', '90vh');
-                        return CoreStoreActions.setLayoutSplitMode();
-                    }
+                    const mode: ICoreState['layoutMode'] =
+                        this.deviceDetector.isMobile() || width < 768 ? 'single' : 'split';
+
+                    CoreStoreEffects.setMode(document.body, mode);
+                    return CoreStoreActions.setLayoutMode({ mode });
                 })
             )
     );
-    // init$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(CoreStoreActions.initCoreStore),
-    //         fetch({
-    //             run: (action) => {
-    //                 // Your custom service 'load' logic goes here. For now just return a success action...
-    //                 return CoreStoreActions.loadCoreStoreSuccess({ coreStore: [] });
-    //             },
-    //             onError: (action, error) => {
-    //                 console.error('Error', error);
-    //                 return CoreStoreActions.loadCoreStoreFailure({ error });
-    //             },
-    //         })
-    //     )
-    // );
 
-    constructor(private readonly actions$: Actions, private deviceDetector: DeviceDetectorService) {}
+    static setMode(el: HTMLElement, mode: ICoreState['layoutMode']) {
+        el.dataset['mode'] = mode;
+    }
+
+    constructor(private deviceDetector: DeviceDetectorService) {}
 }
