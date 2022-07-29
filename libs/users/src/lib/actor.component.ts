@@ -1,40 +1,58 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'rapp-actor',
     template: `
-        <div class="dialog-wrapper" rapp-layout>
-            <div class="backdrop" (click)="onClose()"></div>
-            <div class="dialog">My profile Dialog</div>
-        </div>
+        <ng-template #dialog>
+            <div mat-dialog-title>
+                <button mat-icon-button mat-dialog-close="back" color="primary">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+                MY PROFILE
+            </div>
+
+            <div mat-dialog-content>
+                <div class="flex flex-center">
+                    <rapp-avatar size="l" (click)="openMedia()"></rapp-avatar>
+                </div>
+            </div>
+
+            <div mat-dialog-actions class="flex flex-center">NAME SURNAME</div>
+        </ng-template>
     `,
-    styles: [
-        `
-            .backdrop {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background: rgb(0, 0, 0, 0.2);
-            }
-            .dialog {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 80vw;
-                height: 80vh;
-                background-color: #fff;
-                transform: translate(-50%, -50%);
-                border-radius: 20px;
-                box-shadow: 0 11px 15px -7px #0003, 0 24px 38px 3px #00000024, 0 9px 46px 8px #0000001f;
-            }
-        `,
-    ],
 })
-export class ActorComponent {
-    onClose() {
-        // this.router.navigate(['../'], { relativeTo: this.route });
-        window.history.back();
+export class ActorComponent implements AfterViewInit {
+    @ViewChild('dialog') template!: TemplateRef<ActorComponent>;
+
+    constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) {
+        console.log('ActorComponent - constructor');
+    }
+
+    ngAfterViewInit() {
+        const ref = this.dialog.open(this.template, {
+            width: '90vw',
+            maxWidth: '90vw',
+            height: '80vh',
+            disableClose: true,
+            closeOnNavigation: false,
+        });
+
+        ref.backdropClick().subscribe(() => {
+            console.log('ActorComponent - backdrop clicked');
+            window.history.back();
+        });
+        ref.afterClosed().subscribe((result) => {
+            console.log('ActorComponent - close mat dialog', result);
+
+            if (result === 'back') {
+                window.history.back();
+            }
+        });
+    }
+
+    openMedia() {
+        this.router.navigate([{ outlets: { media: ['media', 1] } }]);
     }
 }

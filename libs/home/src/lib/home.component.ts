@@ -12,7 +12,7 @@ export class HomeComponent {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     openProfile() {
-        this.router.navigate([{ outlets: { dialog: ['users', 'me'] } }]);
+        this.router.navigate([{ outlets: { profile: ['users', 'me'] } }]);
     }
 
     openSettings() {

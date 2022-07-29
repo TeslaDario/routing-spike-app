@@ -27,12 +27,12 @@ export class DialogGuard implements CanDeactivate<any> {
             console.log('DialogGuard', openrefs[openrefs.length - 1]);
             // fix navigation history, see github issue for more details
             // https://github.com/angular/angular/issues/13586
-            const currentUrlTree = this.router.createUrlTree([], { ...currentRoute, fragment: undefined });
-            const currentUrl = currentUrlTree.toString();
-            this.location.go(currentUrl);
+            // const currentUrlTree = this.router.createUrlTree([], { ...currentRoute, fragment: undefined });
+            // const currentUrl = currentUrlTree.toString();
+            // this.location.go(currentUrl);
 
             openrefs[openrefs.length - 1].close();
-            return false;
+            return true;
         }
     }
 }

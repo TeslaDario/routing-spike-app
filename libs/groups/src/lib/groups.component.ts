@@ -11,7 +11,7 @@ export class GroupsComponent implements OnDestroy {
     splitSideActive!: SplitSideActive;
     private _destroyed$ = new Subject();
 
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private router: Router, private route: ActivatedRoute) {
         this.router.events
             .pipe(
                 takeUntil(this._destroyed$),
@@ -22,6 +22,10 @@ export class GroupsComponent implements OnDestroy {
             .subscribe((params) => {
                 this.splitSideActive = params['groupId'] ? 'right' : 'left';
             });
+    }
+
+    openGroupInfo() {
+        this.router.navigate(['groups', { outlets: { dialog: ['group-info'] } }]);
     }
 
     ngOnDestroy(): void {

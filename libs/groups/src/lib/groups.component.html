@@ -1,4 +1,9 @@
 <rapp-page title="Groups">
+    <rapp-toolbar-right>
+        <button mat-icon-button>
+            <mat-icon class="toolbar-icon" (click)="openGroupInfo()">info</mat-icon>
+        </button>
+    </rapp-toolbar-right>
     <rapp-content>
         <rapp-split-page [activeSide]="splitSideActive">
             <!-- <router-outlet split-left name="splitLeft"></router-outlet> -->

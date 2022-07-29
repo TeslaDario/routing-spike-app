@@ -28,6 +28,10 @@ export class PostComponent {
     constructor(private router: Router) {}
 
     openProfile() {
-        this.router.navigate([{ outlets: { dialog: ['users', this.author?.id] } }]);
+        this.router.navigate([{ outlets: { profile: ['users', this.author?.id] } }]);
+    }
+
+    openMedia() {
+        this.router.navigate([{ outlets: { media: ['media', 1] } }]);
     }
 }

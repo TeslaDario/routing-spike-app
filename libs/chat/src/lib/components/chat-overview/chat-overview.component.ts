@@ -16,7 +16,7 @@ export class ChatOverviewComponent implements OnDestroy {
     author!: User;
     private sub: Subscription;
 
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private router: Router, private route: ActivatedRoute) {
         this.sub = this.route.params.subscribe((params) => {
             const groupId = params['chatId'];
 
@@ -25,7 +25,7 @@ export class ChatOverviewComponent implements OnDestroy {
     }
 
     openProfile(userId?: string) {
-        this.router.navigate([{ outlets: { dialog: ['users', userId] } }]);
+        this.router.navigate([{ outlets: { profile: ['users', userId] } }]);
     }
 
     private loadChatMessages(chatId: Chat['id']): void {

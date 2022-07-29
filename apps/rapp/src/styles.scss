@@ -18,6 +18,12 @@ body {
 .small-spacer {
     padding: 0 5px;
 }
+.flex {
+    display: flex;
+}
+.flex-center {
+    justify-content: center;
+}
 
 .ml-4 {
     margin-left: 4px !important;

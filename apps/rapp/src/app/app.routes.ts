@@ -1,4 +1,5 @@
 import { RouterModule } from '@angular/router';
+import { DialogGuard, MediaDialogComponent } from '@rapp/shared';
 
 export const AppRoutes = RouterModule.forRoot([
     {
@@ -20,8 +21,19 @@ export const AppRoutes = RouterModule.forRoot([
 
     {
         path: 'users',
-        outlet: 'dialog',
+        outlet: 'profile',
+        canDeactivate: [DialogGuard],
         loadChildren: () => import('@rapp/users').then((m) => m.UsersModule),
+    },
+    {
+        path: 'media',
+        outlet: 'media',
+        children: [
+            {
+                path: ':id',
+                component: MediaDialogComponent,
+            },
+        ],
     },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },
 ]);
