@@ -9,6 +9,10 @@ export class GroupsComponent {
     constructor(private router: Router) {}
 
     openGroupInfo() {
-        this.router.navigate(['groups', { outlets: { dialog: ['group-info'] } }]);
+        this.router.navigate(['groups', { outlets: { dialog: ['info'] } }]);
+    }
+
+    openGroupMembers() {
+        this.router.navigate(['groups', { outlets: { dialog: ['members'] } }]);
     }
 }

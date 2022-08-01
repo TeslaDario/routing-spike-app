@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
     template: '<ng-template #modal><ng-content></ng-content></ng-template>',
 })
 export class ModalComponent implements AfterViewInit {
-    @ViewChild('modal') modal!: TemplateRef<ModalComponent>;
+    @ViewChild('modal') private readonly modal!: TemplateRef<ModalComponent>;
     public ref!: MatDialogRef<ModalComponent>;
 
     constructor(private dialog: MatDialog, private route: ActivatedRoute) {
@@ -24,5 +24,9 @@ export class ModalComponent implements AfterViewInit {
             closeOnNavigation: false,
             id: this.route.snapshot.url[0].path,
         });
+    }
+
+    public closeAll() {
+        this.dialog.closeAll();
     }
 }

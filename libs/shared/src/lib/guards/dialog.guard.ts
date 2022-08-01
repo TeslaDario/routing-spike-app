@@ -18,12 +18,12 @@ export class DialogGuard implements CanDeactivate<any> {
         const openDialogs = this.dialog.openDialogs;
         if (openDialogs.length) {
             console.log(
-                'DialogGuard',
-                location.href,
+                // 'DialogGuard',
+                // location.href,
                 openDialogs[openDialogs.length - 1].id,
                 component,
-                currentRoute,
-                currentState
+                currentRoute
+                // currentState
             );
             openDialogs[openDialogs.length - 1].close();
         }

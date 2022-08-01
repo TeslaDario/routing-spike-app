@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalComponent } from '@rapp/layout';
 
 @Component({
     selector: 'rapp-actor',
     template: `
-        <ng-template #dialog>
+        <rapp-modal>
+            <!-- <ng-template #dialog> -->
             <div mat-dialog-title>
-                <button mat-icon-button mat-dialog-close="back" color="primary">
+                <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
                     <mat-icon>arrow_back</mat-icon>
                 </button>
                 MY PROFILE
@@ -20,32 +21,24 @@ import { ActivatedRoute, Router } from '@angular/router';
             </div>
 
             <div mat-dialog-actions class="flex flex-center">NAME SURNAME</div>
-        </ng-template>
+            <!-- </ng-template> -->
+        </rapp-modal>
     `,
 })
 export class ActorComponent implements AfterViewInit {
-    @ViewChild('dialog') template!: TemplateRef<ActorComponent>;
+    @ViewChild(ModalComponent) modal!: ModalComponent;
 
-    constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) {
+    constructor(private router: Router) {
         console.log('ActorComponent - constructor');
     }
 
     ngAfterViewInit() {
-        const ref = this.dialog.open(this.template, {
-            width: '90vw',
-            maxWidth: '90vw',
-            height: '80vh',
-            disableClose: true,
-            closeOnNavigation: false,
-        });
-
-        ref.backdropClick().subscribe(() => {
+        this.modal.ref.backdropClick().subscribe(() => {
             console.log('ActorComponent - backdrop clicked');
             window.history.back();
         });
-        ref.afterClosed().subscribe((result) => {
+        this.modal.ref.afterClosed().subscribe((result) => {
             console.log('ActorComponent - close mat dialog', result);
-
             if (result === 'back') {
                 window.history.back();
             }
