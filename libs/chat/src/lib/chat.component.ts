@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'rapp-chat',
-    templateUrl: 'chat.component.html',
+    template: `
+        <rapp-combined-page>
+            <rapp-chat-list></rapp-chat-list>
+        </rapp-combined-page>
+    `,
 })
 export class ChatComponent {}

@@ -7,7 +7,7 @@ import { StoreFacade } from '@rapp/store';
     styleUrls: ['page.component.scss'],
 })
 export class PageComponent {
-    @Input() title = '';
+    @Input() hasBottomTabsNavigator = false;
     layoutMode$ = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade) {}

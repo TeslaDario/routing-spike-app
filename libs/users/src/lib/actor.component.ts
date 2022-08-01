@@ -6,7 +6,6 @@ import { ModalComponent } from '@rapp/layout';
     selector: 'rapp-actor',
     template: `
         <rapp-modal>
-            <!-- <ng-template #dialog> -->
             <div mat-dialog-title>
                 <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
                     <mat-icon>arrow_back</mat-icon>
@@ -21,7 +20,6 @@ import { ModalComponent } from '@rapp/layout';
             </div>
 
             <div mat-dialog-actions class="flex flex-center">NAME SURNAME</div>
-            <!-- </ng-template> -->
         </rapp-modal>
     `,
 })

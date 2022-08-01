@@ -1,13 +1,9 @@
 @use 'apps/rapp/src/assets/styles' as *;
 
-:host {
-    width: $leftSideWidth;
-
-    &.navbar-spread {
-        width: 100%;
-        .navbar-wrapper {
-            justify-content: space-around;
-        }
+:host.navbar-spread {
+    width: 100%;
+    .navbar-wrapper {
+        justify-content: space-around;
     }
 }
 
@@ -21,7 +17,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 64px;
+        min-width: $toolbarHeight;
+        width: 100%;
         color: $light;
         cursor: pointer;
 

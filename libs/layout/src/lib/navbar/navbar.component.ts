@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MOCK_CHATS, MOCK_GROUPS } from '@rapp/shared';
 import { StoreFacade } from '@rapp/store';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 export interface NavTab {
     name: string;
@@ -44,6 +44,7 @@ export class NavbarComponent implements OnDestroy {
             route: '/messages',
         },
     ];
+    masterWidth$: Observable<number> = this.storeFacade.getMasterWidth();
     private _destroyed$ = new Subject();
 
     constructor(private storeFacade: StoreFacade, private route: ActivatedRoute) {

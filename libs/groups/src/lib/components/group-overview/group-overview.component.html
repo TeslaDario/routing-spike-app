@@ -1,3 +1,22 @@
-<div class="group-wrapper">
-    <rapp-post-feed [posts]="posts"></rapp-post-feed>
-</div>
+<rapp-page [hasBottomTabsNavigator]="(layoutMode$ | async) === 'single'">
+    <rapp-toolbar>
+        <rapp-toolbar-left *ngIf="(layoutMode$ | async) === 'single'">
+            <h1 class="toolbar-title">BACK</h1>
+        </rapp-toolbar-left>
+
+        <rapp-toolbar-right>
+            <button mat-icon-button>
+                <mat-icon class="toolbar-icon" (click)="openGroupInfo()">info</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="toolbar-icon" (click)="openGroupMembers()">group</mat-icon>
+            </button>
+        </rapp-toolbar-right>
+    </rapp-toolbar>
+
+    <rapp-content>
+        <div class="group-wrapper">
+            <rapp-post-feed [posts]="posts"></rapp-post-feed>
+        </div>
+    </rapp-content>
+</rapp-page>

@@ -1,22 +1,11 @@
 <div class="page-wrapper">
-    <rapp-toolbar>
-        <rapp-navbar *ngIf="(layoutMode$ | async) !== 'single'; else titleTempl"></rapp-navbar>
-        <ng-template #titleTempl>
-            <h1 class="toolbar-title">{{ title }}</h1>
-        </ng-template>
-
-        <span class="spacer"></span>
-
-        <div class="toolbar-right-wrapper">
-            <ng-content select="rapp-toolbar-right"></ng-content>
-        </div>
-    </rapp-toolbar>
+    <ng-content select="rapp-toolbar"></ng-content>
 
     <div class="content-wrapper">
         <ng-content select="rapp-content"></ng-content>
     </div>
 
-    <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
+    <div class="bottom-navbar-wrapper" *ngIf="hasBottomTabsNavigator">
         <rapp-navbar [spread]="true"></rapp-navbar>
-    </rapp-toolbar>
+    </div>
 </div>

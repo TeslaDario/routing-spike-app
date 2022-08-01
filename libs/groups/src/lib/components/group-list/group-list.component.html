@@ -1,8 +1,21 @@
-<div class="group-list-wrapper">
-    <ng-container *ngFor="let group of groups">
-        <div matRipple class="group-item" [routerLink]="['/groups', group.id]" routerLinkActive="active">
-            <rapp-avatar></rapp-avatar>
-            <h3>{{ group.groupName }}</h3>
+<rapp-page [hasBottomTabsNavigator]="(layoutMode$ | async) === 'single'">
+    <rapp-toolbar>
+        <rapp-toolbar-left>
+            <rapp-navbar *ngIf="(layoutMode$ | async) !== 'single'; else titleTempl"></rapp-navbar>
+            <ng-template #titleTempl>
+                <h1 class="toolbar-title">Groups</h1>
+            </ng-template>
+        </rapp-toolbar-left>
+    </rapp-toolbar>
+
+    <rapp-content>
+        <div class="group-list-wrapper">
+            <ng-container *ngFor="let group of groups">
+                <div matRipple class="group-item" [routerLink]="['/groups', group.id]" routerLinkActive="active">
+                    <rapp-avatar></rapp-avatar>
+                    <h3>{{ group.groupName }}</h3>
+                </div>
+            </ng-container>
         </div>
-    </ng-container>
-</div>
+    </rapp-content>
+</rapp-page>

@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chat, Message, MOCK_MESSAGES, MOCK_USERS, User } from '@rapp/shared';
+import { StoreFacade } from '@rapp/store';
 import { Subscription } from 'rxjs';
 
 interface UIMessage extends Message {
@@ -14,9 +15,10 @@ interface UIMessage extends Message {
 export class ChatOverviewComponent implements OnDestroy {
     messages!: UIMessage[];
     author!: User;
+    layoutMode$ = this.storeFacade.getMode();
     private sub: Subscription;
 
-    constructor(private router: Router, private route: ActivatedRoute) {
+    constructor(private router: Router, private route: ActivatedRoute, private storeFacade: StoreFacade) {
         this.sub = this.route.params.subscribe((params) => {
             const groupId = params['chatId'];
 

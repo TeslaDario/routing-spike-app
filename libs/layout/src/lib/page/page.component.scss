@@ -6,18 +6,17 @@
     height: 100vh;
     overflow: hidden;
 
-    .toolbar-right-wrapper {
-        flex-shrink: 0;
-    }
-
-    .toolbar-title {
-        flex-shrink: 0;
-        margin: 0;
-        font-weight: 600;
-    }
-
     .content-wrapper {
         flex: 1 1 100%;
         overflow: scroll;
+    }
+
+    .bottom-navbar-wrapper {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        flex: 0 0 $toolbarHeight;
+        box-shadow: 0 0 3px 1px rgb(0 0 0 / 10%);
     }
 }

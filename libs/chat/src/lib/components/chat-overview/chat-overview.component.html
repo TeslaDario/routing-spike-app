@@ -1,11 +1,21 @@
-<div class="chat-overview-wrapper">
-    <ng-container *ngFor="let message of messages">
-        <div class="message-item" [ngClass]="{ 'from-me': message.fromMe }">
-            <rapp-avatar *ngIf="!message.fromMe" (click)="openProfile(message.author?.id)"></rapp-avatar>
-            <div class="message">
-                <h3 (click)="openProfile(message.author?.id)">{{ message.author?.name }}</h3>
-                <p>{{ message.body }}</p>
-            </div>
+<rapp-page>
+    <rapp-toolbar>
+        <rapp-toolbar-left *ngIf="(layoutMode$ | async) === 'single'">
+            <h1 class="toolbar-title">BACK</h1>
+        </rapp-toolbar-left>
+    </rapp-toolbar>
+
+    <rapp-content>
+        <div class="chat-overview-wrapper">
+            <ng-container *ngFor="let message of messages">
+                <div class="message-item" [ngClass]="{ 'from-me': message.fromMe }">
+                    <rapp-avatar *ngIf="!message.fromMe" (click)="openProfile(message.author?.id)"></rapp-avatar>
+                    <div class="message">
+                        <h3 (click)="openProfile(message.author?.id)">{{ message.author?.name }}</h3>
+                        <p>{{ message.body }}</p>
+                    </div>
+                </div>
+            </ng-container>
         </div>
-    </ng-container>
-</div>
+    </rapp-content>
+</rapp-page>

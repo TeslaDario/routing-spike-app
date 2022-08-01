@@ -1,14 +1,27 @@
-<div class="chat-list-wrapper">
-    <div class="chat-list-header">
-        <h1>CHATS</h1>
-        <button mat-mini-fab color="primary" (click)="addChat()">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
-    <ng-container *ngFor="let chat of chats">
-        <div matRipple class="chat-item" [routerLink]="['/messages', chat.id]" routerLinkActive="active">
-            <rapp-avatar></rapp-avatar>
-            <h3>{{ chat.name }}</h3>
+<rapp-page [hasBottomTabsNavigator]="(layoutMode$ | async) === 'single'">
+    <rapp-toolbar>
+        <rapp-toolbar-left>
+            <rapp-navbar *ngIf="(layoutMode$ | async) !== 'single'; else titleTempl"></rapp-navbar>
+            <ng-template #titleTempl>
+                <h1 class="toolbar-title">Chat</h1>
+            </ng-template>
+        </rapp-toolbar-left>
+    </rapp-toolbar>
+
+    <rapp-content>
+        <div class="chat-list-wrapper">
+            <div class="chat-list-header">
+                <h1>CHATS</h1>
+                <button mat-mini-fab color="primary" (click)="addChat()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <ng-container *ngFor="let chat of chats">
+                <div matRipple class="chat-item" [routerLink]="['/messages', chat.id]" routerLinkActive="active">
+                    <rapp-avatar></rapp-avatar>
+                    <h3>{{ chat.name }}</h3>
+                </div>
+            </ng-container>
         </div>
-    </ng-container>
-</div>
+    </rapp-content>
+</rapp-page>

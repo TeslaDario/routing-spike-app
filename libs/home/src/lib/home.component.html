@@ -1,10 +1,19 @@
-<rapp-page title="Home">
-    <rapp-toolbar-right>
-        <button mat-icon-button (click)="openSettings()">
-            <mat-icon class="toolbar-icon">settings</mat-icon>
-        </button>
-        <rapp-avatar (click)="openProfile()" size="s" class="ml-4"></rapp-avatar>
-    </rapp-toolbar-right>
+<rapp-page [hasBottomTabsNavigator]="(layoutMode$ | async) === 'single'">
+    <rapp-toolbar>
+        <rapp-toolbar-left>
+            <rapp-navbar *ngIf="(layoutMode$ | async) !== 'single'; else titleTempl"></rapp-navbar>
+            <ng-template #titleTempl>
+                <h1 class="toolbar-title">Home</h1>
+            </ng-template>
+        </rapp-toolbar-left>
+
+        <rapp-toolbar-right>
+            <button mat-icon-button (click)="openSettings()">
+                <mat-icon class="toolbar-icon">settings</mat-icon>
+            </button>
+            <rapp-avatar (click)="openProfile()" size="s" class="ml-4"></rapp-avatar>
+        </rapp-toolbar-right>
+    </rapp-toolbar>
 
     <rapp-content>
         <div class="home-wrapper">

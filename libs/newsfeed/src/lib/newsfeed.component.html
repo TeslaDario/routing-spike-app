@@ -1,12 +1,21 @@
-<rapp-page title="News">
-    <rapp-toolbar-right>
-        <button mat-icon-button>
-            <mat-icon class="toolbar-icon" (click)="openActivities()">notifications_none</mat-icon>
-        </button>
-        <button mat-icon-button class="ml-4">
-            <mat-icon class="toolbar-icon">search</mat-icon>
-        </button>
-    </rapp-toolbar-right>
+<rapp-page [hasBottomTabsNavigator]="(layoutMode$ | async) === 'single'">
+    <rapp-toolbar>
+        <rapp-toolbar-left>
+            <rapp-navbar *ngIf="(layoutMode$ | async) !== 'single'; else titleTempl"></rapp-navbar>
+            <ng-template #titleTempl>
+                <h1 class="toolbar-title">News</h1>
+            </ng-template>
+        </rapp-toolbar-left>
+
+        <rapp-toolbar-right>
+            <button mat-icon-button>
+                <mat-icon class="toolbar-icon" (click)="openActivities()">notifications_none</mat-icon>
+            </button>
+            <button mat-icon-button class="ml-4">
+                <mat-icon class="toolbar-icon">search</mat-icon>
+            </button>
+        </rapp-toolbar-right>
+    </rapp-toolbar>
 
     <rapp-content>
         <rapp-post-feed [posts]="posts"></rapp-post-feed>
