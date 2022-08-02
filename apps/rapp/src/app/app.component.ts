@@ -3,6 +3,10 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-root',
     template: `
+        <div style="position: fixed;left: 50%;z-index: 100000;">
+            <small style="color: #ed470a;">v2</small>
+        </div>
+
         <router-outlet></router-outlet>
 
         <router-outlet name="dialog"></router-outlet>
@@ -11,7 +15,7 @@ import { Component } from '@angular/core';
     `,
 })
 export class AppComponent {
-    title = 'Routing App';
+    title = 'Routing App v2';
 
     // constructor(private router: Router, private route: ActivatedRoute) {
     //     this.router.events

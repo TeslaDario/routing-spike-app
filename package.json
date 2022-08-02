@@ -6,8 +6,6 @@
         "ng": "nx",
         "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
         "start": "nx serve",
-        "v1": "nx run rapp:serve:development",
-        "v2": "nx run rapp2:serve:development",
         "build": "nx build",
         "test": "nx test",
         "run-server": "npm run build && http-server dist/apps/rapp",

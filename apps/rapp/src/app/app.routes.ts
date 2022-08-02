@@ -1,5 +1,6 @@
 import { RouterModule } from '@angular/router';
 import { MediaDialogComponent } from '@rapp/layout';
+import { CreatePostComponent } from '@rapp/post-feed';
 import { DialogGuard } from '@rapp/shared';
 
 export const AppRoutes = RouterModule.forRoot([
@@ -10,6 +11,10 @@ export const AppRoutes = RouterModule.forRoot([
     {
         path: 'newsfeed',
         loadChildren: () => import('@rapp/newsfeed').then((m) => m.NewsfeedModule),
+    },
+    {
+        path: 'activities',
+        loadChildren: () => import('@rapp/activities').then((m) => m.ActivitiesModule),
     },
     {
         path: 'groups',
@@ -27,14 +32,16 @@ export const AppRoutes = RouterModule.forRoot([
         loadChildren: () => import('@rapp/users').then((m) => m.UsersModule),
     },
     {
-        path: 'media',
+        path: 'media/:id',
         outlet: 'media',
-        children: [
-            {
-                path: ':id',
-                component: MediaDialogComponent,
-            },
-        ],
+        // canDeactivate: [DialogGuard],
+        component: MediaDialogComponent,
+    },
+    {
+        path: 'create-post',
+        outlet: 'dialog',
+        canDeactivate: [DialogGuard],
+        component: CreatePostComponent,
     },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },
 ]);
