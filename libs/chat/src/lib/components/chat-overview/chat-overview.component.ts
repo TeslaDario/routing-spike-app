@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Chat, Message, MOCK_MESSAGES, MOCK_USERS, User } from '@rapp/shared';
-import { StoreFacade } from '@rapp/store';
+import { Chat, Message, MOCK_MESSAGES, MOCK_USERS, StoreFacade, User } from '@rapp/store';
 import { Subscription } from 'rxjs';
 
 interface UIMessage extends Message {

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MOCK_POSTS } from '../../../mocks';
-import { Post } from '../../../models';
+import { MOCK_POSTS, Post } from '@rapp/store';
 
 @Component({
     selector: 'rapp-post-route',

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Chat, MOCK_CHATS } from '@rapp/shared';
-import { StoreFacade } from '@rapp/store';
+import { Chat, MOCK_CHATS, StoreFacade } from '@rapp/store';
 
 @Component({
     selector: 'rapp-chat-list',

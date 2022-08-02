@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Group, MOCK_GROUPS } from '@rapp/shared';
-import { StoreFacade } from '@rapp/store';
+import { Group, MOCK_GROUPS, StoreFacade } from '@rapp/store';
 
 @Component({
     selector: 'rapp-group-list',

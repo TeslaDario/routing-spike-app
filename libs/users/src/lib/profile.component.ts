@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '@rapp/layout';
-import { MOCK_USERS, User } from '@rapp/shared';
+import { MOCK_USERS, User } from '@rapp/store';
 import { Subscription } from 'rxjs';
 
 @Component({

@@ -1,3 +1,5 @@
+@use 'apps/rapp/src/assets/styles' as *;
+
 .post-feed-wrapper {
     width: 100%;
     max-width: 600px;
@@ -9,5 +11,11 @@
         right: 20px;
         bottom: 20px;
         z-index: 1;
+    }
+
+    @media (max-width: $m) {
+        .add-post {
+            bottom: calc($toolbarHeight + 20px);
+        }
     }
 }

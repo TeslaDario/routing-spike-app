@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Group, MOCK_POSTS, Post } from '@rapp/shared';
-import { StoreFacade } from '@rapp/store';
+import { Group, MOCK_POSTS, Post, StoreFacade } from '@rapp/store';
 import { Subscription } from 'rxjs';
 
 @Component({

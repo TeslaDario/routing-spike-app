@@ -1,0 +1,22 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/post-feed/src",
+    "prefix": "rapp",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/post-feed"],
+            "options": {
+                "jestConfig": "libs/post-feed/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["libs/post-feed/**/*.ts", "libs/post-feed/**/*.html"]
+            }
+        }
+    },
+    "tags": []
+}

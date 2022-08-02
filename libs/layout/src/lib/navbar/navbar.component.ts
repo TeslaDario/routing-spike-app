@@ -1,8 +1,7 @@
 import { Component, HostBinding, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MOCK_CHATS, MOCK_GROUPS } from '@rapp/shared';
-import { StoreFacade } from '@rapp/store';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { MOCK_CHATS, MOCK_GROUPS, StoreFacade } from '@rapp/store';
+import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
 export interface NavTab {
     name: string;
@@ -48,12 +47,17 @@ export class NavbarComponent implements OnDestroy {
     private _destroyed$ = new Subject();
 
     constructor(private storeFacade: StoreFacade, private route: ActivatedRoute) {
+        // with root page
+        // this.route.parent?.parent?.url
         // without root page
-        this.route.parent?.url.pipe(takeUntil(this._destroyed$)).subscribe((url) => {
-            // with root page
-            // this.route.parent?.parent?.url.pipe(takeUntil(this._destroyed$)).subscribe((url) => {
-            this.tabs = this.tabs.map((t) => ({ ...t, active: t.route === '/' + url[0].path }));
-        });
+        this.route.parent?.url
+            .pipe(
+                takeUntil(this._destroyed$),
+                filter((url) => url.length !== 0)
+            )
+            .subscribe((url) => {
+                this.tabs = this.tabs.map((t) => ({ ...t, active: t.route === '/' + url[0].path }));
+            });
 
         this.storeFacade
             .getMode()

@@ -9,6 +9,7 @@
         "home": "libs/home",
         "layout": "libs/layout",
         "newsfeed": "libs/newsfeed",
+        "post-feed": "libs/post-feed",
         "rapp": "apps/rapp",
         "rapp2": "apps/rapp2",
         "shared": "libs/shared",

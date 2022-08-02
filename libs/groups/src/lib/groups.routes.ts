@@ -1,5 +1,6 @@
 import { RouterModule } from '@angular/router';
-import { DialogGuard, PostRouteComponent } from '@rapp/shared';
+import { PostRouteComponent } from '@rapp/post-feed';
+import { DialogGuard } from '@rapp/shared';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { GroupMembersComponent } from './components/group-members/group-members.component';
 import { GroupOverviewComponent } from './components/group-overview/group-overview.component';

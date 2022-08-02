@@ -1,5 +1,6 @@
 import { RouterModule } from '@angular/router';
 import { MediaDialogComponent } from '@rapp/layout';
+import { CreatePostComponent } from '@rapp/post-feed';
 import { DialogGuard } from '@rapp/shared';
 
 export const AppRoutes = RouterModule.forRoot([
@@ -35,6 +36,12 @@ export const AppRoutes = RouterModule.forRoot([
         outlet: 'media',
         // canDeactivate: [DialogGuard],
         component: MediaDialogComponent,
+    },
+    {
+        path: 'create-post',
+        outlet: 'dialog',
+        canDeactivate: [DialogGuard],
+        component: CreatePostComponent,
     },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },
 ]);

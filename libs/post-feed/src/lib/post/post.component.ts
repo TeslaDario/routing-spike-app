@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { MOCK_GROUPS } from '../../../mocks';
-import { MOCK_USERS } from '../../../mocks/users.mock';
-import { Group, Post, User } from '../../../models';
+import { Group, MOCK_GROUPS, MOCK_USERS, Post, User } from '@rapp/store';
 
 @Component({
     selector: 'rapp-post',

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MOCK_POSTS, Post } from '@rapp/shared';
-import { StoreFacade } from '@rapp/store';
+import { MOCK_POSTS, Post, StoreFacade } from '@rapp/store';
 
 @Component({
     selector: 'rapp-newsfeed',
