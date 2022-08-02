@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
         <rapp-combined-page>
             <rapp-chat-list></rapp-chat-list>
         </rapp-combined-page>
+        <router-outlet name="groupChat"></router-outlet>
     `,
 })
 export class ChatComponent {}

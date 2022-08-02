@@ -1,14 +1,13 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { ModalComponent } from './modal.component';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'rapp-media-modal',
     template: `
-        <rapp-modal [full]="true" [closeOnNavigation]="true">
+        <rapp-modal [full]="true">
             <rapp-page [dark]="true">
                 <rapp-toolbar>
                     <rapp-toolbar-left>
-                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                        <button mat-icon-button rapp-modal-close color="primary">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
                         <p class="mb-0 ml-4">Back</p>
@@ -37,23 +36,8 @@ import { ModalComponent } from './modal.component';
         `,
     ],
 })
-export class MediaDialogComponent implements AfterViewInit {
-    @ViewChild(ModalComponent) modal!: ModalComponent;
-
+export class MediaDialogComponent {
     constructor() {
         console.log('MediaDialogComponent - constructor');
-    }
-
-    ngAfterViewInit() {
-        this.modal.ref.backdropClick().subscribe(() => {
-            console.log('MediaDialogComponent - backdrop clicked');
-            window.history.back();
-        });
-        this.modal.ref.afterClosed().subscribe((result) => {
-            console.log('MediaDialogComponent - close mat dialog', result);
-            if (result === 'back') {
-                window.history.back();
-            }
-        });
     }
 }

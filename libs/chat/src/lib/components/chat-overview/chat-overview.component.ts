@@ -26,7 +26,7 @@ export class ChatOverviewComponent implements OnDestroy {
     }
 
     openProfile(userId?: string) {
-        this.router.navigate([{ outlets: { profile: ['users', userId] } }]);
+        this.router.navigate([{ outlets: { users: ['users', userId] } }]);
     }
 
     private loadChatMessages(chatId: Chat['id']): void {

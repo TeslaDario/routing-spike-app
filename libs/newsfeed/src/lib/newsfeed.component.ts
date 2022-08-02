@@ -17,6 +17,6 @@ export class NewsfeedComponent {
     }
 
     openSearch() {
-        this.router.navigate(['newsfeed', { outlets: { dialog: ['search'] } }]);
+        this.router.navigate(['newsfeed', { outlets: { modal: ['search'] } }]);
     }
 }

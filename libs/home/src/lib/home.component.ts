@@ -14,10 +14,10 @@ export class HomeComponent {
     constructor(private router: Router, private storeFacade: StoreFacade) {}
 
     openProfile() {
-        this.router.navigate([{ outlets: { profile: ['users', 'me'] } }]);
+        this.router.navigate([{ outlets: { users: ['users', 'me'] } }]);
     }
 
     openSettings() {
-        this.router.navigate(['home', { outlets: { dialog: ['settings'] } }]);
+        this.router.navigate(['home', { outlets: { modal: ['settings'] } }]);
     }
 }

@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
 
         <router-outlet></router-outlet>
 
-        <router-outlet name="dialog"></router-outlet>
-        <router-outlet name="profile"></router-outlet>
+        <router-outlet name="modal"></router-outlet>
+        <router-outlet name="users"></router-outlet>
         <router-outlet name="media"></router-outlet>
     `,
 })

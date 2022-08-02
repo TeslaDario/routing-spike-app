@@ -9,16 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 export class ModalComponent implements AfterViewInit {
     @ViewChild('modal') private readonly modal!: TemplateRef<ModalComponent>;
     @Input() full = false;
-    @Input() closeOnNavigation = false;
     public ref!: MatDialogRef<ModalComponent>;
 
     @HostListener('document:keydown.escape', ['$event']) escapeKeydownHandler() {
-        this.ref.close('back');
+        if (this.dialog.openDialogs[this.dialog.openDialogs.length - 1].id === this.ref.id) {
+            this.close();
+        }
     }
 
-    constructor(private dialog: MatDialog, private route: ActivatedRoute) {
-        console.log('ModalComponent - constructor', this.route.snapshot.url[0].path);
-    }
+    constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
 
     ngAfterViewInit() {
         const panelClass = ['rapp-modal'];
@@ -32,12 +31,24 @@ export class ModalComponent implements AfterViewInit {
             height: '80vh',
             panelClass,
             disableClose: true,
-            closeOnNavigation: this.closeOnNavigation,
+            closeOnNavigation: false,
             id: this.route.snapshot.url[0].path,
+        });
+
+        this.ref.backdropClick().subscribe(() => {
+            this.close();
         });
     }
 
-    public closeAll() {
-        this.dialog.closeAll();
+    close() {
+        this.ref.close();
+        window.history.back();
+    }
+
+    closeAll() {
+        this.dialog.openDialogs.forEach((d) => {
+            d.close();
+            window.history.back();
+        });
     }
 }

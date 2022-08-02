@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { ModalComponent } from '@rapp/layout';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'rapp-group-members',
@@ -8,7 +7,7 @@ import { ModalComponent } from '@rapp/layout';
             <rapp-page>
                 <rapp-toolbar>
                     <rapp-toolbar-left>
-                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                        <button mat-icon-button rapp-modal-close color="primary">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
                         <p class="mb-0 ml-4">GROUP MEMBERS</p>
@@ -20,9 +19,9 @@ import { ModalComponent } from '@rapp/layout';
                         <div mat-dialog-content>
                             <p>PASSED STATE: {{ data }}</p>
                             <br />
-                            <button mat-flat-button (click)="modal.ref.close('back')" color="accent">go back</button>
+                            <button mat-flat-button rapp-modal-close color="accent">go back</button>
                             <br />
-                            <button mat-flat-button (click)="modal.ref.close('back')" color="primary">CLOSE</button>
+                            <button mat-flat-button rapp-modal-close-all color="primary">CLOSE ALL</button>
                         </div>
                     </div>
                 </rapp-content>
@@ -30,20 +29,6 @@ import { ModalComponent } from '@rapp/layout';
         </rapp-modal>
     `,
 })
-export class GroupMembersComponent implements AfterViewInit {
-    @ViewChild(ModalComponent) modal!: ModalComponent;
+export class GroupMembersComponent {
     data = '123';
-
-    ngAfterViewInit() {
-        this.modal.ref.backdropClick().subscribe(() => {
-            console.log('GroupMembersComponent - backdrop clicked');
-            window.history.back();
-        });
-        this.modal.ref.afterClosed().subscribe((result) => {
-            console.log('GroupMembersComponent - close mat dialog', result);
-            if (result === 'back') {
-                window.history.back();
-            }
-        });
-    }
 }

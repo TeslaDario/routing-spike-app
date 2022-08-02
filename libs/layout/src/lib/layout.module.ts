@@ -6,6 +6,7 @@ import { CombinedPageComponent } from './combined-page/combined-page.component';
 import { ContentComponent } from './content/content.component';
 import { MediaDialogComponent } from './modal/media-modal.component';
 import { ModalComponent } from './modal/modal.component';
+import { ModalCloseAllDirective, ModalCloseDirective } from './modal/modal.directive';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageComponent } from './page/page.component';
 import { ToolbarLeftComponent } from './toolbar/toolbar-left.component';
@@ -22,6 +23,8 @@ import { ToolbarComponent } from './toolbar/toolbar.components';
         NavbarComponent,
         CombinedPageComponent,
         ModalComponent,
+        ModalCloseDirective,
+        ModalCloseAllDirective,
         MediaDialogComponent,
     ],
     imports: [CommonModule, RouterModule, MaterialModule],
@@ -34,6 +37,8 @@ import { ToolbarComponent } from './toolbar/toolbar.components';
         NavbarComponent,
         CombinedPageComponent,
         ModalComponent,
+        ModalCloseDirective,
+        ModalCloseAllDirective,
     ],
 })
 export class LayoutModule {}

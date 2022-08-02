@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { ModalComponent } from '@rapp/layout';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'rapp-settings',
@@ -8,7 +7,7 @@ import { ModalComponent } from '@rapp/layout';
             <rapp-page>
                 <rapp-toolbar>
                     <rapp-toolbar-left>
-                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                        <button mat-icon-button rapp-modal-close color="primary">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
                         <p class="mb-0 ml-4">Settings 2</p>
@@ -20,23 +19,8 @@ import { ModalComponent } from '@rapp/layout';
         </rapp-modal>
     `,
 })
-export class Settings2Component implements AfterViewInit {
-    @ViewChild(ModalComponent) modal!: ModalComponent;
-
+export class Settings2Component {
     constructor() {
         console.log('Settings2Component - constructor');
-    }
-
-    ngAfterViewInit() {
-        this.modal.ref.backdropClick().subscribe(() => {
-            console.log('Settings2Component - backdrop clicked');
-            window.history.back();
-        });
-        this.modal.ref.afterClosed().subscribe((result) => {
-            console.log('Settings2Component - close mat dialog', result);
-            if (result === 'back') {
-                window.history.back();
-            }
-        });
     }
 }

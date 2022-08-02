@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalComponent } from '@rapp/layout';
 import { MOCK_USERS, User } from '@rapp/store';
 import { Subscription } from 'rxjs';
 
@@ -11,7 +10,7 @@ import { Subscription } from 'rxjs';
             <rapp-page>
                 <rapp-toolbar>
                     <rapp-toolbar-left>
-                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                        <button mat-icon-button rapp-modal-close color="primary">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
                         <p class="mb-0 ml-4">PROFILE</p>
@@ -32,8 +31,7 @@ import { Subscription } from 'rxjs';
         </rapp-modal>
     `,
 })
-export class ProfileComponent implements AfterViewInit, OnDestroy {
-    @ViewChild(ModalComponent) modal!: ModalComponent;
+export class ProfileComponent implements OnDestroy {
     user!: User | undefined;
     private sub!: Subscription;
 
@@ -41,19 +39,6 @@ export class ProfileComponent implements AfterViewInit, OnDestroy {
         console.log('ProfileComponent - constructor');
         this.sub = this.route.params.subscribe((params) => {
             this.user = MOCK_USERS.find((u) => u.id === params['userId']);
-        });
-    }
-
-    ngAfterViewInit() {
-        this.modal.ref.backdropClick().subscribe(() => {
-            console.log('ProfileComponent - backdrop clicked');
-            window.history.back();
-        });
-        this.modal.ref.afterClosed().subscribe((result) => {
-            console.log('ProfileComponent - close mat dialog', result);
-            if (result === 'back') {
-                window.history.back();
-            }
         });
     }
 

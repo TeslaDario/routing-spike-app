@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalComponent } from '@rapp/layout';
 
 @Component({
     selector: 'rapp-actor',
@@ -9,7 +8,7 @@ import { ModalComponent } from '@rapp/layout';
             <rapp-page>
                 <rapp-toolbar>
                     <rapp-toolbar-left>
-                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                        <button mat-icon-button rapp-modal-close color="primary">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
                         <p class="mb-0 ml-4">MY PROFILE</p>
@@ -29,24 +28,9 @@ import { ModalComponent } from '@rapp/layout';
         </rapp-modal>
     `,
 })
-export class ActorComponent implements AfterViewInit {
-    @ViewChild(ModalComponent) modal!: ModalComponent;
-
+export class ActorComponent {
     constructor(private router: Router) {
         console.log('ActorComponent - constructor');
-    }
-
-    ngAfterViewInit() {
-        this.modal.ref.backdropClick().subscribe(() => {
-            console.log('ActorComponent - backdrop clicked');
-            window.history.back();
-        });
-        this.modal.ref.afterClosed().subscribe((result) => {
-            console.log('ActorComponent - close mat dialog', result);
-            if (result === 'back') {
-                window.history.back();
-            }
-        });
     }
 
     openMedia() {

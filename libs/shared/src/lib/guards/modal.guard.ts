@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root',
 })
-export class DialogGuard implements CanDeactivate<any> {
+export class ModalGuard implements CanDeactivate<any> {
     constructor(private dialog: MatDialog, private router: Router, private location: Location) {}
 
     canDeactivate(
@@ -17,14 +17,7 @@ export class DialogGuard implements CanDeactivate<any> {
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         const openDialogs = this.dialog.openDialogs;
         if (openDialogs.length) {
-            console.log(
-                // 'DialogGuard',
-                // location.href,
-                openDialogs[openDialogs.length - 1].id,
-                component,
-                currentRoute
-                // currentState
-            );
+            console.log('DialogGuard - closing', openDialogs[openDialogs.length - 1].id);
             openDialogs[openDialogs.length - 1].close();
         }
 

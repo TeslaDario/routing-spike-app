@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalComponent } from '@rapp/layout';
 
 @Component({
     selector: 'rapp-search',
@@ -9,7 +8,7 @@ import { ModalComponent } from '@rapp/layout';
             <rapp-page>
                 <rapp-toolbar>
                     <rapp-toolbar-left>
-                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                        <button mat-icon-button rapp-modal-close color="primary">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
                         <p class="mb-0 ml-4">Search</p>
@@ -23,23 +22,8 @@ import { ModalComponent } from '@rapp/layout';
         </rapp-modal>
     `,
 })
-export class SearchComponent implements AfterViewInit {
-    @ViewChild(ModalComponent) modal!: ModalComponent;
-
+export class SearchComponent {
     constructor(private router: Router) {
         console.log('SearchComponent - constructor');
-    }
-
-    ngAfterViewInit() {
-        this.modal.ref.backdropClick().subscribe(() => {
-            console.log('SearchComponent - backdrop clicked');
-            window.history.back();
-        });
-        this.modal.ref.afterClosed().subscribe((result) => {
-            console.log('SearchComponent - close mat dialog', result);
-            if (result === 'back') {
-                window.history.back();
-            }
-        });
     }
 }

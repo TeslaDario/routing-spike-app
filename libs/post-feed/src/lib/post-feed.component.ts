@@ -13,6 +13,6 @@ export class PostFeedComponent {
     constructor(private router: Router) {}
 
     addPost() {
-        this.router.navigate([{ outlets: { dialog: ['create-post'] } }]);
+        this.router.navigate([{ outlets: { modal: ['create-post'] } }]);
     }
 }

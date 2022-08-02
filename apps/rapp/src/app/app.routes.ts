@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { MediaDialogComponent } from '@rapp/layout';
 import { CreatePostComponent } from '@rapp/post-feed';
-import { DialogGuard } from '@rapp/shared';
+import { ModalGuard } from '@rapp/shared';
 
 export const AppRoutes = RouterModule.forRoot([
     {
@@ -24,23 +24,22 @@ export const AppRoutes = RouterModule.forRoot([
         path: 'messages',
         loadChildren: () => import('@rapp/chat').then((m) => m.ChatModule),
     },
-
     {
         path: 'users',
-        outlet: 'profile',
-        canDeactivate: [DialogGuard],
+        outlet: 'users',
+        canDeactivate: [ModalGuard],
         loadChildren: () => import('@rapp/users').then((m) => m.UsersModule),
     },
     {
         path: 'media/:id',
         outlet: 'media',
-        // canDeactivate: [DialogGuard],
+        canDeactivate: [ModalGuard],
         component: MediaDialogComponent,
     },
     {
         path: 'create-post',
-        outlet: 'dialog',
-        canDeactivate: [DialogGuard],
+        outlet: 'modal',
+        canDeactivate: [ModalGuard],
         component: CreatePostComponent,
     },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },
