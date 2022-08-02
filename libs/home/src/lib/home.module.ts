@@ -1,12 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MaterialModule } from '@rapp/core';
 import { LayoutModule } from '@rapp/layout';
-import { AvatarModule, MaterialModule } from '@rapp/shared';
+import { AvatarModule } from '@rapp/shared';
+import { SettingsComponent } from './components/settings.component';
+import { Settings2Component } from './components/settings2.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutes } from './home.routes';
 
 @NgModule({
-    declarations: [HomeComponent],
+    declarations: [HomeComponent, SettingsComponent, Settings2Component],
     imports: [CommonModule, HomeRoutes, MaterialModule, LayoutModule, AvatarModule],
 })
 export class HomeModule {}

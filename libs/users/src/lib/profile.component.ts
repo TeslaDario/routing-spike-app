@@ -1,47 +1,56 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalComponent } from '@rapp/layout';
+import { MOCK_USERS, User } from '@rapp/shared';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'rapp-profile',
     template: `
-        <ng-template #dialog>
-            <div mat-dialog-title>
-                <button mat-icon-button mat-dialog-close="back" color="primary">
-                    <mat-icon>arrow_back</mat-icon>
-                </button>
-                PROFILE
-            </div>
+        <rapp-modal>
+            <rapp-page>
+                <rapp-toolbar>
+                    <rapp-toolbar-left>
+                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                        <p class="mb-0 ml-4">PROFILE</p>
+                    </rapp-toolbar-left>
+                </rapp-toolbar>
 
-            <div mat-dialog-content>
-                <div class="flex flex-center">
-                    <rapp-avatar size="l" (click)="openMedia()"></rapp-avatar>
-                </div>
-            </div>
-
-            <div mat-dialog-actions class="flex flex-center">NAME SURNAME</div>
-        </ng-template>
+                <rapp-content>
+                    <div class="container">
+                        <div class="flex flex-center">
+                            <rapp-avatar size="l" (click)="openMedia()"></rapp-avatar>
+                        </div>
+                        <br />
+                        <small class="flex flex-center">User ID: {{ user?.id }}</small>
+                        <div class="flex flex-center">{{ user?.name }}</div>
+                    </div>
+                </rapp-content>
+            </rapp-page>
+        </rapp-modal>
     `,
 })
-export class ProfileComponent implements AfterViewInit {
-    @ViewChild('dialog') template!: TemplateRef<ProfileComponent>;
+export class ProfileComponent implements AfterViewInit, OnDestroy {
+    @ViewChild(ModalComponent) modal!: ModalComponent;
+    user!: User | undefined;
+    private sub!: Subscription;
 
-    constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) {
+    constructor(private router: Router, private route: ActivatedRoute) {
         console.log('ProfileComponent - constructor');
+        this.sub = this.route.params.subscribe((params) => {
+            this.user = MOCK_USERS.find((u) => u.id === params['userId']);
+        });
     }
 
     ngAfterViewInit() {
-        const ref = this.dialog.open(this.template, {
-            width: '350px',
-        });
-
-        ref.backdropClick().subscribe(() => {
+        this.modal.ref.backdropClick().subscribe(() => {
             console.log('ProfileComponent - backdrop clicked');
             window.history.back();
         });
-        ref.afterClosed().subscribe((result) => {
+        this.modal.ref.afterClosed().subscribe((result) => {
             console.log('ProfileComponent - close mat dialog', result);
-
             if (result === 'back') {
                 window.history.back();
             }
@@ -50,5 +59,9 @@ export class ProfileComponent implements AfterViewInit {
 
     openMedia() {
         this.router.navigate([{ outlets: { media: ['media', 1] } }]);
+    }
+
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 }

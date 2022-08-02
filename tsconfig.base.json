@@ -15,7 +15,9 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@rapp/activities": ["libs/activities/src/index.ts"],
             "@rapp/chat": ["libs/chat/src/index.ts"],
+            "@rapp/core": ["libs/core/src/index.ts"],
             "@rapp/groups": ["libs/groups/src/index.ts"],
             "@rapp/home": ["libs/home/src/index.ts"],
             "@rapp/layout": ["libs/layout/src/index.ts"],

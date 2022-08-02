@@ -1,51 +1,53 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalComponent } from '@rapp/layout';
 
 @Component({
     selector: 'rapp-create-chat',
     template: `
-        <ng-template #dialog>
-            <div mat-dialog-title>CREATE CHAT</div>
+        <rapp-modal>
+            <rapp-page>
+                <rapp-toolbar>
+                    <rapp-toolbar-left>
+                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                        <p class="mb-0 ml-4">CREATE CHAT</p>
+                    </rapp-toolbar-left>
+                </rapp-toolbar>
 
-            <div mat-dialog-content>
-                <div>
-                    <mat-form-field appearance="outline">
-                        <input type="text" placeholder="State" matInput />
-                    </mat-form-field>
-                </div>
-                <button mat-flat-button (click)="createGroupChat()" color="accent">CREATE GROUP CHAT</button>
-            </div>
+                <rapp-content>
+                    <div class="container">
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <input type="text" placeholder="State" matInput />
+                            </mat-form-field>
+                        </div>
 
-            <div mat-dialog-actions>
-                <button mat-flat-button mat-dialog-close="back" color="primary">CLOSE</button>
-            </div>
-        </ng-template>
+                        <br />
+                        <button mat-flat-button (click)="createGroupChat()" color="accent">CREATE GROUP CHAT</button>
+                        <br />
+                        <button mat-flat-button (click)="modal.ref.close('back')" color="primary">CLOSE</button>
+                    </div>
+                </rapp-content>
+            </rapp-page>
+        </rapp-modal>
     `,
 })
 export class CreateChatComponent implements AfterViewInit {
-    @ViewChild('dialog') template!: TemplateRef<CreateChatComponent>;
+    @ViewChild(ModalComponent) modal!: ModalComponent;
 
-    constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) {
+    constructor(private router: Router) {
         console.log('CreateChatComponent - constructor');
     }
 
     ngAfterViewInit() {
-        const ref = this.dialog.open(this.template, {
-            width: '90vw',
-            maxWidth: '90vw',
-            height: '80vh',
-            // closeOnNavigation: false,
-            // id: this.route.snapshot.url[0].path,
-        });
-
-        ref.backdropClick().subscribe(() => {
+        this.modal.ref.backdropClick().subscribe(() => {
             console.log('CreateChatComponent - backdrop clicked');
             window.history.back();
         });
-        ref.afterClosed().subscribe((result) => {
+        this.modal.ref.afterClosed().subscribe((result) => {
             console.log('CreateChatComponent - close mat dialog', result);
-
             if (result === 'back') {
                 window.history.back();
             }

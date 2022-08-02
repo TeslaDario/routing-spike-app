@@ -3,8 +3,11 @@
 .page-wrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
+
+    &__dark {
+        background-color: #222;
+    }
 
     .content-wrapper {
         flex: 1 1 100%;

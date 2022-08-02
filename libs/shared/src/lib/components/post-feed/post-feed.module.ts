@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from '../../material.module';
+import { MaterialModule } from '@rapp/core';
 import { AvatarModule } from '../avatar/avatar.module';
 import { PostFeedComponent } from './post-feed.component';
 import { PostRouteComponent } from './post-route/post-route.component';

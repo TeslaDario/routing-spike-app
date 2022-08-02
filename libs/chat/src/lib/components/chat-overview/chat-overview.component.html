@@ -6,7 +6,7 @@
     </rapp-toolbar>
 
     <rapp-content>
-        <div class="chat-overview-wrapper">
+        <div class="container chat-overview-wrapper">
             <ng-container *ngFor="let message of messages">
                 <div class="message-item" [ngClass]="{ 'from-me': message.fromMe }">
                     <rapp-avatar *ngIf="!message.fromMe" (click)="openProfile(message.author?.id)"></rapp-avatar>

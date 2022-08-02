@@ -25,10 +25,6 @@ export class GroupOverviewComponent implements OnDestroy {
         this.router.navigate(['groups', { outlets: { dialog: ['info'] } }]);
     }
 
-    openGroupMembers() {
-        this.router.navigate(['groups', { outlets: { dialog: ['members'] } }]);
-    }
-
     ngOnDestroy(): void {
         this.sub.unsubscribe();
     }

@@ -6,20 +6,26 @@ import { ModalComponent } from '@rapp/layout';
     selector: 'rapp-actor',
     template: `
         <rapp-modal>
-            <div mat-dialog-title>
-                <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
-                    <mat-icon>arrow_back</mat-icon>
-                </button>
-                MY PROFILE
-            </div>
+            <rapp-page>
+                <rapp-toolbar>
+                    <rapp-toolbar-left>
+                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                        <p class="mb-0 ml-4">MY PROFILE</p>
+                    </rapp-toolbar-left>
+                </rapp-toolbar>
 
-            <div mat-dialog-content>
-                <div class="flex flex-center">
-                    <rapp-avatar size="l" (click)="openMedia()"></rapp-avatar>
-                </div>
-            </div>
-
-            <div mat-dialog-actions class="flex flex-center">NAME SURNAME</div>
+                <rapp-content>
+                    <div class="container">
+                        <div class="flex flex-center">
+                            <rapp-avatar size="l" (click)="openMedia()"></rapp-avatar>
+                        </div>
+                        <br />
+                        <div class="flex flex-center">NAME SURNAME</div>
+                    </div>
+                </rapp-content>
+            </rapp-page>
         </rapp-modal>
     `,
 })

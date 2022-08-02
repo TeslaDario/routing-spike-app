@@ -1,47 +1,50 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { ModalComponent } from '@rapp/layout';
 
 @Component({
     selector: 'rapp-create-group-chat',
     template: `
-        <ng-template #dialog>
-            <div mat-dialog-title>CREATE GROUP CHAT</div>
+        <rapp-modal>
+            <rapp-page>
+                <rapp-toolbar>
+                    <rapp-toolbar-left>
+                        <button mat-icon-button (click)="modal.ref.close('back')" color="primary">
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                        <p class="mb-0 ml-4">CREATE GROUP CHAT</p>
+                    </rapp-toolbar-left>
+                </rapp-toolbar>
 
-            <div mat-dialog-content>
-                CONTENT
-                <button mat-button (click)="closeAll()">Close all</button>
-            </div>
+                <rapp-content>
+                    <div class="container">
+                        CONTENT
 
-            <div mat-dialog-actions>
-                <button mat-flat-button mat-dialog-close="back" color="primary">CLOSE</button>
-            </div>
-        </ng-template>
+                        <br />
+                        <button mat-button (click)="closeAll()">Close all</button>
+                        <br />
+                        <button mat-flat-button (click)="modal.ref.close('back')" color="primary">CLOSE</button>
+                    </div>
+                </rapp-content>
+            </rapp-page>
+        </rapp-modal>
     `,
 })
 export class CreateGroupChatComponent implements AfterViewInit {
-    @ViewChild('dialog') template!: TemplateRef<any>;
+    @ViewChild(ModalComponent) modal!: ModalComponent;
 
-    constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) {
+    constructor(private dialog: MatDialog, private router: Router) {
         console.log('CreateGroupChatComponent - constructor');
     }
 
     ngAfterViewInit() {
-        const ref = this.dialog.open(this.template, {
-            width: '90vw',
-            maxWidth: '90vw',
-            height: '80vh',
-            // closeOnNavigation: false,
-            // id: this.route.snapshot.url[0].path,
-        });
-
-        ref.backdropClick().subscribe(() => {
+        this.modal.ref.backdropClick().subscribe(() => {
             console.log('CreateGroupChatComponent - backdrop clicked');
             window.history.back();
         });
-        ref.afterClosed().subscribe((result) => {
+        this.modal.ref.afterClosed().subscribe((result) => {
             console.log('CreateGroupChatComponent - close mat dialog', result);
-
             if (result === 'back') {
                 window.history.back();
             }

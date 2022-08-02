@@ -1,5 +1,6 @@
 import { RouterModule } from '@angular/router';
-import { DialogGuard, MediaDialogComponent } from '@rapp/shared';
+import { MediaDialogComponent } from '@rapp/layout';
+import { DialogGuard } from '@rapp/shared';
 
 export const AppRoutes = RouterModule.forRoot([
     {

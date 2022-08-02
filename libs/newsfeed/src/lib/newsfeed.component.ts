@@ -6,7 +6,6 @@ import { StoreFacade } from '@rapp/store';
 @Component({
     selector: 'rapp-newsfeed',
     templateUrl: 'newsfeed.component.html',
-    styleUrls: ['newsfeed.component.scss'],
 })
 export class NewsfeedComponent {
     posts: Post[] = MOCK_POSTS;
@@ -15,7 +14,10 @@ export class NewsfeedComponent {
     constructor(private router: Router, private route: ActivatedRoute, private storeFacade: StoreFacade) {}
 
     openActivities() {
-        // this.router.navigate(['newsfeed', { outlets: { dialog: ['activities'] } }]);
-        this.router.navigate([{ outlets: { dialog: ['activities'] } }], { relativeTo: this.route });
+        this.router.navigate(['activities']);
+    }
+
+    openSearch() {
+        this.router.navigate(['newsfeed', { outlets: { dialog: ['search'] } }]);
     }
 }

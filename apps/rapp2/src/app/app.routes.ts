@@ -1,5 +1,6 @@
 import { RouterModule } from '@angular/router';
-import { DialogGuard, MediaDialogComponent } from '@rapp/shared';
+import { MediaDialogComponent } from '@rapp/layout';
+import { DialogGuard } from '@rapp/shared';
 
 export const AppRoutes = RouterModule.forRoot([
     {
@@ -9,6 +10,10 @@ export const AppRoutes = RouterModule.forRoot([
     {
         path: 'newsfeed',
         loadChildren: () => import('@rapp/newsfeed').then((m) => m.NewsfeedModule),
+    },
+    {
+        path: 'activities',
+        loadChildren: () => import('@rapp/activities').then((m) => m.ActivitiesModule),
     },
     {
         path: 'groups',
@@ -26,14 +31,10 @@ export const AppRoutes = RouterModule.forRoot([
         loadChildren: () => import('@rapp/users').then((m) => m.UsersModule),
     },
     {
-        path: 'media',
+        path: 'media/:id',
         outlet: 'media',
-        children: [
-            {
-                path: ':id',
-                component: MediaDialogComponent,
-            },
-        ],
+        // canDeactivate: [DialogGuard],
+        component: MediaDialogComponent,
     },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },
 ]);

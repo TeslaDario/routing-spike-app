@@ -1,12 +1,14 @@
 import { RouterModule } from '@angular/router';
-import { DialogComponent } from '@rapp/shared';
+import { DialogGuard } from '@rapp/shared';
+import { SearchComponent } from './components/search.component';
 import { NewsfeedComponent } from './newsfeed.component';
 
 export const NewsfeedRoutes = RouterModule.forChild([
     {
-        path: 'activities',
+        path: 'search',
         outlet: 'dialog',
-        component: DialogComponent,
+        canDeactivate: [DialogGuard],
+        component: SearchComponent,
     },
     { path: '', component: NewsfeedComponent },
 ]);

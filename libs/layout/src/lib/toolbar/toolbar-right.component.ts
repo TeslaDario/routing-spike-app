@@ -5,10 +5,14 @@ import { Component } from '@angular/core';
     template: '<div class="toolbar-right-wrapper"><ng-content></ng-content></div>',
     styles: [
         `
+            :host {
+                flex-shrink: 0;
+            }
             .toolbar-right-wrapper {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
+                align-items: center;
             }
         `,
     ],

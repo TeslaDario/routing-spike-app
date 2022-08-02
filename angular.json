@@ -2,7 +2,9 @@
     "$schema": "./node_modules/nx/schemas/workspace-schema.json",
     "version": 2,
     "projects": {
+        "activities": "libs/activities",
         "chat": "libs/chat",
+        "core": "libs/core",
         "groups": "libs/groups",
         "home": "libs/home",
         "layout": "libs/layout",

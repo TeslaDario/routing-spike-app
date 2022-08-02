@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MaterialModule } from '@rapp/core';
 import { LayoutModule } from '@rapp/layout';
-import { AvatarModule, MaterialModule } from '@rapp/shared';
+import { AvatarModule } from '@rapp/shared';
 import { ChatComponent } from './chat.component';
 import { ChatRoutes } from './chat.routes';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
