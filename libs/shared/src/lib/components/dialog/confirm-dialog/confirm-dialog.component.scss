@@ -1,0 +1,22 @@
+.confirm-dialog {
+    &__close-button {
+        color: gray;
+    }
+
+    &__action-call-container {
+        display: grid;
+        grid-template-rows: 100%;
+        grid-template-columns: 100%;
+        justify-items: center;
+        align-items: center;
+
+        > * {
+            grid-row: 1;
+            grid-column: 1;
+        }
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}

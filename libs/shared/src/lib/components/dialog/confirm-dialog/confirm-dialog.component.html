@@ -1,0 +1,33 @@
+<span mat-dialog-title *ngIf="data.titleText"> {{ data.titleText }} </span>
+<mat-dialog-content> {{ data.contentText }} </mat-dialog-content>
+<mat-dialog-actions>
+    <button class="confirm-dialog__close-button" mat-button [mat-dialog-close]="false">Cancel</button>
+    <button
+        *ngIf="!callback"
+        mat-button
+        [color]="data.type === 'warn' ? 'warn' : undefined"
+        [class.success]="data.type === 'normal'"
+        cdkFocusInitial
+        [mat-dialog-close]="true"
+        (click)="onCallbackButtonClick()"
+    >
+        {{ data.confirmButtonText }}
+    </button>
+    <button
+        *ngIf="callback"
+        mat-button
+        [color]="data.type === 'warn' ? 'warn' : undefined"
+        [class.success]="data.type === 'normal'"
+        cdkFocusInitial
+        [disabled]="isLoading"
+        (click)="onCallbackButtonClick()"
+    >
+        <div class="confirm-dialog__action-call-container">
+            <span [class.hidden]="isLoading">{{ data.confirmButtonText }}</span>
+            <mat-progress-spinner
+                *ngIf="isLoading"
+                [color]="data.type === 'warn' ? 'warn' : 'primary'"
+            ></mat-progress-spinner>
+        </div>
+    </button>
+</mat-dialog-actions>

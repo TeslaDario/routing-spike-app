@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { MediaDialogComponent } from '@rapp/layout';
 import { CreatePostComponent } from '@rapp/post-feed';
-import { ModalGuard } from '@rapp/shared';
+import { ModalGuard, UploadGuard } from '@rapp/shared';
 
 export const AppRoutes = RouterModule.forRoot([
     {
