@@ -9,6 +9,9 @@
             </div>
             <span class="date">{{ post.createdAt | date }}</span>
         </div>
+        <button mat-icon-button (click)="editPost()">
+            <mat-icon>more_horiz</mat-icon>
+        </button>
     </div>
 
     <div class="post-image" *ngIf="post.image" (click)="openMedia()">
@@ -16,12 +19,18 @@
     </div>
 
     <ng-container *ngIf="inFeed; else notInFeed">
-        <div class="post-body trim" [routerLink]="['/groups', post.groupId, 'post', post.id]">
-            {{ post.body }}
+        <div [routerLink]="['/groups', post.groupId, 'post', post.id]">
+            <div class="post-title">{{ post.title }}</div>
+            <div class="post-body trim">
+                {{ post.body }}
+            </div>
         </div>
     </ng-container>
     <ng-template #notInFeed>
-        <div class="post-body">{{ post.body }}</div>
+        <div>
+            <div class="post-title">{{ post.title }}</div>
+            <div class="post-body">{{ post.body }}</div>
+        </div>
     </ng-template>
 
     <div class="post-footer">

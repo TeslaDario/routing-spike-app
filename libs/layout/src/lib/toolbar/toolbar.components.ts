@@ -13,6 +13,10 @@ import { Component } from '@angular/core';
         `
             @use 'apps/rapp/src/assets/styles' as *;
 
+            :host {
+                display: block;
+                z-index: 1;
+            }
             .toolbar-wrapper {
                 display: flex;
                 align-items: center;
@@ -20,6 +24,7 @@ import { Component } from '@angular/core';
                 padding-right: 10px;
                 height: $toolbarHeight;
                 box-shadow: 0 0 3px 1px rgb(0 0 0 / 10%);
+                padding-top: var(--safe-area-inset-top, 0px);
             }
         `,
     ],

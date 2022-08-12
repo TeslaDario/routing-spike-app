@@ -4,15 +4,10 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'rapp-actor',
     template: `
-        <rapp-modal>
+        <rapp-modal-page>
             <rapp-page>
                 <rapp-toolbar>
-                    <rapp-toolbar-left>
-                        <button mat-icon-button rapp-modal-close color="primary">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <p class="mb-0 ml-4">MY PROFILE</p>
-                    </rapp-toolbar-left>
+                    <rapp-toolbar-left icon="back" title="MY PROFILE"></rapp-toolbar-left>
                 </rapp-toolbar>
 
                 <rapp-content>
@@ -25,7 +20,7 @@ import { Router } from '@angular/router';
                     </div>
                 </rapp-content>
             </rapp-page>
-        </rapp-modal>
+        </rapp-modal-page>
     `,
 })
 export class ActorComponent {

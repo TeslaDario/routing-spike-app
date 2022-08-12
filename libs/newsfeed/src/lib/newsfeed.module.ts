@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from '@rapp/core';
 import { LayoutModule } from '@rapp/layout';
 import { PostFeedModule } from '@rapp/post-feed';
+import { AvatarModule } from '@rapp/shared';
 import { SearchComponent } from './components/search.component';
 import { NewsfeedComponent } from './newsfeed.component';
 import { NewsfeedRoutes } from './newsfeed.routes';
 
 @NgModule({
     declarations: [NewsfeedComponent, SearchComponent],
-    imports: [CommonModule, NewsfeedRoutes, LayoutModule, MaterialModule, PostFeedModule],
+    imports: [CommonModule, NewsfeedRoutes, LayoutModule, MaterialModule, PostFeedModule, AvatarModule],
 })
 export class NewsfeedModule {}

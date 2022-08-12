@@ -16,7 +16,7 @@ export interface NavTab {
     styleUrls: ['navbar.component.scss'],
 })
 export class NavbarComponent implements OnDestroy {
-    @HostBinding('class.navbar-spread') @Input() spread = false;
+    @HostBinding('class.navbar-bottom') @Input() bottom = false;
     tabs: NavTab[] = [
         {
             name: 'home',
@@ -44,7 +44,7 @@ export class NavbarComponent implements OnDestroy {
         },
     ];
     masterWidth$: Observable<number> = this.storeFacade.getMasterWidth();
-    private _destroyed$ = new Subject();
+    private destroyed$ = new Subject();
 
     constructor(private storeFacade: StoreFacade, private route: ActivatedRoute) {
         // with root page
@@ -52,7 +52,7 @@ export class NavbarComponent implements OnDestroy {
         // without root page
         this.route.parent?.url
             .pipe(
-                takeUntil(this._destroyed$),
+                takeUntil(this.destroyed$),
                 filter((url) => url.length !== 0)
             )
             .subscribe((url) => {
@@ -61,7 +61,7 @@ export class NavbarComponent implements OnDestroy {
 
         this.storeFacade
             .getMode()
-            .pipe(takeUntil(this._destroyed$))
+            .pipe(takeUntil(this.destroyed$))
             .subscribe((mode) => {
                 if (mode === 'split') {
                     this.tabs = this.tabs.map((t) => {
@@ -77,6 +77,6 @@ export class NavbarComponent implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this._destroyed$.complete();
+        this.destroyed$.complete();
     }
 }

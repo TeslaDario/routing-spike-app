@@ -3,15 +3,10 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-group-members',
     template: `
-        <rapp-modal>
+        <rapp-modal-page>
             <rapp-page>
                 <rapp-toolbar>
-                    <rapp-toolbar-left>
-                        <button mat-icon-button rapp-modal-close color="primary">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <p class="mb-0 ml-4">GROUP MEMBERS</p>
-                    </rapp-toolbar-left>
+                    <rapp-toolbar-left icon="back" title="GROUP MEMBERS"></rapp-toolbar-left>
                 </rapp-toolbar>
 
                 <rapp-content>
@@ -19,14 +14,14 @@ import { Component } from '@angular/core';
                         <div mat-dialog-content>
                             <p>PASSED STATE: {{ data }}</p>
                             <br />
-                            <button mat-flat-button rapp-modal-close color="accent">go back</button>
+                            <button mat-flat-button [rappBackButton] color="accent">go back</button>
                             <br />
-                            <button mat-flat-button rapp-modal-close-all color="primary">CLOSE ALL</button>
+                            <button mat-flat-button [rappBackButton]="2" color="primary">CLOSE ALL</button>
                         </div>
                     </div>
                 </rapp-content>
             </rapp-page>
-        </rapp-modal>
+        </rapp-modal-page>
     `,
 })
 export class GroupMembersComponent {

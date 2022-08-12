@@ -6,6 +6,19 @@
         justify-content: space-between;
     }
 
+    .add-chat {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 1;
+    }
+
+    @media (max-width: $m) {
+        .add-chat {
+            bottom: calc($toolbarHeight + 20px + var(--safe-area-inset-bottom, 0px));
+        }
+    }
+
     .chat-item {
         display: flex;
         flex-direction: revert;

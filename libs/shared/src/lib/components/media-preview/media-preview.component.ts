@@ -3,15 +3,10 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-media-modal',
     template: `
-        <rapp-modal [full]="true">
-            <rapp-page [dark]="true">
+        <rapp-modal-page [fullPage]="true">
+            <rapp-page>
                 <rapp-toolbar>
-                    <rapp-toolbar-left>
-                        <button mat-icon-button rapp-modal-close color="primary">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <p class="mb-0 ml-4">Back</p>
-                    </rapp-toolbar-left>
+                    <rapp-toolbar-left icon="back" title="Back"></rapp-toolbar-left>
                 </rapp-toolbar>
 
                 <rapp-content>
@@ -20,7 +15,7 @@ import { Component } from '@angular/core';
                     </div>
                 </rapp-content>
             </rapp-page>
-        </rapp-modal>
+        </rapp-modal-page>
     `,
     styles: [
         `
@@ -33,11 +28,15 @@ import { Component } from '@angular/core';
                 width: 100%;
                 object-fit: contain;
             }
+            rapp-toolbar,
+            rapp-content {
+                background-color: #222;
+            }
         `,
     ],
 })
-export class MediaDialogComponent {
+export class MediaPreviewComponent {
     constructor() {
-        console.log('MediaDialogComponent - constructor');
+        console.log('MediaPreviewComponent - constructor');
     }
 }

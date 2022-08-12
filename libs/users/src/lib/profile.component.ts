@@ -6,15 +6,10 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'rapp-profile',
     template: `
-        <rapp-modal>
+        <rapp-modal-page>
             <rapp-page>
                 <rapp-toolbar>
-                    <rapp-toolbar-left>
-                        <button mat-icon-button rapp-modal-close color="primary">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <p class="mb-0 ml-4">PROFILE</p>
-                    </rapp-toolbar-left>
+                    <rapp-toolbar-left icon="back" title="PROFILE"></rapp-toolbar-left>
                 </rapp-toolbar>
 
                 <rapp-content>
@@ -28,7 +23,7 @@ import { Subscription } from 'rxjs';
                     </div>
                 </rapp-content>
             </rapp-page>
-        </rapp-modal>
+        </rapp-modal-page>
     `,
 })
 export class ProfileComponent implements OnDestroy {

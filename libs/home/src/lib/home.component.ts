@@ -18,6 +18,6 @@ export class HomeComponent {
     }
 
     openSettings() {
-        this.router.navigate(['home', { outlets: { modal: ['settings'] } }]);
+        this.router.navigate(['home', 'settings']);
     }
 }

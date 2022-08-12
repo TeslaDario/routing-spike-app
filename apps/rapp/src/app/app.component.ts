@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-root',
     template: `
-        <div style="position: fixed;left: 50%;z-index: 100000;">
+        <div style="position: fixed;left: 50%;top: 30px;z-index: 100000;">
             <small style="color: #ed470a;">v2</small>
         </div>
 

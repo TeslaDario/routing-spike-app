@@ -5,6 +5,7 @@ export interface Post {
     userId: string;
     groupId: Group['id'];
     image?: string;
+    title: string;
     body: string;
     createdAt: Date;
 }

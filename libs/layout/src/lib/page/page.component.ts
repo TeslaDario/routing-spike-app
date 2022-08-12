@@ -3,12 +3,28 @@ import { StoreFacade } from '@rapp/store';
 
 @Component({
     selector: 'rapp-page',
-    templateUrl: 'page.component.html',
-    styleUrls: ['page.component.scss'],
+    template: `
+        <div class="page-wrapper">
+            <ng-content select="rapp-toolbar"></ng-content>
+
+            <ng-content select="rapp-content"></ng-content>
+
+            <rapp-navbar *ngIf="hasBottomTabsNavigator" [bottom]="true"></rapp-navbar>
+        </div>
+    `,
+    styles: [
+        `
+            .page-wrapper {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                background-color: #fff;
+            }
+        `,
+    ],
 })
 export class PageComponent {
     @Input() hasBottomTabsNavigator = false;
-    @Input() dark = false;
     layoutMode$ = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade) {}

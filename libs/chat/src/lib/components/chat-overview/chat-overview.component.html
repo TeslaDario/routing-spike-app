@@ -1,12 +1,16 @@
 <rapp-page>
     <rapp-toolbar>
-        <rapp-toolbar-left *ngIf="(layoutMode$ | async) === 'single'">
-            <h1 class="toolbar-title">BACK</h1>
-        </rapp-toolbar-left>
-    </rapp-toolbar>
+        <rapp-toolbar-left *ngIf="(layoutMode$ | async) === 'single'" icon="back" title="C ID"></rapp-toolbar-left>
 
-    <rapp-content>
-        <div class="container chat-overview-wrapper">
+        <rapp-toolbar-right>
+            <button mat-icon-button (click)="openChatInfo()">
+                <mat-icon class="toolbar-icon">info</mat-icon>
+            </button>
+        </rapp-toolbar-right></rapp-toolbar
+    >
+
+    <rapp-content [showBackgroundImage]="true">
+        <div class="container chat-overview-wrapper" #chatOverviewRef>
             <ng-container *ngFor="let message of messages">
                 <div class="message-item" [ngClass]="{ 'from-me': message.fromMe }">
                     <rapp-avatar *ngIf="!message.fromMe" (click)="openProfile(message.author?.id)"></rapp-avatar>
@@ -17,5 +21,17 @@
                 </div>
             </ng-container>
         </div>
+
+        <div class="footer-input">
+            <input type="text" placeholder="Write something..." [(ngModel)]="newMessage" />
+
+            <button mat-mini-fab color="primary" [disabled]="newMessage.length === 0" (click)="newMessage = ''">
+                <mat-icon>send</mat-icon>
+            </button>
+        </div>
     </rapp-content>
 </rapp-page>
+
+<!-- ORDER OF AUXILARY ROUTES IS IMPORTANT -->
+<router-outlet name="chatGroupInfo"></router-outlet>
+<router-outlet name="chatGroupMembers"></router-outlet>

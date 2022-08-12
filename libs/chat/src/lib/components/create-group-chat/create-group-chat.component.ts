@@ -4,15 +4,10 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'rapp-create-group-chat',
     template: `
-        <rapp-modal>
+        <rapp-modal-page>
             <rapp-page>
                 <rapp-toolbar>
-                    <rapp-toolbar-left>
-                        <button mat-icon-button rapp-modal-close color="primary">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <p class="mb-0 ml-4">CREATE GROUP CHAT</p>
-                    </rapp-toolbar-left>
+                    <rapp-toolbar-left icon="back" title="CREATE GROUP CHAT"></rapp-toolbar-left>
                 </rapp-toolbar>
 
                 <rapp-content>
@@ -20,13 +15,13 @@ import { Router } from '@angular/router';
                         CONTENT
 
                         <br />
-                        <button mat-flat-button rapp-modal-close-all color="warn">Close all</button>
+                        <button mat-flat-button [rappBackButton] color="primary">CLOSE</button>
                         <br />
-                        <button mat-flat-button rapp-modal-close color="primary">CLOSE</button>
+                        <button mat-flat-button [rappBackButton]="2" color="warn">Close all</button>
                     </div>
                 </rapp-content>
             </rapp-page>
-        </rapp-modal>
+        </rapp-modal-page>
     `,
 })
 export class CreateGroupChatComponent {

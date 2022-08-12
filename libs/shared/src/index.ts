@@ -1,3 +1,4 @@
-export * from './lib/components';
-export * from './lib/guards';
+export * from './lib/components/avatar';
+export * from './lib/components/dialog';
+export * from './lib/components/media-preview';
 export * from './lib/services';

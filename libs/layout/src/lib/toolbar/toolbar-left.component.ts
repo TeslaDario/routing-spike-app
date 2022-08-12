@@ -1,8 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'rapp-toolbar-left',
-    template: '<div class="toolbar-left-wrapper"><ng-content></ng-content></div>',
+    template: `
+        <div class="toolbar-left-wrapper">
+            <button *ngIf="icon" mat-icon-button [rappBackButton] color="primary">
+                <mat-icon>{{ icon === 'back' ? 'arrow_back' : 'close' }}</mat-icon>
+            </button>
+            <p class="mb-0 ml-4" *ngIf="title">{{ title }}</p>
+            <ng-content></ng-content>
+        </div>
+    `,
     styles: [
         `
             :host {
@@ -17,4 +25,7 @@ import { Component } from '@angular/core';
         `,
     ],
 })
-export class ToolbarLeftComponent {}
+export class ToolbarLeftComponent {
+    @Input() icon!: 'back' | 'close';
+    @Input() title!: string;
+}

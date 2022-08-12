@@ -32,4 +32,8 @@ export class PostComponent {
     openMedia() {
         this.router.navigate([{ outlets: { media: ['media', 1] } }]);
     }
+
+    editPost() {
+        this.router.navigate([{ outlets: { modal: ['edit-post', this.post.id] } }]);
+    }
 }

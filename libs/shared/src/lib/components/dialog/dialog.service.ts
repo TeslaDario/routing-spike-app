@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { ComponentType } from '@angular/cdk/portal';
+import { Injectable, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
@@ -13,7 +14,6 @@ export type DialogOpts = Omit<
     MatDialogConfig,
     'panelClass' | 'data' | 'height' | 'minHeight' | 'maxHeight' | 'width' | 'minWidth' | 'maxWidth'
 >;
-export type ModalOpts = DialogOpts & { autoHeight?: boolean };
 export type Callback = () => void;
 
 export interface ConfirmDialogData {
@@ -36,7 +36,16 @@ const ConfirmDialogOptsWithDefault = (opts: DialogOpts): DialogOpts => ({ hasBac
     providedIn: 'root',
 })
 export class DialogService {
-    constructor(public dialog: MatDialog) {}
+    constructor(private dialog: MatDialog) {}
+    hasOpenDialogs(): boolean {
+        return this.dialog.openDialogs.length > 0;
+    }
+    closeLast(): void {
+        const openDialogs = this.dialog.openDialogs;
+        if (openDialogs.length) {
+            openDialogs[openDialogs.length - 1].close();
+        }
+    }
 
     /*
      * Opens a Confirm Dialog and returns the reference to the dialog
@@ -58,7 +67,7 @@ export class DialogService {
         return this.confirm(data, opts).afterClosed();
     }
 
-    info(data: InfoDialogData, opts = {}): MatDialogRef<AlertDialogComponent, any> {
+    info(data: InfoDialogData, opts: DialogOpts = {}): MatDialogRef<AlertDialogComponent, any> {
         return this.dialog.open(AlertDialogComponent, {
             panelClass: 'confirm-dialog',
             data,
@@ -68,5 +77,25 @@ export class DialogService {
 
     info$(data: InfoDialogData): Observable<any> {
         return this.info(data).afterClosed();
+    }
+
+    /*
+     * Opens a Fullscreen Dialog and returns an observable with the dialog's result
+     */
+    fullscreen<DialogComponent, DialogData = any, DialogResult = any>(
+        dialogComponent: ComponentType<DialogComponent> | TemplateRef<DialogComponent>,
+        data?: DialogData,
+        opts: DialogOpts = {}
+    ) {
+        return this.dialog.open<DialogComponent, DialogData, DialogResult>(dialogComponent, {
+            width: '90vw',
+            maxWidth: '720px',
+            height: '80vh',
+            panelClass: 'fullscreen-dialog',
+            closeOnNavigation: false,
+            data,
+            ...opts,
+            ...ConfirmDialogOptsWithDefault(opts),
+        });
     }
 }

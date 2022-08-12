@@ -4,22 +4,24 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'rapp-settings',
     template: `
-        <rapp-modal>
+        <rapp-modal-page>
             <rapp-page>
                 <rapp-toolbar>
-                    <rapp-toolbar-left>
-                        <button mat-icon-button rapp-modal-close color="primary">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <p class="mb-0 ml-4">Settings</p>
-                    </rapp-toolbar-left>
+                    <rapp-toolbar-left icon="back" title="Settings"></rapp-toolbar-left>
                 </rapp-toolbar>
 
                 <rapp-content>
-                    <button mat-button (click)="openSettings2()" color="primary">Go to seetings 2</button>
+                    <button mat-button (click)="openSettings1()" color="primary">
+                        Go to settings 1 (child from this page)
+                    </button>
+                    <br />
+                    <button mat-button (click)="openSettings2()" color="primary">
+                        Go to settings 2 (sibling from this page)
+                    </button>
                 </rapp-content>
             </rapp-page>
-        </rapp-modal>
+        </rapp-modal-page>
+        <router-outlet></router-outlet>
     `,
 })
 export class SettingsComponent {
@@ -27,7 +29,11 @@ export class SettingsComponent {
         console.log('SettingsComponent - constructor');
     }
 
+    openSettings1() {
+        this.router.navigate(['home', 'settings', 'settings1']);
+    }
+
     openSettings2() {
-        this.router.navigate(['home', { outlets: { modal: ['settings2'] } }]);
+        this.router.navigate(['home', 'settings2']);
     }
 }

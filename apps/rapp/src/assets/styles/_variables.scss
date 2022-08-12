@@ -14,3 +14,29 @@ $xl: 1760px;
 
 // $leftSideWidth: 320px;
 $toolbarHeight: 64px;
+
+:root {
+    /* === Safe Area Properties === */
+    // iOS 11
+    @supports (top: constant(safe-area-inset-top)) {
+        --safe-area-inset-top: constant(safe-area-inset-top, 0px);
+    }
+    @supports (bottom: constant(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: constant(safe-area-inset-bottom, 0px);
+    }
+    // iOS 11+
+    @supports (top: env(safe-area-inset-top)) {
+        --safe-area-inset-top: env(safe-area-inset-top, 0px);
+    }
+    @supports (bottom: env(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+    }
+}
+
+@function withSafeAreaBottom($num: 0px) {
+    @return calc(#{$num} + var(--safe-area-inset-bottom, 0px));
+}
+
+@function withSafeAreaTop($num: 0px) {
+    @return calc(#{$num} + var(--safe-area-inset-top, 0px));
+}

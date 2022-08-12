@@ -1,14 +1,14 @@
 <rapp-page [hasBottomTabsNavigator]="(layoutMode$ | async) === 'single'">
     <rapp-toolbar>
-        <rapp-toolbar-left>
-            <button mat-icon-button (click)="goBack()" color="primary">
-                <mat-icon>arrow_back</mat-icon>
-            </button>
-            <p class="mb-0 ml-4">Activities</p>
-        </rapp-toolbar-left>
+        <rapp-toolbar-left icon="back" title="Activities"></rapp-toolbar-left>
     </rapp-toolbar>
 
     <rapp-content>
-        <div>Activities</div>
+        <ng-container *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]">
+            <button mat-button (click)="openChat()" color="accent">Activity {{ i }} for chat</button>
+            <br />
+            <button mat-button (click)="openPost()" color="primary">Activity {{ i }} for post</button>
+            <br />
+        </ng-container>
     </rapp-content>
 </rapp-page>

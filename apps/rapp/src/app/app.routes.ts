@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
-import { MediaDialogComponent } from '@rapp/layout';
-import { CreatePostComponent } from '@rapp/post-feed';
-import { ModalGuard, UploadGuard } from '@rapp/shared';
+import { CanDeactivatePageGuard } from '@rapp/layout';
+import { CreatePostComponent, EditPostComponent } from '@rapp/post-feed';
+import { MediaPreviewComponent } from '@rapp/shared';
 
 export const AppRoutes = RouterModule.forRoot([
     {
@@ -27,20 +27,24 @@ export const AppRoutes = RouterModule.forRoot([
     {
         path: 'users',
         outlet: 'users',
-        canDeactivate: [ModalGuard],
         loadChildren: () => import('@rapp/users').then((m) => m.UsersModule),
     },
     {
         path: 'media/:id',
         outlet: 'media',
-        canDeactivate: [ModalGuard],
-        component: MediaDialogComponent,
+        component: MediaPreviewComponent,
     },
     {
         path: 'create-post',
         outlet: 'modal',
-        canDeactivate: [ModalGuard],
+        canDeactivate: [CanDeactivatePageGuard],
         component: CreatePostComponent,
+    },
+    {
+        path: 'edit-post/:postId',
+        outlet: 'modal',
+        canDeactivate: [CanDeactivatePageGuard],
+        component: EditPostComponent,
     },
     { path: '**', redirectTo: 'newsfeed', pathMatch: 'full' },
 ]);

@@ -1,44 +1,37 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'rapp-create-chat',
     template: `
-        <rapp-modal>
+        <rapp-modal-page>
             <rapp-page>
                 <rapp-toolbar>
-                    <rapp-toolbar-left>
-                        <button mat-icon-button rapp-modal-close color="primary">
-                            <mat-icon>arrow_back</mat-icon>
-                        </button>
-                        <p class="mb-0 ml-4">CREATE CHAT</p>
-                    </rapp-toolbar-left>
+                    <rapp-toolbar-left icon="back" title="CREATE CHAT"></rapp-toolbar-left>
                 </rapp-toolbar>
 
                 <rapp-content>
                     <div class="container">
                         <div>
-                            <mat-form-field appearance="outline">
-                                <input type="text" placeholder="State" matInput />
-                            </mat-form-field>
+                            <input type="text" placeholder="State" />
                         </div>
 
                         <br />
                         <button mat-flat-button (click)="createGroupChat()" color="accent">CREATE GROUP CHAT</button>
                         <br />
-                        <button mat-flat-button rapp-modal-close color="primary">CLOSE</button>
+                        <button mat-flat-button [rappBackButton] color="primary">CLOSE</button>
                     </div>
                 </rapp-content>
             </rapp-page>
-        </rapp-modal>
+        </rapp-modal-page>
     `,
 })
 export class CreateChatComponent {
-    constructor(private router: Router, private route: ActivatedRoute) {
+    constructor(private router: Router) {
         console.log('CreateChatComponent - constructor');
     }
 
     createGroupChat() {
-        this.router.navigate(['messages', { outlets: { groupChat: ['create-group-chat'] } }]);
+        this.router.navigate(['messages', { outlets: { chatGroupCreate: ['create-group-chat'] } }]);
     }
 }

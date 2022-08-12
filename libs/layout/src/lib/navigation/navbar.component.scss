@@ -1,16 +1,23 @@
 @use 'apps/rapp/src/assets/styles' as *;
 
-:host.navbar-spread {
-    width: 100%;
+:host.navbar-bottom {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: var(--safe-area-inset-bottom, 0px);
+    box-shadow: 0 0 3px 1px rgb(0 0 0 / 10%);
+    z-index: 1;
+
     .navbar-wrapper {
         justify-content: space-around;
     }
 }
 
-.navbar-wrapper {
+:host {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    flex: 0 0 $toolbarHeight;
+    align-items: center;
 
     .nav-item {
         display: flex;
