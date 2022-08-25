@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,7 +6,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ActivitiesSharedModule } from '@rapp/activities-shared';
+import { LayoutModule } from '@rapp/layout';
 import { AppStoreModule } from '@rapp/store';
+import { AvatarModule, ItemModule, MaterialModule, MenuPanelModule } from '@rapp/ui';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -37,7 +39,12 @@ import { AppRoutes } from './app.routes';
         EffectsModule.forRoot([]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
         AppStoreModule,
-        MatDialogModule,
+        MaterialModule,
+        LayoutModule,
+        MenuPanelModule,
+        AvatarModule,
+        ItemModule,
+        ActivitiesSharedModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the application is stable

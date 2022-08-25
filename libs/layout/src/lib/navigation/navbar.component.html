@@ -1,9 +1,0 @@
-<div
-    class="nav-item"
-    *ngFor="let tab of tabs"
-    [routerLink]="tab.param ? [tab.route, tab.param] : [tab.route]"
-    [class.active]="tab.active"
->
-    <mat-icon>{{ tab.icon }}</mat-icon>
-    <span class="nav-item-name">{{ tab.name }}</span>
-</div>

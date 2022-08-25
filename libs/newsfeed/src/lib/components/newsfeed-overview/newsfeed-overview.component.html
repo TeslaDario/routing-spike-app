@@ -1,0 +1,40 @@
+<rapp-page [showBottomNavbar]="true">
+    <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
+        <rapp-toolbar-left title="News"></rapp-toolbar-left>
+
+        <rapp-toolbar-right>
+            <button mat-icon-button class="ml-4" (click)="openGroups()">
+                <mat-icon class="toolbar-icon">groups</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="toolbar-icon" (click)="openSearch()">search</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="toolbar-icon" (click)="openActivities()">notifications_none</mat-icon>
+            </button>
+        </rapp-toolbar-right>
+    </rapp-toolbar>
+
+    <rapp-content [showBackgroundImage]="true">
+        <rapp-floating-action-button
+            text="Post"
+            (click)="addPost()"
+            *ngIf="(layoutMode$ | async) !== 'triple'"
+        ></rapp-floating-action-button>
+
+        <div class="flex">
+            <rapp-post-feed [posts]="posts" class="spacer">
+                <div class="item-wrapper mb-20" *ngIf="(layoutMode$ | async) !== 'triple'">
+                    <rapp-item
+                        leftIcon="access_time"
+                        text="Scheduled posts"
+                        rightIcon="chevron_right"
+                        (click)="openScheduledPost()"
+                    ></rapp-item>
+                </div>
+            </rapp-post-feed>
+
+            <rapp-newsfeed-aside *ngIf="(layoutMode$ | async) === 'triple'"></rapp-newsfeed-aside>
+        </div>
+    </rapp-content>
+</rapp-page>

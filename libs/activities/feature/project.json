@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/activities/feature/src",
+    "prefix": "rapp",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/activities/feature"],
+            "options": {
+                "jestConfig": "libs/activities/feature/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["libs/activities/feature/**/*.ts", "libs/activities/feature/**/*.html"]
+            }
+        }
+    },
+    "tags": []
+}

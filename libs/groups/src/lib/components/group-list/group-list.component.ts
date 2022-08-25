@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Group, MOCK_GROUPS, StoreFacade } from '@rapp/store';
+import { Group, MOCK_GROUPS } from '@rapp/store';
 
 @Component({
     selector: 'rapp-group-list',
@@ -8,7 +8,4 @@ import { Group, MOCK_GROUPS, StoreFacade } from '@rapp/store';
 })
 export class GroupListComponent {
     groups: Group[] = MOCK_GROUPS;
-    layoutMode$ = this.storeFacade.getMode();
-
-    constructor(private storeFacade: StoreFacade) {}
 }

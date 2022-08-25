@@ -1,0 +1,40 @@
+@use 'apps/rapp/src/assets/styles' as *;
+
+:host {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    box-sizing: border-box;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top: 1px solid $ultraLight;
+
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-width: $bottomNavbarHeight;
+        height: $bottomNavbarHeight;
+        color: $light;
+        position: relative;
+        cursor: pointer;
+
+        .mat-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 32px;
+        }
+
+        &-name {
+            text-transform: capitalize;
+        }
+
+        &.active {
+            color: $primary;
+        }
+    }
+}

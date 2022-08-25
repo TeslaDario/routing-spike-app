@@ -1,16 +1,13 @@
 @use 'apps/rapp/src/assets/styles' as *;
 
-rapp-content {
+.chat-overview-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
+    height: 100%;
 
-    .chat-overview-wrapper {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-        box-sizing: border-box;
+    .chat-overview-content {
+        height: 100%;
         overflow: scroll;
 
         .message-item {
@@ -20,8 +17,9 @@ rapp-content {
             margin-bottom: 10px;
 
             .message {
-                border: 1px solid rgba($light, 0.1);
+                border: 1px solid $ultraLight;
                 border-radius: 20px;
+                background-color: #fff;
                 margin: 0 10px;
                 padding: 5px 10px;
             }
@@ -29,24 +27,27 @@ rapp-content {
             &.from-me {
                 flex-direction: row-reverse;
                 .message {
-                    background-color: rgba($light, 0.1);
+                    background-color: $ultraLight;
                 }
             }
         }
     }
 
-    .footer-input {
+    .footer-input-wrapper {
         flex: 0 0 50px;
-
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        border-top: 1px solid rgba($light, 0.1);
+        border-top: 1px solid $ultraLight;
         background: #fff;
+        display: flex;
+        justify-content: center;
 
+        .footer-input {
+            flex: 1 1 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            padding: 10px 20px;
+        }
         input {
             flex: 1 1 100%;
 

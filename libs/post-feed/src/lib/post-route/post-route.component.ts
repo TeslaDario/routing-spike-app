@@ -12,7 +12,9 @@ import { MOCK_POSTS, Post } from '@rapp/store';
                 </rapp-toolbar>
 
                 <rapp-content>
-                    <rapp-post [post]="post" [inFeed]="false"></rapp-post>
+                    <rapp-center-content size="big">
+                        <rapp-post [post]="post" [inFeed]="false"></rapp-post>
+                    </rapp-center-content>
                 </rapp-content>
             </rapp-page>
         </rapp-modal-page>

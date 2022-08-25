@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@rapp/core';
 import { LayoutModule } from '@rapp/layout';
-import { AvatarModule } from '@rapp/shared';
+import { AvatarModule, MaterialModule, SearchInputModule } from '@rapp/ui';
 import { ChatComponent } from './chat.component';
 import { ChatRoutes } from './chat.routes';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
@@ -23,6 +22,6 @@ import { GroupChatMembersComponent } from './components/group-chat-members/group
         GroupChatInfoComponent,
         GroupChatMembersComponent,
     ],
-    imports: [CommonModule, ChatRoutes, FormsModule, MaterialModule, LayoutModule, AvatarModule],
+    imports: [CommonModule, ChatRoutes, FormsModule, MaterialModule, LayoutModule, AvatarModule, SearchInputModule],
 })
 export class ChatModule {}

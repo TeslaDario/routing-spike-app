@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Group, MOCK_GROUPS, MOCK_USERS, Post, User } from '@rapp/store';
+import { UserService } from '@rapp/users';
 
 @Component({
     selector: 'rapp-post',
@@ -23,10 +24,12 @@ export class PostComponent {
     group: Group | undefined;
     author!: User | undefined;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private userService: UserService) {}
 
     openProfile() {
-        this.router.navigate([{ outlets: { users: ['users', this.author?.id] } }]);
+        if (this.author) {
+            this.userService.openProfile(this.author?.id);
+        }
     }
 
     openMedia() {

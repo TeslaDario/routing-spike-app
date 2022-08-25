@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@rapp/core';
+import { RouterModule } from '@angular/router';
 import { LayoutModule } from '@rapp/layout';
 import { PostFeedModule } from '@rapp/post-feed';
-import { AvatarModule } from '@rapp/shared';
+import { AvatarModule, FloatingActionButtonModule, MaterialModule, SearchInputModule } from '@rapp/ui';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { GroupListComponent } from './components/group-list/group-list.component';
 import { GroupMembersComponent } from './components/group-members/group-members.component';
 import { GroupOverviewComponent } from './components/group-overview/group-overview.component';
 import { GroupsComponent } from './groups.component';
-import { GroupsRoutes } from './groups.routes';
 
 @NgModule({
     declarations: [
@@ -18,9 +17,19 @@ import { GroupsRoutes } from './groups.routes';
         GroupListComponent,
         GroupOverviewComponent,
         GroupInfoComponent,
-        GroupInfoComponent,
         GroupMembersComponent,
     ],
-    imports: [CommonModule, GroupsRoutes, FormsModule, MaterialModule, LayoutModule, AvatarModule, PostFeedModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        MaterialModule,
+        LayoutModule,
+        AvatarModule,
+        SearchInputModule,
+        PostFeedModule,
+        FloatingActionButtonModule,
+    ],
+    exports: [GroupListComponent],
 })
 export class GroupsModule {}

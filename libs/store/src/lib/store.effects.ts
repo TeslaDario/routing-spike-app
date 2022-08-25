@@ -14,13 +14,14 @@ export class StoreEffects {
                 map((event: Event) => (event.target as Window).innerWidth),
                 startWith(window.innerWidth),
                 map((width) => {
-                    const mode: IState['mode'] = this.deviceDetector.isMobile() || width < 768 ? 'single' : 'split';
+                    const mode: IState['mode'] =
+                        this.deviceDetector.isMobile() || width <= 768 ? 'single' : width <= 1200 ? 'double' : 'triple';
                     let masterWidth = width,
                         detailWidth = width;
 
-                    if (mode === 'split') {
-                        masterWidth = width >= 1024 ? 420 : 320;
-                        detailWidth = width - masterWidth - 1; // rest of width - 1px vertical divider
+                    if (mode !== 'single') {
+                        masterWidth = 320;
+                        detailWidth = width - masterWidth;
                     }
 
                     document.body.dataset['mode'] = mode;

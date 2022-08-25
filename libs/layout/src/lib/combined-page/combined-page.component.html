@@ -13,7 +13,7 @@
         [style.flexBasis.px]="detailWidth$ | async"
     >
         <router-outlet #outlet="outlet"></router-outlet>
-        <div *ngIf="(layoutMode$ | async) === 'split' && !outlet.isActivated" class="combined-page-detail__empty">
+        <div *ngIf="(layoutMode$ | async) !== 'single' && !outlet.isActivated" class="combined-page-detail__empty">
             Detail not selected!
         </div>
     </div>

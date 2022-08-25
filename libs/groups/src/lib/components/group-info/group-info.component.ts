@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalPageComponent } from '@rapp/layout';
 import { MOCK_POSTS } from '@rapp/store';
+import { UserService } from '@rapp/users';
 
 @Component({
     selector: 'rapp-group-info',
@@ -35,19 +36,19 @@ export class GroupInfoComponent {
     @ViewChild(ModalPageComponent) modal!: ModalPageComponent;
     someData = '';
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private userService: UserService) {
         console.log('GroupInfoComponent - constructor');
     }
 
     openProfile() {
-        this.router.navigate([{ outlets: { users: ['users', 'me'] } }]);
+        this.userService.openActor();
     }
 
     openMembers() {
-        this.router.navigate(['groups', 'g1', 'info', 'members']);
+        this.router.navigate(['newsfeed', 'g1', 'info', 'members']);
     }
 
     goToPost() {
-        this.router.navigate(['groups', MOCK_POSTS[0].groupId, 'post', MOCK_POSTS[0].id]);
+        this.router.navigate(['newsfeed', MOCK_POSTS[0].groupId, 'post', MOCK_POSTS[0].id]);
     }
 }

@@ -5,29 +5,33 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-    // private history: string[] = ['/'];
+    // private tabs: BehaviorSubject<NavTab[]> = new BehaviorSubject(TABS);
+    // tabs$ = this.tabs.asObservable();
 
     constructor(
         private router: Router,
         private location: Location,
         private locationStrategy: LocationStrategy,
         private dialog: MatDialog
-    ) {
-        // this.router.events.subscribe((event) => {
-        //     if (event instanceof NavigationEnd) {
-        //         this.history.push(event.urlAfterRedirects);
-        //     }
+    ) // private storeFacade: StoreFacade
+    {
+        // combineLatest([
+        //     this.router.events.pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd)),
+        //     this.storeFacade.getMode(),
+        // ]).subscribe(([event, mode]) => {
+        //     this.tabs.next(
+        //         TABS.map((t) => {
+        //             if (event.url === '/') {
+        //                 return { ...t, active: t.route.startsWith('/newsfeed') };
+        //             }
+        //             if (mode === 'double' && t.route === '/messages') {
+        //                 return { ...t, param: MOCK_CHATS[0].id, active: event.url.startsWith(t.route) };
+        //             }
+        //             return { ...t, active: event.url.startsWith(t.route) };
+        //         })
+        //     );
         // });
     }
-
-    // back(): void {
-    //     this.history.pop();
-    //     if (this.history.length > 0) {
-    //         this.location.back();
-    //     } else {
-    //         this.router.navigateByUrl('/');
-    //     }
-    // }
 
     public goBack(relativePosition?: number | undefined): void {
         const currentPath = this.location.path();

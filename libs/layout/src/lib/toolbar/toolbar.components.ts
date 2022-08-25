@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
         <div class="toolbar-wrapper">
             <ng-content select="rapp-toolbar-left"></ng-content>
             <span class="spacer"></span>
+            <ng-content select="rapp-toolbar-center"></ng-content>
+            <span class="spacer"></span>
             <ng-content select="rapp-toolbar-right"></ng-content>
         </div>
     `,
@@ -17,14 +19,21 @@ import { Component } from '@angular/core';
                 display: block;
                 z-index: 1;
             }
+            :host:first-of-type .toolbar-wrapper {
+                padding-top: var(--safe-area-inset-top, 0px);
+                height: calc($toolbarHeight + var(--safe-area-inset-top, 0px));
+            }
             .toolbar-wrapper {
                 display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
                 align-items: center;
                 padding-left: 10px;
                 padding-right: 10px;
                 height: $toolbarHeight;
-                box-shadow: 0 0 3px 1px rgb(0 0 0 / 10%);
-                padding-top: var(--safe-area-inset-top, 0px);
+                border-bottom: 1px solid $ultraLight;
+                box-sizing: border-box;
             }
         `,
     ],

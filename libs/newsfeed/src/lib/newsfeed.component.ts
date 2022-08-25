@@ -1,22 +1,30 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MOCK_POSTS, Post, StoreFacade } from '@rapp/store';
+import { Router } from '@angular/router';
+import { MOCK_POSTS, Post } from '@rapp/store';
+import { UserService } from '@rapp/users';
 
 @Component({
     selector: 'rapp-newsfeed',
-    templateUrl: 'newsfeed.component.html',
+    template: `
+        <rapp-combined-page>
+            <rapp-group-list></rapp-group-list>
+        </rapp-combined-page>
+    `,
 })
 export class NewsfeedComponent {
     posts: Post[] = MOCK_POSTS;
-    layoutMode$ = this.storeFacade.getMode();
 
-    constructor(private router: Router, private route: ActivatedRoute, private storeFacade: StoreFacade) {}
+    constructor(private router: Router, private userService: UserService) {}
+
+    openSearch() {
+        this.router.navigate(['newsfeed', { outlets: { modal: ['search'] } }]);
+    }
 
     openActivities() {
         this.router.navigate(['activities']);
     }
 
-    openSearch() {
-        this.router.navigate(['newsfeed', { outlets: { modal: ['search'] } }]);
+    openProfile() {
+        this.userService.openActor();
     }
 }

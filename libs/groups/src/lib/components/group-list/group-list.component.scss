@@ -10,11 +10,12 @@
         cursor: pointer;
 
         &.active {
-            background-color: rgba($light, 0.25);
+            background-color: $primary;
+            color: #fff;
         }
 
         &:hover:not(.active) {
-            background-color: rgba($light, 0.1);
+            background-color: $ultraLight;
         }
 
         h3 {

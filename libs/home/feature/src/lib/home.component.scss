@@ -1,0 +1,10 @@
+@use 'apps/rapp/src/assets/styles' as *;
+
+.home-wrapper {
+    text-align: center;
+
+    .logo {
+        height: 100px;
+        padding: 20px 0;
+    }
+}

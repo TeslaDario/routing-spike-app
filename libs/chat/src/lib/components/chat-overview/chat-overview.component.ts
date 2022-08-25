@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Message, MOCK_MESSAGES, MOCK_USERS, StoreFacade, User } from '@rapp/store';
+import { Chat, Message, MOCK_MESSAGES, MOCK_USERS, StoreFacade, User } from '@rapp/store';
+import { UserService } from '@rapp/users';
 import { Subscription } from 'rxjs';
 
 interface UIMessage extends Message {
@@ -14,17 +15,23 @@ interface UIMessage extends Message {
 export class ChatOverviewComponent implements AfterViewInit, OnDestroy {
     newMessage = '';
     messages!: UIMessage[];
+    chatId!: Chat['id'];
     author!: User;
     layoutMode$ = this.storeFacade.getMode();
     private sub: Subscription;
 
     @ViewChild('chatOverviewRef') chatOverviewRef!: ElementRef<HTMLElement>;
 
-    constructor(private router: Router, private route: ActivatedRoute, private storeFacade: StoreFacade) {
+    constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        private storeFacade: StoreFacade,
+        private userService: UserService
+    ) {
         this.sub = this.route.params.subscribe((params) => {
-            const chatId = params['chatId'];
+            this.chatId = params['chatId'];
 
-            this.messages = MOCK_MESSAGES.filter((m) => m.chatId === chatId).map((m) => {
+            this.messages = MOCK_MESSAGES.filter((m) => m.chatId === this.chatId).map((m) => {
                 const author = MOCK_USERS.find((u) => u.id === m.userId);
                 return { ...m, author };
             });
@@ -38,11 +45,11 @@ export class ChatOverviewComponent implements AfterViewInit, OnDestroy {
     }
 
     openChatInfo() {
-        this.router.navigate(['messages', 'c1', { outlets: { chatGroupInfo: ['group-chat-info'] } }]);
+        this.router.navigate(['messages', this.chatId, { outlets: { chatGroupInfo: ['group-chat-info'] } }]);
     }
 
-    openProfile(userId?: string) {
-        this.router.navigate([{ outlets: { users: ['users', userId] } }]);
+    openProfile(userId: string) {
+        this.userService.openProfile(userId);
     }
 
     ngOnDestroy(): void {

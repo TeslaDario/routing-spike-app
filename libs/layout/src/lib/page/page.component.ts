@@ -9,7 +9,7 @@ import { StoreFacade } from '@rapp/store';
 
             <ng-content select="rapp-content"></ng-content>
 
-            <rapp-navbar *ngIf="hasBottomTabsNavigator" [bottom]="true"></rapp-navbar>
+            <rapp-footer-navbar *ngIf="(layoutMode$ | async) === 'single' && showBottomNavbar"></rapp-footer-navbar>
         </div>
     `,
     styles: [
@@ -24,8 +24,8 @@ import { StoreFacade } from '@rapp/store';
     ],
 })
 export class PageComponent {
-    @Input() hasBottomTabsNavigator = false;
     layoutMode$ = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade) {}
+    @Input() showBottomNavbar = false;
 }

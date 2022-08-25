@@ -1,6 +1,9 @@
-<rapp-page [hasBottomTabsNavigator]="(layoutMode$ | async) === 'single'">
+<rapp-page [showBottomNavbar]="true">
     <rapp-toolbar>
-        <rapp-toolbar-left *ngIf="(layoutMode$ | async) === 'single'" icon="back" title="G ID"></rapp-toolbar-left>
+        <rapp-toolbar-left
+            [icon]="(layoutMode$ | async) === 'single' ? 'back' : undefined"
+            [title]="groupId"
+        ></rapp-toolbar-left>
 
         <rapp-toolbar-right>
             <button mat-icon-button (click)="openGroupInfo()">
@@ -11,6 +14,8 @@
 
     <rapp-content [showBackgroundImage]="true">
         <div class="group-wrapper">
+            <rapp-floating-action-button text="Post" (click)="addPost()"></rapp-floating-action-button>
+
             <rapp-post-feed [posts]="posts"></rapp-post-feed>
         </div>
         <router-outlet></router-outlet>

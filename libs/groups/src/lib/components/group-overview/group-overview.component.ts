@@ -9,26 +9,27 @@ import { Subscription } from 'rxjs';
 })
 export class GroupOverviewComponent implements OnDestroy {
     posts!: Post[];
+    groupId!: Group['id'];
     layoutMode$ = this.storeFacade.getMode();
     private sub: Subscription;
 
     constructor(private router: Router, private route: ActivatedRoute, private storeFacade: StoreFacade) {
         this.sub = this.route.params.subscribe((params) => {
-            const groupId = params['groupId'];
+            this.groupId = params['groupId'];
 
-            this.loadGroupPosts(groupId);
+            this.posts = MOCK_POSTS.filter((p) => p.groupId === this.groupId);
         });
     }
 
     openGroupInfo() {
-        this.router.navigate(['groups', 'g1', 'info']);
+        this.router.navigate(['newsfeed', 'g1', 'info']);
+    }
+
+    addPost() {
+        this.router.navigate([{ outlets: { modal: ['create-post'] } }]);
     }
 
     ngOnDestroy(): void {
         this.sub.unsubscribe();
-    }
-
-    private loadGroupPosts(groupId: Group['id']): void {
-        this.posts = MOCK_POSTS.filter((p) => p.groupId === groupId);
     }
 }

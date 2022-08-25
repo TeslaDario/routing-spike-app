@@ -1,11 +1,6 @@
 @use 'apps/rapp/src/assets/styles' as *;
 
 .chat-list-wrapper {
-    .chat-list-header {
-        display: flex;
-        justify-content: space-between;
-    }
-
     .add-chat {
         position: fixed;
         right: 20px;
@@ -15,7 +10,7 @@
 
     @media (max-width: $m) {
         .add-chat {
-            bottom: calc($toolbarHeight + 20px + var(--safe-area-inset-bottom, 0px));
+            bottom: calc($bottomNavbarHeight + 20px + var(--safe-area-inset-bottom, 0px));
         }
     }
 
@@ -28,11 +23,12 @@
         cursor: pointer;
 
         &.active {
-            background-color: rgba($light, 0.25);
+            background-color: $primary;
+            color: #fff;
         }
 
         &:hover:not(.active) {
-            background-color: rgba($light, 0.1);
+            background-color: $ultraLight;
         }
 
         h3 {

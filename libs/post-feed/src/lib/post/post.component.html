@@ -5,7 +5,7 @@
             <div class="author">
                 <div matRipple (click)="openProfile()">{{ author?.name }}</div>
                 <span class="small-spacer">></span>
-                <div matRipple [routerLink]="['/groups', post.groupId]">{{ group?.groupName }}</div>
+                <div matRipple [routerLink]="['/newsfeed', post.groupId]">{{ group?.groupName }}</div>
             </div>
             <span class="date">{{ post.createdAt | date }}</span>
         </div>
@@ -19,7 +19,7 @@
     </div>
 
     <ng-container *ngIf="inFeed; else notInFeed">
-        <div [routerLink]="['/groups', post.groupId, 'post', post.id]">
+        <div [routerLink]="['/newsfeed', post.groupId, 'post', post.id]">
             <div class="post-title">{{ post.title }}</div>
             <div class="post-body trim">
                 {{ post.body }}

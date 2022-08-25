@@ -13,7 +13,7 @@ export const modalPageAnimations = [
     ]),
     trigger('transformModal', [
         state('void', style({ opacity: 0 })),
-        transition('void => split', [
+        transition('void => double', [
             animate('0ms', style({ transform: 'translate(-50%, -50%) scale(0.7)' })),
             animate('150ms cubic-bezier(0, 0, 0.2, 1)', style({ transform: 'translate(-50%, -50%)', opacity: 1 })),
         ]),

@@ -1,0 +1,23 @@
+<rapp-page [showBottomNavbar]="true">
+    <rapp-toolbar>
+        <rapp-toolbar-left
+            [icon]="(layoutMode$ | async) === 'single' ? 'back' : undefined"
+            [title]="taskId"
+        ></rapp-toolbar-left>
+    </rapp-toolbar>
+
+    <rapp-content>
+        <rapp-floating-action-button text="Task" (click)="addTask()"></rapp-floating-action-button>
+
+        <rapp-center-content class="container">
+            <h1>
+                <mat-radio-button [value]="task?.id" [checked]="task?.done"></mat-radio-button>
+                {{ task?.title }}
+            </h1>
+            <p>{{ task?.createdAt | date }}</p>
+
+            <p>{{ task?.body }}</p>
+        </rapp-center-content>
+        <router-outlet></router-outlet>
+    </rapp-content>
+</rapp-page>

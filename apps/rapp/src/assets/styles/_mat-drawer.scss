@@ -1,0 +1,13 @@
+.mat-drawer-container,
+.mat-drawer {
+    background-color: transparent;
+}
+
+.rapp-drawer {
+    .mat-drawer {
+        width: 320px;
+    }
+    &__no-border .mat-drawer {
+        border-width: 0;
+    }
+}

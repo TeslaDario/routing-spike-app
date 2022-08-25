@@ -1,29 +1,29 @@
-<rapp-page [hasBottomTabsNavigator]="(layoutMode$ | async) === 'single'">
+<rapp-page [showBottomNavbar]="true">
     <rapp-toolbar>
         <rapp-toolbar-left>
-            <rapp-navbar *ngIf="(layoutMode$ | async) !== 'single'; else titleTempl"></rapp-navbar>
-            <ng-template #titleTempl>
-                <h1 class="toolbar-title">Chat</h1>
-            </ng-template>
+            <h1 class="mb-0">Chats</h1>
+        </rapp-toolbar-left>
+
+        <rapp-toolbar-right *ngIf="(layoutMode$ | async) !== 'single'">
+            <button mat-mini-fab color="primary" (click)="addChat()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </rapp-toolbar-right>
+    </rapp-toolbar>
+    <rapp-toolbar>
+        <rapp-toolbar-left style="width: 100%">
+            <rapp-search-input></rapp-search-input>
         </rapp-toolbar-left>
     </rapp-toolbar>
 
     <rapp-content>
         <div class="chat-list-wrapper">
-            <div class="container chat-list-header" *ngIf="(layoutMode$ | async) === 'split'; else mobileTmp">
-                <h1>CHATS</h1>
-                <button mat-mini-fab color="primary" (click)="addChat()">
+            <div class="add-chat" *ngIf="(layoutMode$ | async) === 'single'">
+                <button mat-raised-button color="primary" (click)="addChat()">
                     <mat-icon>add</mat-icon>
+                    <span>Chat</span>
                 </button>
             </div>
-            <ng-template #mobileTmp>
-                <div class="add-chat">
-                    <button mat-raised-button color="primary" (click)="addChat()">
-                        <mat-icon>add</mat-icon>
-                        <span>Chat</span>
-                    </button>
-                </div>
-            </ng-template>
             <ng-container *ngFor="let chat of chats">
                 <div matRipple class="chat-item" [routerLink]="['/messages', chat.id]" routerLinkActive="active">
                     <rapp-avatar></rapp-avatar>

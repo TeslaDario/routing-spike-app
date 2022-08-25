@@ -6,7 +6,7 @@ import { MediaPreviewComponent } from '@rapp/shared';
 export const AppRoutes = RouterModule.forRoot([
     {
         path: 'home',
-        loadChildren: () => import('@rapp/home').then((m) => m.HomeModule),
+        loadChildren: () => import('@rapp/home-feature').then((m) => m.HomeFeatureModule),
     },
     {
         path: 'newsfeed',
@@ -14,7 +14,7 @@ export const AppRoutes = RouterModule.forRoot([
     },
     {
         path: 'activities',
-        loadChildren: () => import('@rapp/activities').then((m) => m.ActivitiesModule),
+        loadChildren: () => import('@rapp/activities-feature').then((m) => m.ActivitiesFeatureModule),
     },
     {
         path: 'groups',
@@ -23,6 +23,10 @@ export const AppRoutes = RouterModule.forRoot([
     {
         path: 'messages',
         loadChildren: () => import('@rapp/chat').then((m) => m.ChatModule),
+    },
+    {
+        path: 'tasks',
+        loadChildren: () => import('@rapp/tasks').then((m) => m.TasksModule),
     },
     {
         path: 'users',

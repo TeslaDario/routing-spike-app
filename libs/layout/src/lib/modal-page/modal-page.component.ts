@@ -21,7 +21,7 @@ import { modalPageAnimations } from './modal-page.animation';
         `
             .modal-page-wrapper {
                 display: block;
-                position: absolute;
+                position: fixed;
                 top: 0;
                 left: 0;
                 width: 100vw;
@@ -52,15 +52,14 @@ import { modalPageAnimations } from './modal-page.animation';
                 box-shadow: 0 11px 15px -7px #0003, 0 24px 38px 3px #00000024, 0 9px 46px 8px #0000001f;
                 border-radius: 22px;
                 z-index: 2;
-            }
 
-            /* modal-page */
-            .modal-page-content__full {
-                width: 100vw;
-                max-width: 100vw;
-                height: 100vh;
-                border-radius: 0;
-                box-shadow: none;
+                &__full {
+                    width: 100vw;
+                    max-width: 100vw;
+                    height: 100vh;
+                    border-radius: 0;
+                    box-shadow: none;
+                }
             }
         `,
     ],

@@ -1,0 +1,24 @@
+<rapp-page [showBottomNavbar]="true">
+    <rapp-toolbar>
+        <rapp-toolbar-left>
+            <h1 class="mb-0">Tasks</h1>
+        </rapp-toolbar-left>
+    </rapp-toolbar>
+    <rapp-toolbar>
+        <rapp-toolbar-left style="width: 100%">
+            <rapp-search-input></rapp-search-input>
+        </rapp-toolbar-left>
+    </rapp-toolbar>
+
+    <rapp-content>
+        <ng-container *ngFor="let task of tasks">
+            <div matRipple class="task-item" [routerLink]="['/tasks', task.id]" routerLinkActive="active">
+                <h3>
+                    <mat-radio-button [value]="task.id" [checked]="task.done"></mat-radio-button>
+                    {{ task.id }} {{ task.title }}
+                </h3>
+                <p>{{ task.createdAt | date }}</p>
+            </div>
+        </ng-container>
+    </rapp-content>
+</rapp-page>

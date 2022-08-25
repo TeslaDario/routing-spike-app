@@ -9,7 +9,7 @@
     &.post-overview {
         box-shadow: none;
         .post-footer {
-            border-bottom: 1px solid rgba($light, 0.25);
+            border-bottom: 1px solid $ultraLight;
         }
     }
 
@@ -67,7 +67,7 @@
         align-items: center;
         justify-content: space-evenly;
         padding: 5px;
-        border-top: 1px solid rgba($light, 0.25);
+        border-top: 1px solid $ultraLight;
 
         .mat-button-base {
             flex: 1 1 100%;

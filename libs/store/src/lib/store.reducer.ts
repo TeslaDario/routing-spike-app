@@ -4,7 +4,7 @@ import * as StoreActions from './store.actions';
 export const STORE_FEATURE_KEY = 'store';
 
 export interface IState {
-    mode: 'single' | 'split';
+    mode: 'single' | 'double' | 'triple';
     masterWidth: number;
     detailWidth: number;
 }

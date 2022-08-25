@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
             <button *ngIf="icon" mat-icon-button [rappBackButton] color="primary">
                 <mat-icon>{{ icon === 'back' ? 'arrow_back' : 'close' }}</mat-icon>
             </button>
-            <p class="mb-0 ml-4" *ngIf="title">{{ title }}</p>
+            <h1 class="mb-0 ml-4" *ngIf="title">{{ title }}</h1>
             <ng-content></ng-content>
         </div>
     `,
@@ -26,6 +26,6 @@ import { Component, Input } from '@angular/core';
     ],
 })
 export class ToolbarLeftComponent {
-    @Input() icon!: 'back' | 'close';
+    @Input() icon!: 'back' | 'close' | undefined;
     @Input() title!: string;
 }

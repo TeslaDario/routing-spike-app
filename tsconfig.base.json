@@ -15,16 +15,19 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@rapp/activities": ["libs/activities/src/index.ts"],
+            "@rapp/activities-feature": ["libs/activities/feature/src/index.ts"],
+            "@rapp/activities-shared": ["libs/activities/shared/src/index.ts"],
             "@rapp/chat": ["libs/chat/src/index.ts"],
-            "@rapp/core": ["libs/core/src/index.ts"],
             "@rapp/groups": ["libs/groups/src/index.ts"],
-            "@rapp/home": ["libs/home/src/index.ts"],
+            "@rapp/home-feature": ["libs/home/feature/src/index.ts"],
+            "@rapp/home-shared": ["libs/home/shared/src/index.ts"],
             "@rapp/layout": ["libs/layout/src/index.ts"],
             "@rapp/newsfeed": ["libs/newsfeed/src/index.ts"],
             "@rapp/post-feed": ["libs/post-feed/src/index.ts"],
             "@rapp/shared": ["libs/shared/src/index.ts"],
             "@rapp/store": ["libs/store/src/index.ts"],
+            "@rapp/tasks": ["libs/tasks/src/index.ts"],
+            "@rapp/ui": ["libs/ui/src/index.ts"],
             "@rapp/users": ["libs/users/src/index.ts"]
         }
     },

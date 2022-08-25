@@ -2,17 +2,20 @@
     "$schema": "./node_modules/nx/schemas/workspace-schema.json",
     "version": 2,
     "projects": {
-        "activities": "libs/activities",
+        "activities-feature": "libs/activities/feature",
+        "activities-shared": "libs/activities/shared",
         "chat": "libs/chat",
-        "core": "libs/core",
         "groups": "libs/groups",
-        "home": "libs/home",
+        "home-feature": "libs/home/feature",
+        "home-shared": "libs/home/shared",
         "layout": "libs/layout",
         "newsfeed": "libs/newsfeed",
         "post-feed": "libs/post-feed",
         "rapp": "apps/rapp",
         "shared": "libs/shared",
         "store": "libs/store",
+        "tasks": "libs/tasks",
+        "ui": "libs/ui",
         "users": "libs/users"
     }
 }

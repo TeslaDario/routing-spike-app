@@ -1,0 +1,24 @@
+@use 'apps/rapp/src/assets/styles' as *;
+@use 'apps/rapp/src/assets/styles' as *;
+
+.task-item {
+    padding: 6px 15px;
+    cursor: pointer;
+
+    &.active {
+        background-color: $primary;
+        color: #fff;
+    }
+
+    &:hover:not(.active) {
+        background-color: $ultraLight;
+    }
+
+    h3 {
+        margin: 0;
+    }
+    p {
+        margin: 0;
+        padding-left: 30px;
+    }
+}

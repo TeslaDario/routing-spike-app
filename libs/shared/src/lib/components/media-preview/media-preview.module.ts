@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '@rapp/core';
 import { LayoutModule } from '@rapp/layout';
+import { MaterialModule } from '@rapp/ui';
 import { MediaPreviewComponent } from './media-preview.component';
 
 @NgModule({
