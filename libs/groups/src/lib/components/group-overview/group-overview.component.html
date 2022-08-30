@@ -9,16 +9,16 @@
         </rapp-toolbar-right>
     </rapp-toolbar>
 
-    <rapp-content [showBackgroundImage]="true" #content>
-        <rapp-drawer-view [opened]="drawerOpened" [fixedTopGap]="content.clientRect().top">
-            <rapp-group-info inDrawer></rapp-group-info>
+    <rapp-content [showBackgroundImage]="true">
+        <rapp-drawer-view [opened]="drawerOpened">
+            <rapp-group-info rappDrawer *ngIf="layoutMode === 'triple'"></rapp-group-info>
 
             <div class="group-wrapper">
                 <rapp-floating-action-button text="Post" (click)="addPost()"></rapp-floating-action-button>
 
                 <rapp-post-feed [posts]="posts"></rapp-post-feed>
             </div>
-            <router-outlet></router-outlet>
         </rapp-drawer-view>
+        <router-outlet></router-outlet>
     </rapp-content>
 </rapp-view>

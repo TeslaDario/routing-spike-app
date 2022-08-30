@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { AfterContentChecked, Component, ElementRef, Input } from '@angular/core';
 import { LayoutMode, StoreFacade } from '@rapp/store';
 import { Observable } from 'rxjs';
 
@@ -9,11 +9,12 @@ import { Observable } from 'rxjs';
             <mat-sidenav
                 mode="side"
                 position="end"
+                [disableClose]="true"
                 [fixedInViewport]="true"
                 [fixedTopGap]="fixedTopGap"
                 [opened]="opened && (layoutMode$ | async) === 'triple'"
             >
-                <ng-content select="[inDrawer]"></ng-content>
+                <ng-content select="[rappDrawer]"></ng-content>
             </mat-sidenav>
             <mat-sidenav-content>
                 <ng-content></ng-content>
@@ -22,6 +23,9 @@ import { Observable } from 'rxjs';
     `,
     styles: [
         `
+            :host {
+                display: block;
+            }
             .mat-drawer-container,
             .mat-drawer {
                 background-color: transparent;
@@ -36,12 +40,17 @@ import { Observable } from 'rxjs';
         `,
     ],
 })
-export class DrawerViewComponent {
-    @Input() fixedTopGap: number = 0;
-    @Input() opened: boolean = false;
-    @Input() hideBorder: boolean = false;
+export class DrawerViewComponent implements AfterContentChecked {
+    @Input() opened = false;
+    @Input() hideBorder = false;
 
+    fixedTopGap = 0;
     layoutMode$: Observable<LayoutMode> = this.storeFacade.getMode();
 
-    constructor(private storeFacade: StoreFacade) {}
+    constructor(private elRef: ElementRef<HTMLElement>, private storeFacade: StoreFacade) {}
+
+    ngAfterContentChecked(): void {
+        const el = this.elRef.nativeElement;
+        this.fixedTopGap = el.getBoundingClientRect().top;
+    }
 }

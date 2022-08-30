@@ -1,3 +1,4 @@
+export * from './lib/components/group-info/group-info-modal.component';
 export * from './lib/components/group-info/group-info.component';
 export * from './lib/components/group-list/group-list.component';
 export * from './lib/components/group-members/group-members.component';

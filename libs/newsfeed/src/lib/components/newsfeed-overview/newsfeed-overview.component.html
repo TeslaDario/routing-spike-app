@@ -15,9 +15,9 @@
         </rapp-toolbar-right>
     </rapp-toolbar>
 
-    <rapp-content [showBackgroundImage]="true" #content>
-        <rapp-drawer-view [opened]="true" [fixedTopGap]="content.clientRect().top" [hideBorder]="true">
-            <rapp-newsfeed-aside inDrawer></rapp-newsfeed-aside>
+    <rapp-content [showBackgroundImage]="true">
+        <rapp-drawer-view [opened]="true" [hideBorder]="true">
+            <rapp-newsfeed-aside rappDrawer></rapp-newsfeed-aside>
 
             <rapp-floating-action-button
                 text="Post"

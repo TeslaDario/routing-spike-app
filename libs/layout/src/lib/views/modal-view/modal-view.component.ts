@@ -3,11 +3,10 @@ import { StoreFacade } from '@rapp/store';
 import { NavigationService } from '../../navigation/navigation.service';
 import { modalViewAnimations } from './modal-view.animation';
 
-type ModalViewMode = 'modal' | 'full'; // | 'side';
+type ModalViewMode = 'modal' | 'full';
 @Component({
     selector: 'rapp-modal-view',
     template: `
-        <!-- 'modal-view-side': mode === 'side' && (layoutMode$ | async) === 'triple', -->
         <div
             class="modal-view-wrapper"
             @fadeInModal
@@ -63,23 +62,6 @@ type ModalViewMode = 'modal' | 'full'; // | 'side';
                 border-radius: 0;
                 box-shadow: none;
             }
-            /* .modal-view-side {
-                &.modal-view-wrapper {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                }
-                .modal-view-backdrop {
-                    width: 100%;
-                    height: 100%;
-                }
-                .modal-view-content {
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 0;
-                    box-shadow: none;
-                }
-            } */
         `,
     ],
     animations: modalViewAnimations,
