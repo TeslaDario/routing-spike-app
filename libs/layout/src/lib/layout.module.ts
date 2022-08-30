@@ -6,6 +6,7 @@ import { AvatarModule, MaterialModule } from '@rapp/ui';
 import { CombinedPageComponent } from './combined-page/combined-page.component';
 import { CenterContentComponent } from './content/center-content.component';
 import { ContentComponent } from './content/content.component';
+import { DrawerPageComponent } from './drawer-page/drawer-page.component';
 import { ModalPageComponent } from './modal-page/modal-page.component';
 import { FooterNavbarComponent } from './navigation/footer-navbar/footer-navbar.component';
 import { HeaderNavbarComponent } from './navigation/header-navbar/header-navbar.component';
@@ -30,6 +31,7 @@ import { ToolbarComponent } from './toolbar/toolbar.components';
         ToolbarRightComponent,
         CombinedPageComponent,
         ModalPageComponent,
+        DrawerPageComponent,
 
         BackNavigationDirective,
     ],
@@ -45,6 +47,7 @@ import { ToolbarComponent } from './toolbar/toolbar.components';
         ToolbarRightComponent,
         CombinedPageComponent,
         ModalPageComponent,
+        DrawerPageComponent,
 
         BackNavigationDirective,
     ],

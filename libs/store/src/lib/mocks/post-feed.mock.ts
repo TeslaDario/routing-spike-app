@@ -1,27 +1,10 @@
 import { Group, Post } from '../models';
 
-export const MOCK_GROUPS: Group[] = [
-    { id: 'g1', groupName: 'Group 1', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g2', groupName: 'Group 2' },
-    { id: 'g3', groupName: 'Group 3', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g4', groupName: 'Group 4', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g5', groupName: 'Group 5', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g6', groupName: 'Group 6', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g7', groupName: 'Group 7', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g8', groupName: 'Group 8', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g9', groupName: 'Group 9', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g10', groupName: 'Group 10', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g11', groupName: 'Group 11', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g12', groupName: 'Group 12', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g13', groupName: 'Group 13', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g14', groupName: 'Group 14', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g15', groupName: 'Group 15', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g16', groupName: 'Group 16', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g17', groupName: 'Group 17', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g18', groupName: 'Group 18', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g19', groupName: 'Group 19', image: 'assets/icons/icon-72x72.png' },
-    { id: 'g20', groupName: 'Group 20', image: 'assets/icons/icon-72x72.png' },
-];
+export const MOCK_GROUPS: Group[] = Array.from({ length: 20 }, (_, i) => ({
+    id: `g${i + 1}`,
+    groupName: `Group ${i + 1}`,
+    image: 'assets/icons/icon-72x72.png',
+}));
 
 export const MOCK_POSTS: Post[] = [
     {

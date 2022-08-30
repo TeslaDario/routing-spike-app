@@ -1,8 +1,9 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, ElementRef, HostBinding, Input } from '@angular/core';
 
 @Component({
     selector: 'rapp-content',
     template: '<ng-content></ng-content>',
+    exportAs: 'content',
     styles: [
         `
             :host {
@@ -21,4 +22,11 @@ import { Component, HostBinding, Input } from '@angular/core';
 })
 export class ContentComponent {
     @HostBinding('class.bubble-pattern') @Input() showBackgroundImage = false;
+
+    constructor(private elRef: ElementRef<HTMLElement>) {}
+
+    public clientRect(): DOMRect {
+        const el = this.elRef.nativeElement;
+        return el.getBoundingClientRect();
+    }
 }

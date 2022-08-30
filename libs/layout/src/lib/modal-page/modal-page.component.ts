@@ -3,16 +3,20 @@ import { StoreFacade } from '@rapp/store';
 import { NavigationService } from '../navigation/navigation.service';
 import { modalPageAnimations } from './modal-page.animation';
 
+type ModalPageMode = 'modal' | 'full'; // | 'side';
 @Component({
     selector: 'rapp-modal-page',
     template: `
-        <div class="modal-page-wrapper" @fadeInModal>
+        <!-- 'modal-page-side': mode === 'side' && (layoutMode$ | async) === 'triple', -->
+        <div
+            class="modal-page-wrapper"
+            @fadeInModal
+            [ngClass]="{
+                'modal-page-full': mode === 'full' || (layoutMode$ | async) === 'single'
+            }"
+        >
             <div class="modal-page-backdrop" [rappBackButton]></div>
-            <div
-                class="modal-page-content"
-                [ngClass]="{ 'modal-page-content__full': fullPage || (layoutMode$ | async) === 'single' }"
-                [@transformModal]="layoutMode$ | async"
-            >
+            <div class="modal-page-content" [@transformModal]="layoutMode$ | async">
                 <ng-content select="rapp-page"></ng-content>
             </div>
         </div>
@@ -52,21 +56,38 @@ import { modalPageAnimations } from './modal-page.animation';
                 box-shadow: 0 11px 15px -7px #0003, 0 24px 38px 3px #00000024, 0 9px 46px 8px #0000001f;
                 border-radius: 22px;
                 z-index: 2;
+            }
 
-                &__full {
-                    width: 100vw;
-                    max-width: 100vw;
-                    height: 100vh;
+            .modal-page-full .modal-page-content {
+                width: 100vw;
+                max-width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            /* .modal-page-side {
+                &.modal-page-wrapper {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+                .modal-page-backdrop {
+                    width: 100%;
+                    height: 100%;
+                }
+                .modal-page-content {
+                    width: 100%;
+                    height: 100%;
                     border-radius: 0;
                     box-shadow: none;
                 }
-            }
+            } */
         `,
     ],
     animations: modalPageAnimations,
 })
 export class ModalPageComponent {
-    @Input() fullPage = false;
+    @Input() mode: ModalPageMode = 'modal';
     readonly layoutMode$ = this.storeFacade.getMode();
 
     @HostListener('document:keydown.escape', ['$event']) escapeKeydownHandler() {

@@ -13,11 +13,20 @@
     </rapp-toolbar>
 
     <rapp-content [showBackgroundImage]="true">
+        <!-- TODO: revert mat-drawer and add side content component wich will render modal-page with mode="side" -->
+        <!-- <mat-drawer-container class="rapp-drawer" [hasBackdrop]="true" (backdropClick)="onDrawerClose()">
+            <mat-drawer-content> -->
         <div class="group-wrapper">
             <rapp-floating-action-button text="Post" (click)="addPost()"></rapp-floating-action-button>
 
             <rapp-post-feed [posts]="posts"></rapp-post-feed>
         </div>
         <router-outlet></router-outlet>
+        <!-- <router-outlet *ngIf="(layoutMode$ | async) !== 'triple'"></router-outlet>
+            </mat-drawer-content>
+            <mat-drawer mode="push" position="end" [opened]="(layoutMode$ | async) === 'triple' && outlet.isActivated">
+                <router-outlet #outlet="outlet"></router-outlet>
+            </mat-drawer>
+        </mat-drawer-container> -->
     </rapp-content>
 </rapp-page>

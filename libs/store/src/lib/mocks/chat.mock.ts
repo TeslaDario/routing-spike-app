@@ -1,27 +1,10 @@
 import { Chat } from '../models';
 import { Message } from '../models/message.model';
 
-export const MOCK_CHATS: Chat[] = [
-    { id: 'c1', name: 'Chat 1' },
-    { id: 'c2', name: 'Chat 2' },
-    { id: 'c3', name: 'Chat 3' },
-    { id: 'c4', name: 'Chat 4' },
-    { id: 'c5', name: 'Chat 5' },
-    { id: 'c6', name: 'Chat 6' },
-    { id: 'c7', name: 'Chat 7' },
-    { id: 'c8', name: 'Chat 8' },
-    { id: 'c9', name: 'Chat 9' },
-    { id: 'c10', name: 'Chat 10' },
-    { id: 'c11', name: 'Chat 11' },
-    { id: 'c13', name: 'Chat 13' },
-    { id: 'c14', name: 'Chat 14' },
-    { id: 'c15', name: 'Chat 15' },
-    { id: 'c16', name: 'Chat 16' },
-    { id: 'c17', name: 'Chat 17' },
-    { id: 'c18', name: 'Chat 18' },
-    { id: 'c19', name: 'Chat 19' },
-    { id: 'c20', name: 'Chat 20' },
-];
+export const MOCK_CHATS: Chat[] = Array.from({ length: 20 }, (_, i) => ({
+    id: `c${i + 1}`,
+    name: `Chat ${i + 1}`,
+}));
 
 export const MOCK_MESSAGES: Message[] = [
     {

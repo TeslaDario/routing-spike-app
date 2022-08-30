@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-media-modal',
     template: `
-        <rapp-modal-page [fullPage]="true">
+        <rapp-modal-page mode="full">
             <rapp-page>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="Back"></rapp-toolbar-left>

@@ -25,6 +25,8 @@ export class StoreEffects {
                     }
 
                     document.body.dataset['mode'] = mode;
+                    document.documentElement.style.setProperty('--master-width', `${masterWidth}px`);
+                    document.documentElement.style.setProperty('--detail-width', `${detailWidth}px`);
                     return StoreActions.setMode({ mode, masterWidth, detailWidth });
                 })
             )

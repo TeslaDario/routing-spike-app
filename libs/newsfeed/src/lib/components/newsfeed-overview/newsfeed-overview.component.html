@@ -15,14 +15,20 @@
         </rapp-toolbar-right>
     </rapp-toolbar>
 
-    <rapp-content [showBackgroundImage]="true">
-        <rapp-floating-action-button
-            text="Post"
-            (click)="addPost()"
-            *ngIf="(layoutMode$ | async) !== 'triple'"
-        ></rapp-floating-action-button>
+    <rapp-content [showBackgroundImage]="true" #content>
+        <rapp-drawer-page
+            [opened]="(layoutMode$ | async) === 'triple'"
+            [fixedTopGap]="content.clientRect().top"
+            [hideBorder]="true"
+        >
+            <rapp-newsfeed-aside inDrawer></rapp-newsfeed-aside>
 
-        <div class="flex">
+            <rapp-floating-action-button
+                text="Post"
+                (click)="addPost()"
+                *ngIf="(layoutMode$ | async) !== 'triple'"
+            ></rapp-floating-action-button>
+
             <rapp-post-feed [posts]="posts" class="spacer">
                 <div class="item-wrapper mb-20" *ngIf="(layoutMode$ | async) !== 'triple'">
                     <rapp-item
@@ -33,8 +39,6 @@
                     ></rapp-item>
                 </div>
             </rapp-post-feed>
-
-            <rapp-newsfeed-aside *ngIf="(layoutMode$ | async) === 'triple'"></rapp-newsfeed-aside>
-        </div>
+        </rapp-drawer-page>
     </rapp-content>
 </rapp-page>

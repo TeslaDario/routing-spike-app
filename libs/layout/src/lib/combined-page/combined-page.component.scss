@@ -10,11 +10,11 @@
 
     &-master {
         overflow: scroll;
-        flex: 0 0 100%;
+        flex: 0 0 var(--master-width);
     }
 
     &-detail {
-        flex: 0 0 100%;
+        flex: 0 0 var(--detail-width);
         overflow: scroll;
         transition: transform 150ms ease-in-out;
         z-index: 1;

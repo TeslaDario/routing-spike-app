@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MOCK_GROUPS, MOCK_POSTS, StoreFacade } from '@rapp/store';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'rapp-newsfeed-aside',
     template: `
-        <div class="newsfeed-aside-wrapper" [style.width.px]="masterWidth$ | async">
+        <div class="newsfeed-aside-wrapper">
+            <!-- [style.width.px]="masterWidth$ | async"> -->
             <div class="item-wrapper m-10">
                 <rapp-item
                     leftIcon="access_time"
@@ -44,14 +44,9 @@ import { Observable } from 'rxjs';
         `
             @use 'apps/rapp/src/assets/styles' as *;
 
-            :host {
-                display: block;
-                position: sticky;
-                top: 0;
-                height: calc(100vh - $toolbarHeight);
-            }
             .newsfeed-aside-wrapper {
                 padding: 10px 0;
+
                 .activities-wrapper {
                     padding: 10px;
                     max-height: 300px;
@@ -65,8 +60,6 @@ import { Observable } from 'rxjs';
     ],
 })
 export class NewsfeedAsideComponent {
-    masterWidth$: Observable<number> = this.storeFacade.getMasterWidth();
-
     constructor(private storeFacade: StoreFacade, private router: Router) {}
 
     openScheduledPost() {

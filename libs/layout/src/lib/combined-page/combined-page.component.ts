@@ -9,8 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class CombinedPageComponent {
     layoutMode$: Observable<IState['mode']> = this.storeFacade.getMode();
-    masterWidth$: Observable<number> = this.storeFacade.getMasterWidth();
-    detailWidth$: Observable<number> = this.storeFacade.getDetailWidth();
 
     constructor(private storeFacade: StoreFacade) {}
 }

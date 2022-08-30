@@ -3,15 +3,11 @@
     [class.combined-page-master__only]="(layoutMode$ | async) === 'single' && !outlet.isActivated"
     [class.combined-page-detail__only]="(layoutMode$ | async) === 'single' && outlet.isActivated"
 >
-    <div class="combined-page-master" [style.flexBasis.px]="masterWidth$ | async">
+    <div class="combined-page-master">
         <ng-content></ng-content>
     </div>
 
-    <div
-        class="combined-page-detail"
-        [class.combined-page-detail__active]="outlet.isActivated"
-        [style.flexBasis.px]="detailWidth$ | async"
-    >
+    <div class="combined-page-detail" [class.combined-page-detail__active]="outlet.isActivated">
         <router-outlet #outlet="outlet"></router-outlet>
         <div *ngIf="(layoutMode$ | async) !== 'single' && !outlet.isActivated" class="combined-page-detail__empty">
             Detail not selected!

@@ -85,7 +85,7 @@ import { Observable } from 'rxjs';
     ],
 })
 export class AppComponent {
-    title = 'Routing App v2';
+    title = 'Routing App';
     layoutMode$: Observable<IState['mode']> = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade, private router: Router, private userService: UserService) {}
