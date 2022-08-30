@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'rapp-create-chat',
     template: `
-        <rapp-modal-page>
-            <rapp-page>
+        <rapp-modal-view>
+            <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="CREATE CHAT"></rapp-toolbar-left>
                 </rapp-toolbar>
@@ -22,8 +22,8 @@ import { Router } from '@angular/router';
                         <button mat-flat-button [rappBackButton] color="primary">CLOSE</button>
                     </div>
                 </rapp-content>
-            </rapp-page>
-        </rapp-modal-page>
+            </rapp-view>
+        </rapp-modal-view>
     `,
 })
 export class CreateChatComponent {

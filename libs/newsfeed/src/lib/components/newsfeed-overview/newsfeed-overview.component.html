@@ -1,4 +1,4 @@
-<rapp-page [showBottomNavbar]="true">
+<rapp-view [showBottomNavbar]="true">
     <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
         <rapp-toolbar-left title="News"></rapp-toolbar-left>
 
@@ -16,11 +16,7 @@
     </rapp-toolbar>
 
     <rapp-content [showBackgroundImage]="true" #content>
-        <rapp-drawer-page
-            [opened]="(layoutMode$ | async) === 'triple'"
-            [fixedTopGap]="content.clientRect().top"
-            [hideBorder]="true"
-        >
+        <rapp-drawer-view [opened]="true" [fixedTopGap]="content.clientRect().top" [hideBorder]="true">
             <rapp-newsfeed-aside inDrawer></rapp-newsfeed-aside>
 
             <rapp-floating-action-button
@@ -39,6 +35,6 @@
                     ></rapp-item>
                 </div>
             </rapp-post-feed>
-        </rapp-drawer-page>
+        </rapp-drawer-view>
     </rapp-content>
-</rapp-page>
+</rapp-view>

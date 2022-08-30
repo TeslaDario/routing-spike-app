@@ -1,6 +1,6 @@
 import { animate, animateChild, group, query, state, style, transition, trigger } from '@angular/animations';
 
-export const modalPageAnimations = [
+export const modalViewAnimations = [
     trigger('fadeInModal', [
         state('void', style({ opacity: 0 })),
         transition(

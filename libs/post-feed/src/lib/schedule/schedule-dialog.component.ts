@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-schedule',
     template: `
-        <rapp-page>
+        <rapp-view>
             <rapp-toolbar>
                 <rapp-toolbar-left>
                     <button mat-icon-button mat-dialog-close color="primary">
@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
                     [(ngModel)]="someData"
                 />
             </rapp-content>
-        </rapp-page>
+        </rapp-view>
     `,
 })
 export class ScheduleDialogComponent {

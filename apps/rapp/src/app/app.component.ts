@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IState, StoreFacade } from '@rapp/store';
+import { IState, LayoutMode, StoreFacade } from '@rapp/store';
 import { UserService } from '@rapp/users';
 import { Observable } from 'rxjs';
 
 @Component({
     selector: 'rapp-root',
     template: `
-        <rapp-page>
+        <rapp-view>
             <rapp-toolbar *ngIf="(layoutMode$ | async) !== 'single'">
                 <rapp-toolbar-left>
                     <img [routerLink]="'/'" class="toolbar-app-logo" src="assets/imgs/logo.png" />
@@ -66,7 +66,7 @@ import { Observable } from 'rxjs';
             <rapp-content>
                 <router-outlet></router-outlet>
             </rapp-content>
-        </rapp-page>
+        </rapp-view>
 
         <router-outlet name="modal"></router-outlet>
         <router-outlet name="users"></router-outlet>
@@ -77,7 +77,7 @@ import { Observable } from 'rxjs';
             @use 'apps/rapp/src/assets/styles' as *;
 
             .toolbar-app-logo {
-                height: $toolbarHeight;
+                height: $navbarHeight;
                 cursor: pointer;
                 user-select: none;
             }
@@ -86,7 +86,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
     title = 'Routing App';
-    layoutMode$: Observable<IState['mode']> = this.storeFacade.getMode();
+    layoutMode$: Observable<LayoutMode> = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade, private router: Router, private userService: UserService) {}
 

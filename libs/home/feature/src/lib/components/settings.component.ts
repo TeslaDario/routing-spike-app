@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'rapp-settings',
     template: `
-        <rapp-modal-page>
-            <rapp-page>
+        <rapp-modal-view>
+            <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="Settings"></rapp-toolbar-left>
                 </rapp-toolbar>
@@ -19,8 +19,8 @@ import { Router } from '@angular/router';
                         Go to settings 2 (sibling from this page)
                     </button>
                 </rapp-content>
-            </rapp-page>
-        </rapp-modal-page>
+            </rapp-view>
+        </rapp-modal-view>
         <router-outlet></router-outlet>
     `,
 })

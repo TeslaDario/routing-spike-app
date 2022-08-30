@@ -3,24 +3,24 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeSharedModule } from '@rapp/home-shared';
 import { AvatarModule, MaterialModule } from '@rapp/ui';
-import { CombinedPageComponent } from './combined-page/combined-page.component';
-import { CenterContentComponent } from './content/center-content.component';
-import { ContentComponent } from './content/content.component';
-import { DrawerPageComponent } from './drawer-page/drawer-page.component';
-import { ModalPageComponent } from './modal-page/modal-page.component';
+import { CenterContentComponent } from './components/content/center-content.component';
+import { ContentComponent } from './components/content/content.component';
+import { ToolbarCenterComponent } from './components/toolbar/toolbar-center.component';
+import { ToolbarLeftComponent } from './components/toolbar/toolbar-left.component';
+import { ToolbarRightComponent } from './components/toolbar/toolbar-right.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.components';
 import { FooterNavbarComponent } from './navigation/footer-navbar/footer-navbar.component';
 import { HeaderNavbarComponent } from './navigation/header-navbar/header-navbar.component';
 import { BackNavigationDirective } from './navigation/navigation.directive';
-import { PageComponent } from './page/page.component';
-import { ToolbarCenterComponent } from './toolbar/toolbar-center.component';
-import { ToolbarLeftComponent } from './toolbar/toolbar-left.component';
-import { ToolbarRightComponent } from './toolbar/toolbar-right.component';
-import { ToolbarComponent } from './toolbar/toolbar.components';
+import { CombinedViewComponent } from './views/combined-view/combined-view.component';
+import { DrawerViewComponent } from './views/drawer-view/drawer-view.component';
+import { ModalViewComponent } from './views/modal-view/modal-view.component';
+import { ViewComponent } from './views/view/view.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, MaterialModule, HomeSharedModule, AvatarModule],
     declarations: [
-        PageComponent,
+        ViewComponent,
         ContentComponent,
         CenterContentComponent,
         HeaderNavbarComponent,
@@ -29,14 +29,14 @@ import { ToolbarComponent } from './toolbar/toolbar.components';
         ToolbarLeftComponent,
         ToolbarCenterComponent,
         ToolbarRightComponent,
-        CombinedPageComponent,
-        ModalPageComponent,
-        DrawerPageComponent,
+        CombinedViewComponent,
+        ModalViewComponent,
+        DrawerViewComponent,
 
         BackNavigationDirective,
     ],
     exports: [
-        PageComponent,
+        ViewComponent,
         ContentComponent,
         CenterContentComponent,
         HeaderNavbarComponent,
@@ -45,9 +45,9 @@ import { ToolbarComponent } from './toolbar/toolbar.components';
         ToolbarLeftComponent,
         ToolbarCenterComponent,
         ToolbarRightComponent,
-        CombinedPageComponent,
-        ModalPageComponent,
-        DrawerPageComponent,
+        CombinedViewComponent,
+        ModalViewComponent,
+        DrawerViewComponent,
 
         BackNavigationDirective,
     ],

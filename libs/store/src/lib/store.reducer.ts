@@ -2,9 +2,9 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as StoreActions from './store.actions';
 
 export const STORE_FEATURE_KEY = 'store';
-
+export type LayoutMode = 'single' | 'double' | 'triple';
 export interface IState {
-    mode: 'single' | 'double' | 'triple';
+    mode: LayoutMode;
     masterWidth: number;
     detailWidth: number;
 }

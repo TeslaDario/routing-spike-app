@@ -5,8 +5,8 @@ import { MOCK_POSTS, Post } from '@rapp/store';
 @Component({
     selector: 'rapp-post-route',
     template: `
-        <rapp-modal-page mode="full">
-            <rapp-page>
+        <rapp-modal-view mode="full">
+            <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="Post"></rapp-toolbar-left>
                 </rapp-toolbar>
@@ -16,8 +16,8 @@ import { MOCK_POSTS, Post } from '@rapp/store';
                         <rapp-post [post]="post" [inFeed]="false"></rapp-post>
                     </rapp-center-content>
                 </rapp-content>
-            </rapp-page>
-        </rapp-modal-page>
+            </rapp-view>
+        </rapp-modal-view>
     `,
 })
 export class PostRouteComponent {

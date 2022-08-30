@@ -1,37 +1,10 @@
 import { Location, LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-    // private tabs: BehaviorSubject<NavTab[]> = new BehaviorSubject(TABS);
-    // tabs$ = this.tabs.asObservable();
-
-    constructor(
-        private router: Router,
-        private location: Location,
-        private locationStrategy: LocationStrategy,
-        private dialog: MatDialog
-    ) // private storeFacade: StoreFacade
-    {
-        // combineLatest([
-        //     this.router.events.pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd)),
-        //     this.storeFacade.getMode(),
-        // ]).subscribe(([event, mode]) => {
-        //     this.tabs.next(
-        //         TABS.map((t) => {
-        //             if (event.url === '/') {
-        //                 return { ...t, active: t.route.startsWith('/newsfeed') };
-        //             }
-        //             if (mode === 'double' && t.route === '/messages') {
-        //                 return { ...t, param: MOCK_CHATS[0].id, active: event.url.startsWith(t.route) };
-        //             }
-        //             return { ...t, active: event.url.startsWith(t.route) };
-        //         })
-        //     );
-        // });
-    }
+    constructor(private location: Location, private locationStrategy: LocationStrategy, private dialog: MatDialog) {}
 
     public goBack(relativePosition?: number | undefined): void {
         const currentPath = this.location.path();

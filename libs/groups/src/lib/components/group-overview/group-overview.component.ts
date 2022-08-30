@@ -1,8 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavigationService } from '@rapp/layout';
-import { Group, MOCK_POSTS, Post, StoreFacade } from '@rapp/store';
-import { Subscription } from 'rxjs';
+import { Group, LayoutMode, MOCK_POSTS, Post, StoreFacade } from '@rapp/store';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'rapp-group-overview',
@@ -11,27 +10,29 @@ import { Subscription } from 'rxjs';
 export class GroupOverviewComponent implements OnDestroy {
     posts!: Post[];
     groupId!: Group['id'];
-    layoutMode$ = this.storeFacade.getMode();
-    private sub: Subscription;
+    layoutMode!: LayoutMode;
+    drawerOpened = false;
+    private destroyed$ = new Subject();
 
-    constructor(
-        private router: Router,
-        private route: ActivatedRoute,
-        private storeFacade: StoreFacade,
-        private navigationService: NavigationService
-    ) {
-        this.sub = this.route.params.subscribe((params) => {
+    constructor(private router: Router, private route: ActivatedRoute, private storeFacade: StoreFacade) {
+        this.storeFacade
+            .getMode()
+            .pipe(takeUntil(this.destroyed$))
+            .subscribe((mode) => (this.layoutMode = mode));
+
+        this.route.params.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
             this.groupId = params['groupId'];
 
             this.posts = MOCK_POSTS.filter((p) => p.groupId === this.groupId);
         });
     }
-    onDrawerClose() {
-        this.navigationService.goBack();
-    }
 
     openGroupInfo() {
-        this.router.navigate(['newsfeed', 'g1', 'info']);
+        if (this.layoutMode === 'triple') {
+            this.drawerOpened = !this.drawerOpened;
+        } else {
+            this.router.navigate(['newsfeed', 'g1', 'info']);
+        }
     }
 
     addPost() {
@@ -39,6 +40,6 @@ export class GroupOverviewComponent implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.sub.unsubscribe();
+        this.destroyed$.complete();
     }
 }

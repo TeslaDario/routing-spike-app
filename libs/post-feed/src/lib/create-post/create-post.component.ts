@@ -7,8 +7,8 @@ import { ScheduleDialogComponent } from '../schedule/schedule-dialog.component';
 @Component({
     selector: 'rapp-create-post',
     template: `
-        <rapp-modal-page>
-            <rapp-page>
+        <rapp-modal-view>
+            <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="Create post"></rapp-toolbar-left>
                 </rapp-toolbar>
@@ -40,8 +40,8 @@ import { ScheduleDialogComponent } from '../schedule/schedule-dialog.component';
                         <button mat-flat-button (click)="addImage()" color="primary">Add image</button>
                     </div>
                 </rapp-content>
-            </rapp-page>
-        </rapp-modal-page>
+            </rapp-view>
+        </rapp-modal-view>
     `,
     providers: [UploadService],
 })
@@ -53,7 +53,7 @@ export class CreatePostComponent implements CanDeactivatePage {
             return this.dialogService
                 .confirm$({
                     titleText: 'Warning!',
-                    contentText: 'Leaving this page you will lose your uploads!!!',
+                    contentText: 'Leaving this view you will lose your uploads!!!',
                     confirmButtonText: 'Leave',
                     type: 'warn',
                 })

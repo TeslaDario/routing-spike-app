@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-group-members',
     template: `
-        <rapp-modal-page>
-            <rapp-page>
+        <rapp-modal-view>
+            <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="GROUP MEMBERS"></rapp-toolbar-left>
                 </rapp-toolbar>
@@ -20,8 +20,8 @@ import { Component } from '@angular/core';
                         </div>
                     </div>
                 </rapp-content>
-            </rapp-page>
-        </rapp-modal-page>
+            </rapp-view>
+        </rapp-modal-view>
     `,
 })
 export class GroupMembersComponent {

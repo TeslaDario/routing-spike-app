@@ -1,29 +1,27 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { StoreFacade } from '@rapp/store';
-import { NavigationService } from '../navigation/navigation.service';
-import { modalPageAnimations } from './modal-page.animation';
+import { NavigationService } from '../../navigation/navigation.service';
+import { modalViewAnimations } from './modal-view.animation';
 
-type ModalPageMode = 'modal' | 'full'; // | 'side';
+type ModalViewMode = 'modal' | 'full'; // | 'side';
 @Component({
-    selector: 'rapp-modal-page',
+    selector: 'rapp-modal-view',
     template: `
-        <!-- 'modal-page-side': mode === 'side' && (layoutMode$ | async) === 'triple', -->
+        <!-- 'modal-view-side': mode === 'side' && (layoutMode$ | async) === 'triple', -->
         <div
-            class="modal-page-wrapper"
+            class="modal-view-wrapper"
             @fadeInModal
-            [ngClass]="{
-                'modal-page-full': mode === 'full' || (layoutMode$ | async) === 'single'
-            }"
+            [ngClass]="{ 'modal-view-full': mode === 'full' || (layoutMode$ | async) === 'single' }"
         >
-            <div class="modal-page-backdrop" [rappBackButton]></div>
-            <div class="modal-page-content" [@transformModal]="layoutMode$ | async">
-                <ng-content select="rapp-page"></ng-content>
+            <div class="modal-view-backdrop" [rappBackButton]></div>
+            <div class="modal-view-content" [@transformModal]="layoutMode$ | async">
+                <ng-content></ng-content>
             </div>
         </div>
     `,
     styles: [
         `
-            .modal-page-wrapper {
+            .modal-view-wrapper {
                 display: block;
                 position: fixed;
                 top: 0;
@@ -33,7 +31,7 @@ type ModalPageMode = 'modal' | 'full'; // | 'side';
                 overflow: hidden;
                 z-index: 999;
             }
-            .modal-page-backdrop {
+            .modal-view-backdrop {
                 display: block;
                 position: absolute;
                 top: 0;
@@ -43,7 +41,7 @@ type ModalPageMode = 'modal' | 'full'; // | 'side';
                 background: rgba(0, 0, 0, 0.2);
                 z-index: 1;
             }
-            .modal-page-content {
+            .modal-view-content {
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -58,24 +56,24 @@ type ModalPageMode = 'modal' | 'full'; // | 'side';
                 z-index: 2;
             }
 
-            .modal-page-full .modal-page-content {
+            .modal-view-full .modal-view-content {
                 width: 100vw;
                 max-width: 100vw;
                 height: 100vh;
                 border-radius: 0;
                 box-shadow: none;
             }
-            /* .modal-page-side {
-                &.modal-page-wrapper {
+            /* .modal-view-side {
+                &.modal-view-wrapper {
                     position: absolute;
                     width: 100%;
                     height: 100%;
                 }
-                .modal-page-backdrop {
+                .modal-view-backdrop {
                     width: 100%;
                     height: 100%;
                 }
-                .modal-page-content {
+                .modal-view-content {
                     width: 100%;
                     height: 100%;
                     border-radius: 0;
@@ -84,10 +82,10 @@ type ModalPageMode = 'modal' | 'full'; // | 'side';
             } */
         `,
     ],
-    animations: modalPageAnimations,
+    animations: modalViewAnimations,
 })
-export class ModalPageComponent {
-    @Input() mode: ModalPageMode = 'modal';
+export class ModalViewComponent {
+    @Input() mode: ModalViewMode = 'modal';
     readonly layoutMode$ = this.storeFacade.getMode();
 
     @HostListener('document:keydown.escape', ['$event']) escapeKeydownHandler() {

@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { StoreFacade } from '@rapp/store';
 
 @Component({
-    selector: 'rapp-page',
+    selector: 'rapp-view',
     template: `
-        <div class="page-wrapper">
+        <div class="view-wrapper">
             <ng-content select="rapp-toolbar"></ng-content>
 
             <ng-content select="rapp-content"></ng-content>
@@ -14,7 +14,7 @@ import { StoreFacade } from '@rapp/store';
     `,
     styles: [
         `
-            .page-wrapper {
+            .view-wrapper {
                 display: flex;
                 flex-direction: column;
                 height: 100%;
@@ -23,7 +23,7 @@ import { StoreFacade } from '@rapp/store';
         `,
     ],
 })
-export class PageComponent {
+export class ViewComponent {
     layoutMode$ = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade) {}

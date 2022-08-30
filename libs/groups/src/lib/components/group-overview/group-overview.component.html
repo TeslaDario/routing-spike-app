@@ -1,9 +1,6 @@
-<rapp-page [showBottomNavbar]="true">
+<rapp-view [showBottomNavbar]="true">
     <rapp-toolbar>
-        <rapp-toolbar-left
-            [icon]="(layoutMode$ | async) === 'single' ? 'back' : undefined"
-            [title]="groupId"
-        ></rapp-toolbar-left>
+        <rapp-toolbar-left [icon]="layoutMode === 'single' ? 'back' : undefined" [title]="groupId"></rapp-toolbar-left>
 
         <rapp-toolbar-right>
             <button mat-icon-button (click)="openGroupInfo()">
@@ -12,21 +9,16 @@
         </rapp-toolbar-right>
     </rapp-toolbar>
 
-    <rapp-content [showBackgroundImage]="true">
-        <!-- TODO: revert mat-drawer and add side content component wich will render modal-page with mode="side" -->
-        <!-- <mat-drawer-container class="rapp-drawer" [hasBackdrop]="true" (backdropClick)="onDrawerClose()">
-            <mat-drawer-content> -->
-        <div class="group-wrapper">
-            <rapp-floating-action-button text="Post" (click)="addPost()"></rapp-floating-action-button>
+    <rapp-content [showBackgroundImage]="true" #content>
+        <rapp-drawer-view [opened]="drawerOpened" [fixedTopGap]="content.clientRect().top">
+            <rapp-group-info inDrawer></rapp-group-info>
 
-            <rapp-post-feed [posts]="posts"></rapp-post-feed>
-        </div>
-        <router-outlet></router-outlet>
-        <!-- <router-outlet *ngIf="(layoutMode$ | async) !== 'triple'"></router-outlet>
-            </mat-drawer-content>
-            <mat-drawer mode="push" position="end" [opened]="(layoutMode$ | async) === 'triple' && outlet.isActivated">
-                <router-outlet #outlet="outlet"></router-outlet>
-            </mat-drawer>
-        </mat-drawer-container> -->
+            <div class="group-wrapper">
+                <rapp-floating-action-button text="Post" (click)="addPost()"></rapp-floating-action-button>
+
+                <rapp-post-feed [posts]="posts"></rapp-post-feed>
+            </div>
+            <router-outlet></router-outlet>
+        </rapp-drawer-view>
     </rapp-content>
-</rapp-page>
+</rapp-view>

@@ -4,15 +4,15 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'rapp-settings1',
     template: `
-        <rapp-modal-page>
-            <rapp-page>
+        <rapp-modal-view>
+            <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="Settings1"></rapp-toolbar-left>
                 </rapp-toolbar>
 
                 <rapp-content> </rapp-content>
-            </rapp-page>
-        </rapp-modal-page>
+            </rapp-view>
+        </rapp-modal-view>
         <router-outlet></router-outlet>
     `,
 })

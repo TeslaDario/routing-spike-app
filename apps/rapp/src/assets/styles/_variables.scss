@@ -13,11 +13,9 @@ $m: 768px;
 $l: 1024px;
 $xl: 1366px;
 
-$contentWidth: 600px;
-
-$toolbarHeight: 50px;
 $navbarHeight: 50px;
 $bottomNavbarHeight: 64px;
+$contentWidth: 600px;
 
 :root {
     /* === Safe Area Properties === */
@@ -35,8 +33,4 @@ $bottomNavbarHeight: 64px;
     @supports (bottom: env(safe-area-inset-bottom)) {
         --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
     }
-
-    --home-item-column: 4;
-    --home-item-size: min(150px, 23vw);
-    --home-item-gap: 20px;
 }

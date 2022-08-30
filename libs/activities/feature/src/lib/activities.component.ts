@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-activities',
     template: `
-        <rapp-page [showBottomNavbar]="true">
+        <rapp-view [showBottomNavbar]="true">
             <rapp-toolbar>
                 <rapp-toolbar-left icon="back" title="Activities"></rapp-toolbar-left>
             </rapp-toolbar>
@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
             <rapp-content>
                 <rapp-activities-items></rapp-activities-items>
             </rapp-content>
-        </rapp-page>
+        </rapp-view>
     `,
 })
 export class ActivitiesComponent {}

@@ -6,9 +6,9 @@ import { UserService } from '@rapp/users';
 @Component({
     selector: 'rapp-newsfeed',
     template: `
-        <rapp-combined-page>
+        <rapp-combined-view>
             <rapp-group-list></rapp-group-list>
-        </rapp-combined-page>
+        </rapp-combined-view>
     `,
 })
 export class NewsfeedComponent {

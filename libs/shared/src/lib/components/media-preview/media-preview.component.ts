@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'rapp-media-modal',
     template: `
-        <rapp-modal-page mode="full">
-            <rapp-page>
+        <rapp-modal-view mode="full">
+            <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="Back"></rapp-toolbar-left>
                 </rapp-toolbar>
@@ -14,8 +14,8 @@ import { Component } from '@angular/core';
                         <img src="assets/icons/icon-72x72.png" class="media" />
                     </div>
                 </rapp-content>
-            </rapp-page>
-        </rapp-modal-page>
+            </rapp-view>
+        </rapp-modal-view>
     `,
     styles: [
         `

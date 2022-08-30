@@ -5,8 +5,8 @@ import { UserService } from '@rapp/users';
 @Component({
     selector: 'rapp-group-chat-info',
     template: `
-        <rapp-modal-page>
-            <rapp-page>
+        <rapp-modal-view>
+            <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="GROUP CHAT INFO"></rapp-toolbar-left>
                 </rapp-toolbar>
@@ -21,8 +21,8 @@ import { UserService } from '@rapp/users';
                         <button mat-flat-button [rappBackButton] color="primary">CLOSE</button>
                     </div>
                 </rapp-content>
-            </rapp-page>
-        </rapp-modal-page>
+            </rapp-view>
+        </rapp-modal-view>
     `,
 })
 export class GroupChatInfoComponent {

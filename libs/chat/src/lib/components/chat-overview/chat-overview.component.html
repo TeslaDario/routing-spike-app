@@ -1,4 +1,4 @@
-<rapp-page>
+<rapp-view>
     <rapp-toolbar>
         <rapp-toolbar-left
             [icon]="(layoutMode$ | async) === 'single' ? 'back' : undefined"
@@ -46,7 +46,7 @@
             </div>
         </div>
     </rapp-content>
-</rapp-page>
+</rapp-view>
 
 <!-- ORDER OF AUXILARY ROUTES IS IMPORTANT -->
 <router-outlet name="chatGroupInfo"></router-outlet>

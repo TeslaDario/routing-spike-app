@@ -3,7 +3,7 @@ import { createEffect } from '@ngrx/effects';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { debounceTime, fromEvent, map, merge, startWith } from 'rxjs';
 import * as StoreActions from './store.actions';
-import { IState } from './store.reducer';
+import { LayoutMode } from './store.reducer';
 
 @Injectable()
 export class StoreEffects {
@@ -14,7 +14,7 @@ export class StoreEffects {
                 map((event: Event) => (event.target as Window).innerWidth),
                 startWith(window.innerWidth),
                 map((width) => {
-                    const mode: IState['mode'] =
+                    const mode: LayoutMode =
                         this.deviceDetector.isMobile() || width <= 768 ? 'single' : width <= 1200 ? 'double' : 'triple';
                     let masterWidth = width,
                         detailWidth = width;

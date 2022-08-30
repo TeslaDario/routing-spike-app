@@ -1,4 +1,4 @@
-<rapp-page [showBottomNavbar]="true">
+<rapp-view [showBottomNavbar]="true">
     <rapp-toolbar>
         <rapp-toolbar-left
             [icon]="(layoutMode$ | async) === 'single' ? 'back' : undefined"
@@ -20,4 +20,4 @@
         </rapp-center-content>
         <router-outlet></router-outlet>
     </rapp-content>
-</rapp-page>
+</rapp-view>
