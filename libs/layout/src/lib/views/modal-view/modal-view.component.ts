@@ -3,20 +3,30 @@ import { StoreFacade } from '@rapp/store';
 import { NavigationService } from '../../navigation/navigation.service';
 import { modalViewAnimations } from './modal-view.animation';
 
-type ModalViewMode = 'modal' | 'full';
+type ModalViewMode = 'modal' | 'full' | 'side';
 @Component({
     selector: 'rapp-modal-view',
     template: `
-        <div
-            class="modal-view-wrapper"
-            @fadeInModal
-            [ngClass]="{ 'modal-view-full': mode === 'full' || (layoutMode$ | async) === 'single' }"
-        >
-            <div class="modal-view-backdrop" [rappBackButton]></div>
-            <div class="modal-view-content" [@transformModal]="layoutMode$ | async">
-                <ng-content></ng-content>
+        <ng-container
+            *ngIf="mode === 'side' && (layoutMode$ | async) === 'triple'; else modalTemp"
+            [ngTemplateOutlet]="content"
+        ></ng-container>
+
+        <ng-template #modalTemp>
+            <div
+                class="modal-view-wrapper"
+                @fadeInModal
+                [ngClass]="{ 'modal-view-full': mode === 'full' || (layoutMode$ | async) === 'single' }"
+            >
+                <div class="modal-view-backdrop" [rappBackButton]></div>
+                <div class="modal-view-content" [@transformModal]="layoutMode$ | async">
+                    <ng-container [ngTemplateOutlet]="content"></ng-container>
+                </div>
             </div>
-        </div>
+        </ng-template>
+
+        <!-- ONLY ONE ng-content without SELECT attr can exist in the template -->
+        <ng-template #content><ng-content></ng-content></ng-template>
     `,
     styles: [
         `

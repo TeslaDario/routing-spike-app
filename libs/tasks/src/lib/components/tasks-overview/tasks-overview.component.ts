@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 export class TasksOverviewComponent implements OnDestroy {
     task!: Task | undefined;
     taskId!: Task['id'];
-    layoutMode$ = this.storeFacade.getMode();
+    readonly layoutMode$ = this.storeFacade.getMode();
     private sub: Subscription;
 
     constructor(private route: ActivatedRoute, private storeFacade: StoreFacade) {

@@ -1,10 +1,5 @@
 import { RouterModule } from '@angular/router';
-import {
-    GroupInfoModalComponent,
-    GroupListComponent,
-    GroupMembersComponent,
-    GroupOverviewComponent,
-} from '@rapp/groups';
+import { GroupInfoComponent, GroupListComponent, GroupMembersComponent, GroupOverviewComponent } from '@rapp/groups';
 import { PostRouteComponent } from '@rapp/post-feed';
 import { NewsfeedOverviewComponent } from './components/newsfeed-overview/newsfeed-overview.component';
 import { ScheduledNewsfeedOverviewComponent } from './components/scheduled-newsfeed-overview/scheduled-newsfeed-overview.component';
@@ -26,8 +21,12 @@ export const NewsfeedRoutes = RouterModule.forChild([
                 path: ':groupId',
                 component: GroupOverviewComponent,
                 children: [
-                    { path: 'info', component: GroupInfoModalComponent },
-                    { path: 'info/members', component: GroupMembersComponent },
+                    {
+                        path: 'info',
+                        component: GroupInfoComponent,
+                        children: [{ path: 'members', component: GroupMembersComponent }],
+                    },
+                    { path: 'members', component: GroupMembersComponent },
                 ],
             },
 

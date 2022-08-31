@@ -20,7 +20,7 @@ import { StoreFacade } from '@rapp/store';
     ],
 })
 export class ViewComponent {
-    layoutMode$ = this.storeFacade.getMode();
+    readonly layoutMode$ = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade) {}
     @Input() showBottomNavbar = false;

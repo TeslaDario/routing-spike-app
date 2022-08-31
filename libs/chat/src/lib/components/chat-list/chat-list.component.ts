@@ -9,7 +9,7 @@ import { Chat, MOCK_CHATS, StoreFacade } from '@rapp/store';
 })
 export class ChatListComponent {
     chats: Chat[] = MOCK_CHATS;
-    layoutMode$ = this.storeFacade.getMode();
+    readonly layoutMode$ = this.storeFacade.getMode();
 
     constructor(private router: Router, private storeFacade: StoreFacade) {}
 

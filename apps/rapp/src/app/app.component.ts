@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IState, LayoutMode, StoreFacade } from '@rapp/store';
+import { StoreFacade } from '@rapp/store';
 import { UserService } from '@rapp/users';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'rapp-root',
@@ -86,7 +85,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
     title = 'Routing App';
-    layoutMode$: Observable<LayoutMode> = this.storeFacade.getMode();
+    readonly layoutMode$ = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade, private router: Router, private userService: UserService) {}
 

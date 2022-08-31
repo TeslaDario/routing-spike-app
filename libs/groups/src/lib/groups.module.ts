@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { LayoutModule } from '@rapp/layout';
 import { PostFeedModule } from '@rapp/post-feed';
 import { AvatarModule, FloatingActionButtonModule, MaterialModule, SearchInputModule } from '@rapp/ui';
-import { GroupInfoModalComponent } from './components/group-info/group-info-modal.component';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { GroupListComponent } from './components/group-list/group-list.component';
 import { GroupMembersComponent } from './components/group-members/group-members.component';
@@ -18,7 +17,6 @@ import { GroupsComponent } from './groups.component';
         GroupListComponent,
         GroupOverviewComponent,
         GroupInfoComponent,
-        GroupInfoModalComponent,
         GroupMembersComponent,
     ],
     imports: [

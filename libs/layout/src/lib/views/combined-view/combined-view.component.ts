@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { LayoutMode, StoreFacade } from '@rapp/store';
-import { Observable } from 'rxjs';
+import { StoreFacade } from '@rapp/store';
 
 @Component({
     selector: 'rapp-combined-view',
@@ -81,6 +80,6 @@ import { Observable } from 'rxjs';
     ],
 })
 export class CombinedViewComponent {
-    layoutMode$: Observable<LayoutMode> = this.storeFacade.getMode();
+    readonly layoutMode$ = this.storeFacade.getMode();
     constructor(private storeFacade: StoreFacade) {}
 }

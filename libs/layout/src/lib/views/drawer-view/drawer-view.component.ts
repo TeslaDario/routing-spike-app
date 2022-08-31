@@ -9,8 +9,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { LayoutMode, StoreFacade } from '@rapp/store';
-import { Observable } from 'rxjs';
+import { StoreFacade } from '@rapp/store';
 import { DrawerService } from './drawer.service';
 
 @Component({
@@ -45,7 +44,6 @@ import { DrawerService } from './drawer.service';
             }
             .mat-drawer {
                 width: var(--master-width);
-                z-index: 0 !important;
             }
             .drawer__no-border .mat-drawer {
                 border-width: 0;
@@ -61,7 +59,7 @@ export class DrawerViewComponent implements OnInit, AfterContentChecked {
     @Output() openedChange = new EventEmitter<boolean>();
 
     fixedTopGap = 0;
-    layoutMode$: Observable<LayoutMode> = this.storeFacade.getMode();
+    readonly layoutMode$ = this.storeFacade.getMode();
 
     constructor(
         private elRef: ElementRef<HTMLElement>,

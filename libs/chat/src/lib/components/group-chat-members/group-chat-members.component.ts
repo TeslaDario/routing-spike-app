@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'rapp-group-members',
+    selector: 'rapp-group-chat-members',
     template: `
         <rapp-modal-view>
             <rapp-view>

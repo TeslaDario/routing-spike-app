@@ -8,7 +8,7 @@ import { MOCK_POSTS, Post, StoreFacade } from '@rapp/store';
 })
 export class NewsfeedOverviewComponent {
     posts: Post[] = MOCK_POSTS;
-    layoutMode$ = this.storeFacade.getMode();
+    readonly layoutMode$ = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade, private router: Router) {}
 
