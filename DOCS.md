@@ -17,3 +17,4 @@ SUGGESTIONS TO DESIGN:
     => SAVE ONE MODAL
 
 try component modal, with realComponent in data
+// TODO: extra routes for mobile or desktop are neccecary!

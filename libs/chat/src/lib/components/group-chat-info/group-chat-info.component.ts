@@ -5,24 +5,22 @@ import { UserService } from '@rapp/users';
 @Component({
     selector: 'rapp-group-chat-info',
     template: `
-        <rapp-modal-view>
-            <rapp-view>
-                <rapp-toolbar>
-                    <rapp-toolbar-left icon="back" title="GROUP CHAT INFO"></rapp-toolbar-left>
-                </rapp-toolbar>
+        <rapp-view>
+            <rapp-toolbar>
+                <rapp-toolbar-left icon="back" title="GROUP CHAT INFO"></rapp-toolbar-left>
+            </rapp-toolbar>
 
-                <rapp-content>
-                    <div class="container">
-                        <rapp-avatar (click)="openProfile()"></rapp-avatar>
+            <rapp-content>
+                <div class="container">
+                    <rapp-avatar (click)="openProfile()"></rapp-avatar>
 
-                        <br />
-                        <button mat-flat-button (click)="openMembers()" color="accent">Go to members</button>
-                        <br />
-                        <button mat-flat-button [rappBackButton] color="primary">CLOSE</button>
-                    </div>
-                </rapp-content>
-            </rapp-view>
-        </rapp-modal-view>
+                    <br />
+                    <button mat-flat-button (click)="openMembers()" color="accent">Go to members</button>
+                    <br />
+                    <button mat-flat-button [rappBackButton] color="primary">CLOSE</button>
+                </div>
+            </rapp-content>
+        </rapp-view>
     `,
 })
 export class GroupChatInfoComponent {
@@ -35,6 +33,6 @@ export class GroupChatInfoComponent {
     }
 
     openMembers() {
-        this.router.navigate(['messages', 'c1', { outlets: { chatGroupMembers: ['group-chat-members'] } }]);
+        this.router.navigate(['messages', 'c1', 'info', 'members']);
     }
 }

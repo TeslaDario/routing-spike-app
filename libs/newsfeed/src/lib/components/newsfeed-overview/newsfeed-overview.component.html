@@ -1,24 +1,24 @@
-<rapp-view [showBottomNavbar]="true">
-    <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
-        <rapp-toolbar-left title="News"></rapp-toolbar-left>
+<rapp-drawer-view [opened]="true" [hideBorder]="true">
+    <rapp-newsfeed-aside rappDrawer></rapp-newsfeed-aside>
 
-        <rapp-toolbar-right>
-            <button mat-icon-button class="ml-4" (click)="openGroups()">
-                <mat-icon class="toolbar-icon">groups</mat-icon>
-            </button>
-            <button mat-icon-button>
-                <mat-icon class="toolbar-icon" (click)="openSearch()">search</mat-icon>
-            </button>
-            <button mat-icon-button>
-                <mat-icon class="toolbar-icon" (click)="openActivities()">notifications_none</mat-icon>
-            </button>
-        </rapp-toolbar-right>
-    </rapp-toolbar>
+    <rapp-view [showBottomNavbar]="true">
+        <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
+            <rapp-toolbar-left title="News"></rapp-toolbar-left>
 
-    <rapp-content [showBackgroundImage]="true">
-        <rapp-drawer-view [opened]="true" [hideBorder]="true">
-            <rapp-newsfeed-aside rappDrawer></rapp-newsfeed-aside>
+            <rapp-toolbar-right>
+                <button mat-icon-button class="ml-4" (click)="openGroups()">
+                    <mat-icon class="toolbar-icon">groups</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon class="toolbar-icon" (click)="openSearch()">search</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon class="toolbar-icon" (click)="openActivities()">notifications_none</mat-icon>
+                </button>
+            </rapp-toolbar-right>
+        </rapp-toolbar>
 
+        <rapp-content [showBackgroundImage]="true">
             <rapp-floating-action-button
                 text="Post"
                 (click)="addPost()"
@@ -35,6 +35,6 @@
                     ></rapp-item>
                 </div>
             </rapp-post-feed>
-        </rapp-drawer-view>
-    </rapp-content>
-</rapp-view>
+        </rapp-content>
+    </rapp-view>
+</rapp-drawer-view>

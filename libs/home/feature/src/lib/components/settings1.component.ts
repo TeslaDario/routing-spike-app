@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
                 <rapp-content> </rapp-content>
             </rapp-view>
         </rapp-modal-view>
+
         <router-outlet></router-outlet>
     `,
 })

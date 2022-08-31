@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Chat, Message, MOCK_MESSAGES, MOCK_USERS, StoreFacade, User } from '@rapp/store';
+import { Chat, LayoutMode, Message, MOCK_MESSAGES, MOCK_USERS, StoreFacade, User } from '@rapp/store';
 import { UserService } from '@rapp/users';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 interface UIMessage extends Message {
     author: User | undefined;
@@ -17,8 +17,9 @@ export class ChatOverviewComponent implements AfterViewInit, OnDestroy {
     messages!: UIMessage[];
     chatId!: Chat['id'];
     author!: User;
-    layoutMode$ = this.storeFacade.getMode();
-    private sub: Subscription;
+    drawerOpened = false;
+    layoutMode!: LayoutMode;
+    private destroyed$ = new Subject();
 
     @ViewChild('chatOverviewRef') chatOverviewRef!: ElementRef<HTMLElement>;
 
@@ -28,7 +29,12 @@ export class ChatOverviewComponent implements AfterViewInit, OnDestroy {
         private storeFacade: StoreFacade,
         private userService: UserService
     ) {
-        this.sub = this.route.params.subscribe((params) => {
+        this.storeFacade
+            .getMode()
+            .pipe(takeUntil(this.destroyed$))
+            .subscribe((mode) => (this.layoutMode = mode));
+
+        this.route.params.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
             this.chatId = params['chatId'];
 
             this.messages = MOCK_MESSAGES.filter((m) => m.chatId === this.chatId).map((m) => {
@@ -45,7 +51,11 @@ export class ChatOverviewComponent implements AfterViewInit, OnDestroy {
     }
 
     openChatInfo() {
-        this.router.navigate(['messages', this.chatId, { outlets: { chatGroupInfo: ['group-chat-info'] } }]);
+        if (this.layoutMode === 'triple') {
+            this.drawerOpened = true;
+        } else {
+            this.router.navigate(['messages', this.chatId, 'info']);
+        }
     }
 
     openProfile(userId: string) {
@@ -53,7 +63,7 @@ export class ChatOverviewComponent implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.sub.unsubscribe();
+        this.destroyed$.complete();
     }
 
     private scrollToBottom(): void {

@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
                 <ng-content></ng-content>
             </div>
 
-            <div class="combined-view-detail" [class.combined-view-detail__active]="outlet.isActivated">
+            <div class="combined-view-detail">
                 <router-outlet #outlet="outlet"></router-outlet>
                 <div
                     *ngIf="(layoutMode$ | async) !== 'single' && !outlet.isActivated"
@@ -38,8 +38,20 @@ import { Observable } from 'rxjs';
                 overflow: hidden;
 
                 &-master {
+                    position: relative;
                     overflow: scroll;
                     flex: 0 0 var(--master-width);
+
+                    &::after {
+                        content: '';
+                        width: 1px;
+                        background: $ultraLight;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        z-index: 1;
+                    }
                 }
 
                 &-detail {
@@ -47,16 +59,6 @@ import { Observable } from 'rxjs';
                     overflow: scroll;
                     transition: transform 150ms ease-in-out;
                     z-index: 1;
-
-                    &::before {
-                        content: '';
-                        width: 1px;
-                        background: $ultraLight;
-                        position: absolute;
-                        top: 0;
-                        bottom: 0;
-                        z-index: 1;
-                    }
 
                     &__empty {
                         display: flex;
@@ -66,8 +68,8 @@ import { Observable } from 'rxjs';
                     }
                 }
 
-                &-master__only ::before,
-                &-detail__only ::before {
+                &-master__only ::after,
+                &-detail__only ::after {
                     content: none;
                 }
 
@@ -80,6 +82,5 @@ import { Observable } from 'rxjs';
 })
 export class CombinedViewComponent {
     layoutMode$: Observable<LayoutMode> = this.storeFacade.getMode();
-
     constructor(private storeFacade: StoreFacade) {}
 }

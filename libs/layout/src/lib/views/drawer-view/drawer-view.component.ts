@@ -1,6 +1,17 @@
-import { AfterContentChecked, Component, ElementRef, Input } from '@angular/core';
+import {
+    AfterContentChecked,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    ViewChild,
+} from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { LayoutMode, StoreFacade } from '@rapp/store';
 import { Observable } from 'rxjs';
+import { DrawerService } from './drawer.service';
 
 @Component({
     selector: 'rapp-drawer-view',
@@ -25,10 +36,12 @@ import { Observable } from 'rxjs';
         `
             :host {
                 display: block;
+                height: 100%;
             }
             .mat-drawer-container,
             .mat-drawer {
                 background-color: transparent;
+                height: 100%;
             }
             .mat-drawer {
                 width: var(--master-width);
@@ -40,14 +53,26 @@ import { Observable } from 'rxjs';
         `,
     ],
 })
-export class DrawerViewComponent implements AfterContentChecked {
-    @Input() opened = false;
+export class DrawerViewComponent implements OnInit, AfterContentChecked {
+    @ViewChild(MatSidenav, { static: true }) drawer!: MatSidenav;
     @Input() hideBorder = false;
+
+    @Input() opened = false;
+    @Output() openedChange = new EventEmitter<boolean>();
 
     fixedTopGap = 0;
     layoutMode$: Observable<LayoutMode> = this.storeFacade.getMode();
 
-    constructor(private elRef: ElementRef<HTMLElement>, private storeFacade: StoreFacade) {}
+    constructor(
+        private elRef: ElementRef<HTMLElement>,
+        private storeFacade: StoreFacade,
+        private drawerService: DrawerService
+    ) {}
+
+    ngOnInit(): void {
+        this.drawerService.drawer = this.drawer;
+        this.drawer.closedStart.subscribe(() => this.openedChange.emit(false));
+    }
 
     ngAfterContentChecked(): void {
         const el = this.elRef.nativeElement;

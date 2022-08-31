@@ -1,53 +1,58 @@
-<rapp-view>
-    <rapp-toolbar>
-        <rapp-toolbar-left
-            [icon]="(layoutMode$ | async) === 'single' ? 'back' : undefined"
-            [title]="chatId"
-        ></rapp-toolbar-left>
+<rapp-drawer-view [(opened)]="drawerOpened">
+    <rapp-group-chat-info rappDrawer *ngIf="layoutMode === 'triple'"></rapp-group-chat-info>
 
-        <rapp-toolbar-right>
-            <button mat-icon-button (click)="openChatInfo()">
-                <mat-icon class="toolbar-icon">info</mat-icon>
-            </button>
-        </rapp-toolbar-right></rapp-toolbar
-    >
+    <rapp-view>
+        <rapp-toolbar>
+            <rapp-toolbar-left
+                [icon]="layoutMode === 'single' ? 'back' : undefined"
+                [title]="chatId"
+            ></rapp-toolbar-left>
 
-    <rapp-content [showBackgroundImage]="true" class="pb-0">
-        <div class="chat-overview-wrapper">
-            <div class="container chat-overview-content" #chatOverviewRef>
-                <rapp-center-content>
-                    <ng-container *ngFor="let message of messages">
-                        <div class="message-item" *ngIf="message.author" [ngClass]="{ 'from-me': message.fromMe }">
-                            <rapp-avatar *ngIf="!message.fromMe" (click)="openProfile(message.author.id)"></rapp-avatar>
-                            <div class="message">
-                                <h3 (click)="openProfile(message.author.id)">{{ message.author.name }}</h3>
-                                <p>{{ message.body }}</p>
+            <rapp-toolbar-right>
+                <button mat-icon-button (click)="openChatInfo()">
+                    <mat-icon class="toolbar-icon">info</mat-icon>
+                </button>
+            </rapp-toolbar-right>
+        </rapp-toolbar>
+
+        <rapp-content [showBackgroundImage]="true" class="pb-0">
+            <div class="chat-overview-wrapper">
+                <div class="container chat-overview-content" #chatOverviewRef>
+                    <rapp-center-content>
+                        <ng-container *ngFor="let message of messages">
+                            <div class="message-item" *ngIf="message.author" [ngClass]="{ 'from-me': message.fromMe }">
+                                <rapp-avatar
+                                    *ngIf="!message.fromMe"
+                                    (click)="openProfile(message.author.id)"
+                                ></rapp-avatar>
+                                <div class="message">
+                                    <h3 (click)="openProfile(message.author.id)">{{ message.author.name }}</h3>
+                                    <p>{{ message.body }}</p>
+                                </div>
                             </div>
+                        </ng-container>
+                    </rapp-center-content>
+                </div>
+
+                <div class="footer-input-wrapper">
+                    <rapp-center-content>
+                        <div class="footer-input">
+                            <input type="text" placeholder="Write something..." [(ngModel)]="newMessage" />
+
+                            <button
+                                mat-mini-fab
+                                color="primary"
+                                [disabled]="newMessage.length === 0"
+                                (click)="newMessage = ''"
+                            >
+                                <mat-icon>send</mat-icon>
+                            </button>
                         </div>
-                    </ng-container>
-                </rapp-center-content>
+                    </rapp-center-content>
+                </div>
             </div>
+        </rapp-content>
+    </rapp-view>
+</rapp-drawer-view>
 
-            <div class="footer-input-wrapper">
-                <rapp-center-content>
-                    <div class="footer-input">
-                        <input type="text" placeholder="Write something..." [(ngModel)]="newMessage" />
-
-                        <button
-                            mat-mini-fab
-                            color="primary"
-                            [disabled]="newMessage.length === 0"
-                            (click)="newMessage = ''"
-                        >
-                            <mat-icon>send</mat-icon>
-                        </button>
-                    </div>
-                </rapp-center-content>
-            </div>
-        </div>
-    </rapp-content>
-</rapp-view>
-
-<!-- ORDER OF AUXILARY ROUTES IS IMPORTANT -->
-<router-outlet name="chatGroupInfo"></router-outlet>
-<router-outlet name="chatGroupMembers"></router-outlet>
+<router-outlet></router-outlet>

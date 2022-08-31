@@ -1,24 +1,30 @@
-<rapp-view [showBottomNavbar]="true">
-    <rapp-toolbar>
-        <rapp-toolbar-left [icon]="layoutMode === 'single' ? 'back' : undefined" [title]="groupId"></rapp-toolbar-left>
+<rapp-drawer-view [(opened)]="drawerOpened">
+    <rapp-group-info rappDrawer *ngIf="layoutMode === 'triple'"></rapp-group-info>
 
-        <rapp-toolbar-right>
-            <button mat-icon-button (click)="openGroupInfo()">
-                <mat-icon class="toolbar-icon">info</mat-icon>
-            </button>
-        </rapp-toolbar-right>
-    </rapp-toolbar>
+    <rapp-view [showBottomNavbar]="true">
+        <rapp-toolbar>
+            <rapp-toolbar-left
+                [icon]="layoutMode === 'single' ? 'back' : undefined"
+                [title]="groupId"
+            ></rapp-toolbar-left>
 
-    <rapp-content [showBackgroundImage]="true">
-        <rapp-drawer-view [opened]="drawerOpened">
-            <rapp-group-info rappDrawer *ngIf="layoutMode === 'triple'"></rapp-group-info>
+            <rapp-toolbar-right>
+                <button mat-icon-button (click)="openGroupInfo()">
+                    <mat-icon class="toolbar-icon">info</mat-icon>
+                </button>
+            </rapp-toolbar-right>
+        </rapp-toolbar>
 
-            <div class="group-wrapper">
-                <rapp-floating-action-button text="Post" (click)="addPost()"></rapp-floating-action-button>
+        <rapp-content [showBackgroundImage]="true">
+            <rapp-floating-action-button
+                text="Post"
+                (click)="addPost()"
+                [drawerOpened]="drawerOpened"
+            ></rapp-floating-action-button>
 
-                <rapp-post-feed [posts]="posts"></rapp-post-feed>
-            </div>
-        </rapp-drawer-view>
-        <router-outlet></router-outlet>
-    </rapp-content>
-</rapp-view>
+            <rapp-post-feed [posts]="posts"></rapp-post-feed>
+        </rapp-content>
+    </rapp-view>
+</rapp-drawer-view>
+
+<router-outlet></router-outlet>

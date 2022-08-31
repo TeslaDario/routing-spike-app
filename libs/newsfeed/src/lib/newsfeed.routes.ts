@@ -18,8 +18,8 @@ export const NewsfeedRoutes = RouterModule.forChild([
         component: NewsfeedComponent,
         children: [
             { path: '', component: NewsfeedOverviewComponent, pathMatch: 'full' },
-            { path: 'scheduled', component: ScheduledNewsfeedOverviewComponent },
             { path: 'groups', component: GroupListComponent },
+            { path: 'scheduled', component: ScheduledNewsfeedOverviewComponent },
             { path: ':groupId/post/:postId', component: PostRouteComponent },
 
             {
@@ -30,6 +30,7 @@ export const NewsfeedRoutes = RouterModule.forChild([
                     { path: 'info/members', component: GroupMembersComponent },
                 ],
             },
+
             { path: '**', redirectTo: '' },
         ],
     },

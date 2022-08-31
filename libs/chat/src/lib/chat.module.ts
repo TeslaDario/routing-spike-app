@@ -9,6 +9,7 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { ChatOverviewComponent } from './components/chat-overview/chat-overview.component';
 import { CreateChatComponent } from './components/create-chat/create-chat.component';
 import { CreateGroupChatComponent } from './components/create-group-chat/create-group-chat.component';
+import { GroupChatInfoModalComponent } from './components/group-chat-info/group-chat-info-modal.component';
 import { GroupChatInfoComponent } from './components/group-chat-info/group-chat-info.component';
 import { GroupChatMembersComponent } from './components/group-chat-members/group-chat-members.component';
 
@@ -20,8 +21,10 @@ import { GroupChatMembersComponent } from './components/group-chat-members/group
         CreateChatComponent,
         CreateGroupChatComponent,
         GroupChatInfoComponent,
+        GroupChatInfoModalComponent,
         GroupChatMembersComponent,
     ],
     imports: [CommonModule, ChatRoutes, FormsModule, MaterialModule, LayoutModule, AvatarModule, SearchInputModule],
+    exports: [GroupChatInfoComponent],
 })
 export class ChatModule {}
