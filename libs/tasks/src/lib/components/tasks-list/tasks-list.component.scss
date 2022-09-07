@@ -1,6 +1,19 @@
 @use 'apps/rapp/src/assets/styles' as *;
 @use 'apps/rapp/src/assets/styles' as *;
 
+.add-task {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1;
+}
+
+@media (max-width: $m) {
+    .add-task {
+        bottom: calc($bottomNavbarHeight + 20px + var(--safe-area-inset-bottom, 0px));
+    }
+}
+
 .task-item {
     padding: 6px 15px;
     cursor: pointer;

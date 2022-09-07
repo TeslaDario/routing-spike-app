@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { GroupInfoComponent, GroupListComponent, GroupMembersComponent, GroupOverviewComponent } from '@rapp/groups';
-import { PostRouteComponent } from '@rapp/post-feed';
+import { CanDeactivatePageGuard } from '@rapp/layout';
+import { CreatePostComponent, EditPostComponent, PostRouteComponent } from '@rapp/post-feed';
 import { NewsfeedOverviewComponent } from './components/newsfeed-overview/newsfeed-overview.component';
 import { ScheduledNewsfeedOverviewComponent } from './components/scheduled-newsfeed-overview/scheduled-newsfeed-overview.component';
 import { SearchComponent } from './components/search.component';
@@ -8,6 +9,19 @@ import { NewsfeedComponent } from './newsfeed.component';
 
 export const NewsfeedRoutes = RouterModule.forChild([
     { path: 'search', outlet: 'modal', component: SearchComponent },
+    {
+        path: 'create-post',
+        outlet: 'modal',
+        canDeactivate: [CanDeactivatePageGuard],
+        component: CreatePostComponent,
+    },
+    {
+        path: 'edit-post/:postId',
+        outlet: 'modal',
+        canDeactivate: [CanDeactivatePageGuard],
+        component: EditPostComponent,
+    },
+
     {
         path: '',
         component: NewsfeedComponent,

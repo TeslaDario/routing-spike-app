@@ -13,11 +13,11 @@ export const modalViewAnimations = [
     ]),
     trigger('transformModal', [
         state('void', style({ opacity: 0 })),
-        transition('void => double', [
+        transition('void => full', [
             animate('0ms', style({ transform: 'translate(-50%, -50%) scale(0.7)' })),
             animate('150ms cubic-bezier(0, 0, 0.2, 1)', style({ transform: 'translate(-50%, -50%)', opacity: 1 })),
         ]),
-        transition('void => single', [
+        transition('void => modal', [
             animate('0ms', style({ transform: 'translate3d(50%, -50%, 0)' })),
             animate('150ms cubic-bezier(0, 0, 0.2, 1)', style({ transform: 'translate(-50%, -50%)', opacity: 1 })),
         ]),

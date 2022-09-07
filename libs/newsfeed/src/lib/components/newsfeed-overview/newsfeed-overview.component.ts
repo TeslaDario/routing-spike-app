@@ -17,7 +17,7 @@ export class NewsfeedOverviewComponent {
     }
 
     addPost() {
-        this.router.navigate([{ outlets: { modal: ['create-post'] } }]);
+        this.router.navigate(['newsfeed', { outlets: { modal: ['create-post'] } }]);
     }
 
     openActivities() {

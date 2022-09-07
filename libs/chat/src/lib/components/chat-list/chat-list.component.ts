@@ -14,6 +14,6 @@ export class ChatListComponent {
     constructor(private router: Router, private storeFacade: StoreFacade) {}
 
     addChat() {
-        this.router.navigate(['messages', { outlets: { chatCreate: ['create-chat'] } }]);
+        this.router.navigate(['messages', 'create']);
     }
 }

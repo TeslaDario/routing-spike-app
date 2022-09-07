@@ -24,6 +24,8 @@ import { Router } from '@angular/router';
                 </rapp-content>
             </rapp-view>
         </rapp-modal-view>
+
+        <router-outlet></router-outlet>
     `,
 })
 export class CreateChatComponent {
@@ -32,6 +34,6 @@ export class CreateChatComponent {
     }
 
     createGroupChat() {
-        this.router.navigate(['messages', { outlets: { chatGroupCreate: ['create-group-chat'] } }]);
+        this.router.navigate(['messages', 'create', 'group-chat']);
     }
 }

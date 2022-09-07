@@ -11,8 +11,13 @@ export const ChatRoutes = RouterModule.forChild([
         path: '',
         component: ChatComponent,
         children: [
-            { path: 'create-chat', component: CreateChatComponent },
-            { path: 'create-group-chat', component: CreateGroupChatComponent },
+            {
+                path: 'create',
+                component: CreateChatComponent,
+                children: [{ path: 'group-chat', component: CreateGroupChatComponent }],
+            },
+            { path: 'group-chat', component: CreateGroupChatComponent },
+
             {
                 path: ':chatId',
                 component: ChatOverviewComponent,

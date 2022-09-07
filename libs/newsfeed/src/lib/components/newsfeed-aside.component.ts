@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MOCK_GROUPS, MOCK_POSTS, StoreFacade } from '@rapp/store';
+import { MOCK_GROUPS, MOCK_POSTS } from '@rapp/store';
 
 @Component({
     selector: 'rapp-newsfeed-aside',
     template: `
         <div class="newsfeed-aside-wrapper">
-            <!-- [style.width.px]="masterWidth$ | async"> -->
             <div class="item-wrapper m-10">
                 <rapp-item
                     leftIcon="access_time"
@@ -60,19 +59,19 @@ import { MOCK_GROUPS, MOCK_POSTS, StoreFacade } from '@rapp/store';
     ],
 })
 export class NewsfeedAsideComponent {
-    constructor(private storeFacade: StoreFacade, private router: Router) {}
+    constructor(private router: Router) {}
 
     openScheduledPost() {
         this.router.navigate(['newsfeed', 'scheduled']);
     }
     newPost() {
-        this.router.navigate([{ outlets: { modal: ['create-post'] } }]);
+        this.router.navigate(['newsfeed', { outlets: { modal: ['create-post'] } }]);
     }
     newTask() {
         this.router.navigate([{ outlets: { modal: ['create-task'] } }]);
     }
     newGroupChat() {
-        this.router.navigate(['messages', { outlets: { chatCreate: ['create-chat'] } }]);
+        this.router.navigate(['messages', 'group-chat']);
     }
     openActivity(activity: number) {
         this.router.navigate(['newsfeed', MOCK_GROUPS[0].id, 'post', MOCK_POSTS[0].id]);

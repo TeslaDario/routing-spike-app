@@ -1,7 +1,7 @@
 import { Location, LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DrawerService } from '../views/drawer-view/drawer.service';
+import { DrawerViewService } from '../views/drawer-view/drawer-view.service';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
@@ -9,14 +9,14 @@ export class NavigationService {
         private location: Location,
         private locationStrategy: LocationStrategy,
         private dialog: MatDialog,
-        private drawerService: DrawerService
+        private drawerViewService: DrawerViewService
     ) {}
 
     public goBack(relativePosition?: number | undefined): void {
         const currentPath = this.location.path();
 
         // handle drawer closing for back from drawer component and inside modal-view
-        const { drawer, drawerOpened, drawerPath } = this.drawerService;
+        const { drawer, drawerOpened, drawerPath } = this.drawerViewService;
         if (typeof relativePosition === 'number' && relativePosition > 1 && drawerOpened) {
             relativePosition -= 1;
             drawer.close();

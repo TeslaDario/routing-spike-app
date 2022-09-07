@@ -37,6 +37,6 @@ export class PostComponent {
     }
 
     editPost() {
-        this.router.navigate([{ outlets: { modal: ['edit-post', this.post.id] } }]);
+        this.router.navigate(['newsfeed', { outlets: { modal: ['edit-post', this.post.id] } }]);
     }
 }

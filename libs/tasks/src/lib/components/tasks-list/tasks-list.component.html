@@ -11,6 +11,13 @@
     </rapp-toolbar>
 
     <rapp-content>
+        <div class="add-task" *ngIf="(layoutMode$ | async) === 'single'">
+            <button mat-raised-button color="primary" (click)="addTask()">
+                <mat-icon>add</mat-icon>
+                <span>Task</span>
+            </button>
+        </div>
+
         <ng-container *ngFor="let task of tasks">
             <div matRipple class="task-item" [routerLink]="['/tasks', task.id]" routerLinkActive="active">
                 <h3>

@@ -7,7 +7,7 @@
     </rapp-toolbar>
 
     <rapp-content>
-        <rapp-floating-action-button text="Task" (click)="addTask()"></rapp-floating-action-button>
+        <rapp-floating-action-button *ngIf="(layoutMode$ | async) !== 'single'" text="Task" (click)="addTask()"></rapp-floating-action-button>
 
         <rapp-center-content class="container">
             <h1>

@@ -36,7 +36,7 @@ export class GroupOverviewComponent implements OnDestroy {
     }
 
     addPost() {
-        this.router.navigate([{ outlets: { modal: ['create-post'] } }]);
+        this.router.navigate(['newsfeed', { outlets: { modal: ['create-post'] } }]);
     }
 
     ngOnDestroy(): void {

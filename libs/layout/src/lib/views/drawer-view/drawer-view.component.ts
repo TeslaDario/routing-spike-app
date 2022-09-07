@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { StoreFacade } from '@rapp/store';
-import { DrawerService } from './drawer.service';
+import { DrawerViewService } from './drawer-view.service';
 
 @Component({
     selector: 'rapp-drawer-view',
@@ -64,7 +64,7 @@ export class DrawerViewComponent implements OnInit, AfterContentChecked {
     constructor(
         private elRef: ElementRef<HTMLElement>,
         private storeFacade: StoreFacade,
-        private drawerService: DrawerService
+        private drawerService: DrawerViewService
     ) {}
 
     ngOnInit(): void {
