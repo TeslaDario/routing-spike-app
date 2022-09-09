@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MOCK_POSTS, Post } from '@rapp/store';
 
 @Component({
@@ -23,7 +22,7 @@ import { MOCK_POSTS, Post } from '@rapp/store';
 export class PostRouteComponent {
     @Input() post: Post = MOCK_POSTS[1];
 
-    constructor(private route: ActivatedRoute) {
-        console.log(this.route.snapshot);
+    constructor() {
+        console.log('PostRouteComponent - constructor');
     }
 }

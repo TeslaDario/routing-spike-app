@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentInit, Component, HostListener, Input, OnDestroy } from '@angular/core';
 import { LayoutMode, StoreFacade } from '@rapp/store';
 import { NavigationService } from '../../navigation/navigation.service';
 import { modalViewAnimations } from './modal-view.animation';
@@ -86,7 +86,7 @@ type ModalViewMode = 'modal' | 'full' | 'side';
     ],
     animations: modalViewAnimations,
 })
-export class ModalViewComponent implements OnInit, OnDestroy {
+export class ModalViewComponent implements AfterContentInit, OnDestroy {
     @Input() mode: ModalViewMode = 'modal';
     backdropActive = false;
     layoutMode!: LayoutMode;
@@ -104,7 +104,7 @@ export class ModalViewComponent implements OnInit, OnDestroy {
         this.storeFacade.getMode().subscribe((mode) => (this.layoutMode = mode));
     }
 
-    ngOnInit(): void {
+    ngAfterContentInit(): void {
         this.backdropActive = this.modalViewService.shouldActivateBackdrop(this);
     }
 

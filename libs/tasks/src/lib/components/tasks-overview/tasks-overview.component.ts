@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MOCK_TASKS, StoreFacade, Task } from '@rapp/store';
 import { Subscription } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class TasksOverviewComponent implements OnDestroy {
     readonly layoutMode$ = this.storeFacade.getMode();
     private sub: Subscription;
 
-    constructor(private route: ActivatedRoute, private storeFacade: StoreFacade) {
+    constructor(private router: Router, private route: ActivatedRoute, private storeFacade: StoreFacade) {
         this.sub = this.route.params.subscribe((params) => {
             this.taskId = params['taskId'];
 
@@ -22,7 +22,7 @@ export class TasksOverviewComponent implements OnDestroy {
     }
 
     addTask() {
-        alert('TODO: should open add tasks modal');
+        this.router.navigate(['tasks', 'create']);
     }
 
     ngOnDestroy(): void {

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { StoreFacade } from '@rapp/store';
 import { UserService } from '@rapp/users';
 
@@ -26,7 +25,7 @@ import { UserService } from '@rapp/users';
                         <mat-icon class="toolbar-icon">search</mat-icon>
                     </button>
                     <rapp-menu-panel #searchMenu="menuPanel" [hasSearch]="true">
-                        <rapp-activities-items></rapp-activities-items>
+                        <rapp-search-results></rapp-search-results>
                     </rapp-menu-panel>
 
                     <button
@@ -87,15 +86,7 @@ export class AppComponent {
     title = 'Routing App';
     readonly layoutMode$ = this.storeFacade.getMode();
 
-    constructor(private storeFacade: StoreFacade, private router: Router, private userService: UserService) {}
-
-    openSearch() {
-        this.router.navigate(['newsfeed', { outlets: { modal: ['search'] } }]);
-    }
-
-    openActivities() {
-        this.router.navigate(['activities']);
-    }
+    constructor(private storeFacade: StoreFacade, private userService: UserService) {}
 
     openProfile() {
         this.userService.openActor();

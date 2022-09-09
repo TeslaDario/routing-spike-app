@@ -1,16 +1,15 @@
 import {
     AfterContentChecked,
+    ChangeDetectorRef,
     Component,
     ElementRef,
     EventEmitter,
     Input,
-    OnInit,
     Output,
     ViewChild,
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { StoreFacade } from '@rapp/store';
-import { DrawerViewService } from './drawer-view.service';
 
 @Component({
     selector: 'rapp-drawer-view',
@@ -22,14 +21,18 @@ import { DrawerViewService } from './drawer-view.service';
                 [disableClose]="true"
                 [fixedInViewport]="true"
                 [fixedTopGap]="fixedTopGap"
-                [opened]="opened && (layoutMode$ | async) === 'triple'"
+                [opened]="outlet.isActivated"
+                (openedChange)="onOpenedChange($event)"
+                *ngIf="(layoutMode$ | async) === 'triple'"
             >
-                <ng-content select="[rappDrawer]"></ng-content>
+                <router-outlet #outlet="outlet"></router-outlet>
             </mat-sidenav>
             <mat-sidenav-content>
                 <ng-content></ng-content>
             </mat-sidenav-content>
         </mat-sidenav-container>
+
+        <router-outlet *ngIf="(layoutMode$ | async) !== 'triple'"></router-outlet>
     `,
     styles: [
         `
@@ -51,11 +54,10 @@ import { DrawerViewService } from './drawer-view.service';
         `,
     ],
 })
-export class DrawerViewComponent implements OnInit, AfterContentChecked {
+export class DrawerViewComponent implements AfterContentChecked {
     @ViewChild(MatSidenav, { static: true }) drawer!: MatSidenav;
-    @Input() hideBorder = false;
 
-    @Input() opened = false;
+    @Input() hideBorder = false;
     @Output() openedChange = new EventEmitter<boolean>();
 
     fixedTopGap = 0;
@@ -64,16 +66,16 @@ export class DrawerViewComponent implements OnInit, AfterContentChecked {
     constructor(
         private elRef: ElementRef<HTMLElement>,
         private storeFacade: StoreFacade,
-        private drawerService: DrawerViewService
+        private cdRef: ChangeDetectorRef
     ) {}
 
-    ngOnInit(): void {
-        this.drawerService.drawer = this.drawer;
-        this.drawer.closedStart.subscribe(() => this.openedChange.emit(false));
+    onOpenedChange(event: boolean) {
+        this.openedChange.emit(event);
     }
 
     ngAfterContentChecked(): void {
         const el = this.elRef.nativeElement;
         this.fixedTopGap = el.getBoundingClientRect().top;
+        this.cdRef.detectChanges();
     }
 }

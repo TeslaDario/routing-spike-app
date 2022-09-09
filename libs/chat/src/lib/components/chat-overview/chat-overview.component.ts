@@ -17,7 +17,6 @@ export class ChatOverviewComponent implements AfterViewInit, OnDestroy {
     messages!: UIMessage[];
     chatId!: Chat['id'];
     author!: User;
-    drawerOpened = false;
     layoutMode!: LayoutMode;
     private destroyed$ = new Subject();
 
@@ -51,11 +50,7 @@ export class ChatOverviewComponent implements AfterViewInit, OnDestroy {
     }
 
     openChatInfo() {
-        if (this.layoutMode === 'triple') {
-            this.drawerOpened = true;
-        } else {
-            this.router.navigate(['messages', this.chatId, 'info']);
-        }
+        this.router.navigate(['messages', this.chatId, 'info']);
     }
 
     openProfile(userId: string) {

@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ActivitiesSharedModule } from '@rapp/activities-shared';
 import { LayoutModule } from '@rapp/layout';
+import { SharedComponentsModule } from '@rapp/shared';
 import { AppStoreModule } from '@rapp/store';
 import { AvatarModule, ItemModule, MaterialModule, MenuPanelModule } from '@rapp/ui';
 import { environment } from '../environments/environment';
@@ -44,6 +45,7 @@ import { AppRoutes } from './app.routes';
         MenuPanelModule,
         AvatarModule,
         ItemModule,
+        SharedComponentsModule,
         ActivitiesSharedModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,

@@ -1,6 +1,4 @@
-<rapp-drawer-view [opened]="true" [hideBorder]="true">
-    <rapp-newsfeed-aside rappDrawer></rapp-newsfeed-aside>
-
+<rapp-drawer-view [hideBorder]="true">
     <rapp-view [showBottomNavbar]="true">
         <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
             <rapp-toolbar-left title="News"></rapp-toolbar-left>

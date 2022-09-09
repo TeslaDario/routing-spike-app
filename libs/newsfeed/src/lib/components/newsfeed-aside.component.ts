@@ -68,10 +68,10 @@ export class NewsfeedAsideComponent {
         this.router.navigate(['newsfeed', { outlets: { modal: ['create-post'] } }]);
     }
     newTask() {
-        this.router.navigate([{ outlets: { modal: ['create-task'] } }]);
+        this.router.navigate(['tasks', 'create']);
     }
     newGroupChat() {
-        this.router.navigate(['messages', 'group-chat']);
+        this.router.navigate(['messages', 'create', 'group-chat']);
     }
     openActivity(activity: number) {
         this.router.navigate(['newsfeed', MOCK_GROUPS[0].id, 'post', MOCK_POSTS[0].id]);

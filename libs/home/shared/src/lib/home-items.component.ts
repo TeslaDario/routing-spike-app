@@ -14,11 +14,7 @@ import { Component } from '@angular/core';
     styles: [
         `
             @use 'apps/rapp/src/assets/styles' as *;
-            /* :root {
-                --home-item-column: 4;
-                --home-item-size: min(150px, 23vw);
-                --home-item-gap: 20px;
-            } */
+
             .home-item-wrapper {
                 display: grid;
                 grid-template-columns: repeat(var(--home-item-column), var(--home-item-size));

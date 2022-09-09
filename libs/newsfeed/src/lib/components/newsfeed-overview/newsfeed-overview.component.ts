@@ -13,7 +13,7 @@ export class NewsfeedOverviewComponent {
     constructor(private storeFacade: StoreFacade, private router: Router) {}
 
     openGroups() {
-        this.router.navigate(['newsfeed', 'groups']);
+        this.router.navigate(['newsfeed', 'groups'], { skipLocationChange: true });
     }
 
     addPost() {
@@ -25,7 +25,7 @@ export class NewsfeedOverviewComponent {
     }
 
     openSearch() {
-        this.router.navigate(['newsfeed', { outlets: { modal: ['search'] } }]);
+        this.router.navigate(['newsfeed', 'search']);
     }
 
     openScheduledPost() {

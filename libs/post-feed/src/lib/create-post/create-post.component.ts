@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CanDeactivatePage } from '@rapp/layout';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CanDeactivatePage, NavigationService } from '@rapp/layout';
 import { DialogService, UploadService } from '@rapp/shared';
 import { map, Observable, of } from 'rxjs';
 import { ScheduleDialogComponent } from '../schedule/schedule-dialog.component';
@@ -11,15 +12,24 @@ import { ScheduleDialogComponent } from '../schedule/schedule-dialog.component';
             <rapp-view>
                 <rapp-toolbar>
                     <rapp-toolbar-left icon="back" title="Create post"></rapp-toolbar-left>
+                    <rapp-toolbar-right>
+                        <button mat-button (click)="save()" color="primary">{{ saveStatus }}</button>
+                    </rapp-toolbar-right>
                 </rapp-toolbar>
 
                 <rapp-content>
                     <div class="container">
                         <div>
-                            <input type="text" placeholder="Title" style="width: 100%" />
+                            <input
+                                type="text"
+                                placeholder="Title"
+                                style="width: 100%"
+                                [(ngModel)]="title"
+                                cdkFocusInitial
+                            />
                         </div>
                         <div>
-                            <textarea rows="5" placeholder="Body" style="width: 100%;"></textarea>
+                            <textarea rows="5" placeholder="Body" style="width: 100%;" [(ngModel)]="body"></textarea>
                         </div>
                         <br />
                         <div>
@@ -46,7 +56,10 @@ import { ScheduleDialogComponent } from '../schedule/schedule-dialog.component';
     providers: [UploadService],
 })
 export class CreatePostComponent implements CanDeactivatePage {
+    title = '';
+    body = '';
     images: string[] = [];
+    saveStatus = 'Save';
     someDataFromMatDialog!: string;
     canDeactivatePage: () => Observable<boolean> = () => {
         if (this.images.length !== 0) {
@@ -62,7 +75,12 @@ export class CreatePostComponent implements CanDeactivatePage {
         return of(true);
     };
 
-    constructor(private dialogService: DialogService, private uploadService: UploadService) {
+    constructor(
+        private dialogService: DialogService,
+        private uploadService: UploadService,
+        private navigationService: NavigationService,
+        private _snackBar: MatSnackBar
+    ) {
         console.log('CreatePostComponent - constructor');
         this.uploadService.getUploads$().subscribe((uploads) => {
             this.images = uploads;
@@ -73,13 +91,37 @@ export class CreatePostComponent implements CanDeactivatePage {
         this.uploadService.addUpload();
     }
 
+    save() {
+        if (this.title.trim() === '' || this.body.trim() === '') {
+            this._snackBar.open('Fill title and body fields!!!', '', { duration: 2000, verticalPosition: 'top' });
+            return;
+        }
+
+        this.saveStatus = 'Sending to BE';
+
+        // EXAMPLE OF SAVE FLOW
+        const timeout = 1000;
+        if (this.images.length) {
+            setTimeout(() => {
+                // must be cleared to satisfy 'canDeactivatePage'
+                this.images = [];
+                this.saveStatus = 'Cleaning';
+            }, timeout);
+        }
+
+        setTimeout(
+            () => {
+                this.navigationService.goBack();
+                this._snackBar.open('POST SAVED!!!', 'OK', { duration: 2000, verticalPosition: 'top' });
+            },
+            this.images.length ? timeout * 2 : timeout
+        );
+    }
+
     openDialog() {
         this.dialogService
             .fullscreen(ScheduleDialogComponent)
             .afterClosed()
-            .subscribe((result) => {
-                console.log(result);
-                this.someDataFromMatDialog = result;
-            });
+            .subscribe((result) => (this.someDataFromMatDialog = result));
     }
 }

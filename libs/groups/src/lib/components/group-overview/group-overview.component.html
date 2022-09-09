@@ -1,6 +1,4 @@
-<rapp-drawer-view [(opened)]="drawerOpened">
-    <rapp-group-info rappDrawer *ngIf="layoutMode === 'triple'"></rapp-group-info>
-
+<rapp-drawer-view (openedChange)="drawerOpened = $event">
     <rapp-view [showBottomNavbar]="true">
         <rapp-toolbar>
             <rapp-toolbar-left
@@ -26,5 +24,3 @@
         </rapp-content>
     </rapp-view>
 </rapp-drawer-view>
-
-<router-outlet></router-outlet>

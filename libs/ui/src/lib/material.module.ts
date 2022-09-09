@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -26,6 +27,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatMenuModule,
         MatRadioModule,
         MatSidenavModule,
+        MatSnackBarModule,
     ],
 })
 export class MaterialModule {}

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'rapp-settings1',
@@ -18,7 +17,7 @@ import { Router } from '@angular/router';
     `,
 })
 export class Settings1Component {
-    constructor(private router: Router) {
+    constructor() {
         console.log('Settings1Component - constructor');
     }
 }

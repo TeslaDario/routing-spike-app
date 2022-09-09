@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { GroupsModule } from '@rapp/groups';
 import { LayoutModule } from '@rapp/layout';
 import { PostFeedModule } from '@rapp/post-feed';
+import { SharedComponentsModule } from '@rapp/shared';
 import { AvatarModule, FloatingActionButtonModule, ItemModule, MaterialModule, SearchInputModule } from '@rapp/ui';
 import { NewsfeedAsideComponent } from './components/newsfeed-aside.component';
 import { NewsfeedOverviewComponent } from './components/newsfeed-overview/newsfeed-overview.component';
@@ -30,6 +31,7 @@ import { NewsfeedRoutes } from './newsfeed.routes';
         SearchInputModule,
         FloatingActionButtonModule,
         ItemModule,
+        SharedComponentsModule,
     ],
 })
 export class NewsfeedModule {}

@@ -28,11 +28,7 @@ export class GroupOverviewComponent implements OnDestroy {
     }
 
     openGroupInfo() {
-        if (this.layoutMode === 'triple') {
-            this.drawerOpened = true;
-        } else {
-            this.router.navigate(['newsfeed', 'g1', 'info']);
-        }
+        this.router.navigate(['newsfeed', 'g1', 'info']);
     }
 
     addPost() {

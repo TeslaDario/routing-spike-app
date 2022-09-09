@@ -1,6 +1,4 @@
-<rapp-drawer-view [(opened)]="drawerOpened">
-    <rapp-group-chat-info rappDrawer *ngIf="layoutMode === 'triple'"></rapp-group-chat-info>
-
+<rapp-drawer-view>
     <rapp-view>
         <rapp-toolbar>
             <rapp-toolbar-left
@@ -54,5 +52,3 @@
         </rapp-content>
     </rapp-view>
 </rapp-drawer-view>
-
-<router-outlet></router-outlet>

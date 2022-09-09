@@ -12,22 +12,34 @@ export const ChatRoutes = RouterModule.forChild([
         component: ChatComponent,
         children: [
             {
+                // modal-view component
                 path: 'create',
                 component: CreateChatComponent,
-                children: [{ path: 'group-chat', component: CreateGroupChatComponent }],
+                children: [
+                    {
+                        // modal-view component
+                        path: 'group-chat',
+                        component: CreateGroupChatComponent,
+                    },
+                ],
             },
-            { path: 'group-chat', component: CreateGroupChatComponent },
 
             {
                 path: ':chatId',
                 component: ChatOverviewComponent,
                 children: [
                     {
+                        // modal-view mode='side' component with extra <router-outlet> for stacking logic
                         path: 'info',
                         component: GroupChatInfoComponent,
-                        children: [{ path: 'members', component: GroupChatMembersComponent }],
+                        children: [
+                            {
+                                // modal-view mode='side' component
+                                path: 'members',
+                                component: GroupChatMembersComponent,
+                            },
+                        ],
                     },
-                    { path: 'members', component: GroupChatMembersComponent },
                 ],
             },
         ],

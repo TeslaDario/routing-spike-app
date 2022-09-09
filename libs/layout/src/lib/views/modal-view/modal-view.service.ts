@@ -12,7 +12,7 @@ export class ModalViewService implements OnDestroy {
     /** Helper function to set backdrop background-color and box-shadow only on first modal */
     shouldActivateBackdrop(modal: ModalViewComponent): boolean {
         const index = this.openModals
-            .filter((modal) => modal.mode === 'modal' || modal.layoutMode !== 'triple')
+            .filter((modal) => modal.mode === 'modal' || (modal.mode === 'side' && modal.layoutMode !== 'triple'))
             .indexOf(modal);
         return index === 0;
     }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MOCK_TASKS, StoreFacade, Task } from '@rapp/store';
 
 @Component({
@@ -10,9 +11,9 @@ export class TasksListComponent {
     tasks: Task[] = MOCK_TASKS;
     readonly layoutMode$ = this.storeFacade.getMode();
 
-    constructor(private storeFacade: StoreFacade) {}
+    constructor(private router: Router, private storeFacade: StoreFacade) {}
 
     addTask() {
-        alert('TODO: should open add tasks modal');
+        this.router.navigate(['tasks', 'create']);
     }
 }

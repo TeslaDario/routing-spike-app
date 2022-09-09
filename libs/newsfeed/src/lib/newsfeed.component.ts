@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { MOCK_POSTS, Post } from '@rapp/store';
-import { UserService } from '@rapp/users';
 
 @Component({
     selector: 'rapp-newsfeed',
@@ -13,18 +11,4 @@ import { UserService } from '@rapp/users';
 })
 export class NewsfeedComponent {
     posts: Post[] = MOCK_POSTS;
-
-    constructor(private router: Router, private userService: UserService) {}
-
-    openSearch() {
-        this.router.navigate(['newsfeed', { outlets: { modal: ['search'] } }]);
-    }
-
-    openActivities() {
-        this.router.navigate(['activities']);
-    }
-
-    openProfile() {
-        this.userService.openActor();
-    }
 }

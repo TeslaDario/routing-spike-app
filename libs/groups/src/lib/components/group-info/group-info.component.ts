@@ -27,7 +27,7 @@ import { UserService } from '@rapp/users';
                         <button mat-flat-button (click)="goToPost()" color="primary">Go to post route</button>
                         <br />
                         <button mat-flat-button [rappBackButton] color="primary">CLOSE</button>
-                        
+
                         <h2>SOME CONTENT FOR SCROLLING</h2>
                         <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
@@ -83,11 +83,7 @@ export class GroupInfoComponent {
     }
 
     openMembers() {
-        if (this.layoutMode === 'triple') {
-            this.router.navigate(['newsfeed', 'g1', 'members']);
-        } else {
-            this.router.navigate(['newsfeed', 'g1', 'info', 'members']);
-        }
+        this.router.navigate(['newsfeed', 'g1', 'info', 'members']);
     }
 
     goToPost() {

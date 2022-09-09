@@ -97,10 +97,7 @@ export class EditPostComponent implements OnDestroy, CanDeactivatePage {
         this.dialogService
             .fullscreen(ScheduleDialogComponent)
             .afterClosed()
-            .subscribe((result) => {
-                console.log(result);
-                this.someDataFromMatDialog = result;
-            });
+            .subscribe((result) => (this.someDataFromMatDialog = result));
     }
 
     ngOnDestroy(): void {

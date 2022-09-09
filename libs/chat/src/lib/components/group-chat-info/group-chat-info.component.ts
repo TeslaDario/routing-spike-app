@@ -44,10 +44,6 @@ export class GroupChatInfoComponent {
     }
 
     openMembers() {
-        if (this.layoutMode === 'triple') {
-            this.router.navigate(['messages', 'c1', 'members']);
-        } else {
-            this.router.navigate(['messages', 'c1', 'info', 'members']);
-        }
+        this.router.navigate(['messages', 'c1', 'info', 'members']);
     }
 }

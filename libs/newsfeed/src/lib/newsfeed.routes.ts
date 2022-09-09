@@ -2,13 +2,14 @@ import { RouterModule } from '@angular/router';
 import { GroupInfoComponent, GroupListComponent, GroupMembersComponent, GroupOverviewComponent } from '@rapp/groups';
 import { CanDeactivatePageGuard } from '@rapp/layout';
 import { CreatePostComponent, EditPostComponent, PostRouteComponent } from '@rapp/post-feed';
+import { NewsfeedAsideComponent } from './components/newsfeed-aside.component';
 import { NewsfeedOverviewComponent } from './components/newsfeed-overview/newsfeed-overview.component';
 import { ScheduledNewsfeedOverviewComponent } from './components/scheduled-newsfeed-overview/scheduled-newsfeed-overview.component';
 import { SearchComponent } from './components/search.component';
 import { NewsfeedComponent } from './newsfeed.component';
 
 export const NewsfeedRoutes = RouterModule.forChild([
-    { path: 'search', outlet: 'modal', component: SearchComponent },
+    // { path: 'search', outlet: 'modal', component: SearchComponent },
     {
         path: 'create-post',
         outlet: 'modal',
@@ -26,7 +27,14 @@ export const NewsfeedRoutes = RouterModule.forChild([
         path: '',
         component: NewsfeedComponent,
         children: [
-            { path: '', component: NewsfeedOverviewComponent, pathMatch: 'full' },
+            {
+                path: '',
+                component: NewsfeedOverviewComponent,
+                children: [
+                    { path: 'search', component: SearchComponent },
+                    { path: '', component: NewsfeedAsideComponent },
+                ],
+            },
             { path: 'groups', component: GroupListComponent },
             { path: 'scheduled', component: ScheduledNewsfeedOverviewComponent },
             { path: ':groupId/post/:postId', component: PostRouteComponent },
@@ -40,7 +48,6 @@ export const NewsfeedRoutes = RouterModule.forChild([
                         component: GroupInfoComponent,
                         children: [{ path: 'members', component: GroupMembersComponent }],
                     },
-                    { path: 'members', component: GroupMembersComponent },
                 ],
             },
 
