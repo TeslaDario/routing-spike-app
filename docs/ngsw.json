@@ -1,0 +1,111 @@
+{
+  "configVersion": 1,
+  "timestamp": 1662731748103,
+  "index": "/rapp/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/rapp/203.4e9cb854b05c1431.js",
+        "/rapp/266.49539aaac234c929.js",
+        "/rapp/65.6dd1bb10ab7c7907.js",
+        "/rapp/747.8cbf9c0d7eea7c66.js",
+        "/rapp/925.b8950df2a1f4edbd.js",
+        "/rapp/common.2c5fcad994aaf607.js",
+        "/rapp/favicon.ico",
+        "/rapp/index.html",
+        "/rapp/main.fc9f6afd4f27e9ed.js",
+        "/rapp/manifest.webmanifest",
+        "/rapp/polyfills.bfbabb24a867ab36.js",
+        "/rapp/runtime.60d2bf60df79f96b.js",
+        "/rapp/styles.d8c5a9f0616c718f.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/rapp/assets/icons/icon-128x128.png",
+        "/rapp/assets/icons/icon-144x144.png",
+        "/rapp/assets/icons/icon-152x152.png",
+        "/rapp/assets/icons/icon-192x192.png",
+        "/rapp/assets/icons/icon-384x384.png",
+        "/rapp/assets/icons/icon-512x512.png",
+        "/rapp/assets/icons/icon-72x72.png",
+        "/rapp/assets/icons/icon-96x96.png",
+        "/rapp/assets/imgs/Bubble_Pattern.svg",
+        "/rapp/assets/imgs/group-placeholder.png",
+        "/rapp/assets/imgs/image-placeholder.png",
+        "/rapp/assets/imgs/logo.png",
+        "/rapp/assets/imgs/user-placeholder.png",
+        "/rapp/assets/styles/_index.scss",
+        "/rapp/assets/styles/_mat-dialog.scss",
+        "/rapp/assets/styles/_mat-menu.scss",
+        "/rapp/assets/styles/_variables.scss"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/rapp/203.4e9cb854b05c1431.js": "802a7eeba2ce38e4cbda73f5cdcbbd7f51820a75",
+    "/rapp/266.49539aaac234c929.js": "4e14c893c0e73f33ab5fddaef10aa40c3438216c",
+    "/rapp/65.6dd1bb10ab7c7907.js": "a1f772d3ab1b2f077a5701c5dbaa22803461cb66",
+    "/rapp/747.8cbf9c0d7eea7c66.js": "86949d78fc7c624b11fb420275ac630dbefda741",
+    "/rapp/925.b8950df2a1f4edbd.js": "b2a840985d569f68f40ad8a88504c73ab482f869",
+    "/rapp/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/rapp/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/rapp/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/rapp/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/rapp/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/rapp/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/rapp/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/rapp/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/rapp/assets/imgs/Bubble_Pattern.svg": "82f689467ae47302b07b20e35a49e4bd48fd12c7",
+    "/rapp/assets/imgs/group-placeholder.png": "a662c1f6628fc70a1c5f2b7279ef53f42de1be50",
+    "/rapp/assets/imgs/image-placeholder.png": "fa64cbdd10a766a1b35909350ca0578d746e1bbe",
+    "/rapp/assets/imgs/logo.png": "70ae09d533749d959bfdea0a85b02318254c40e1",
+    "/rapp/assets/imgs/user-placeholder.png": "4f89f13f9f46601789dd69c84a96c50d848c67c4",
+    "/rapp/assets/styles/_index.scss": "dc1b721c4c33e3d83219a3235beef49b2b8db58f",
+    "/rapp/assets/styles/_mat-dialog.scss": "ffb6000c726f8ba3602d5f94d720fc2fd67425d3",
+    "/rapp/assets/styles/_mat-menu.scss": "09134ff458234673173842191226ac85c208eb3f",
+    "/rapp/assets/styles/_variables.scss": "b6056ceca45c036e9616380f6f690cf010cbcf08",
+    "/rapp/common.2c5fcad994aaf607.js": "26ac52196ff7e8ae852fc6ead04d3af792ca5c68",
+    "/rapp/favicon.ico": "4e23d0f9b6ddaf3c9ddef90dbaed2342941297b5",
+    "/rapp/index.html": "be078a164ed05f66775f9a62f64ac9e45c78e923",
+    "/rapp/main.fc9f6afd4f27e9ed.js": "361c835baaf72637d270af28c1993a794e42ca6f",
+    "/rapp/manifest.webmanifest": "b40f58c354efe21713867738a066aebc80185d36",
+    "/rapp/polyfills.bfbabb24a867ab36.js": "e215f5b0fb20eb48abe9b504cfa7a98333cfe4f9",
+    "/rapp/runtime.60d2bf60df79f96b.js": "2a9675231b875f9374942aa10d20b8e85cdfa163",
+    "/rapp/styles.d8c5a9f0616c718f.css": "f806373a02a61cbc5f5d608be44c0c63aa5d548e"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
