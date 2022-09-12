@@ -2,6 +2,8 @@ import {
     AfterContentChecked,
     ChangeDetectorRef,
     Component,
+    ContentChild,
+    Directive,
     ElementRef,
     EventEmitter,
     Input,
@@ -10,6 +12,11 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { StoreFacade } from '@rapp/store';
+
+@Directive({
+    selector: '[rappFixedDrawer]',
+})
+export class FixedDrawerViewDirective {}
 
 @Component({
     selector: 'rapp-drawer-view',
@@ -21,12 +28,27 @@ import { StoreFacade } from '@rapp/store';
                 [disableClose]="true"
                 [fixedInViewport]="true"
                 [fixedTopGap]="fixedTopGap"
-                [opened]="outlet.isActivated"
-                (openedChange)="onOpenedChange($event)"
-                *ngIf="(layoutMode$ | async) === 'triple'"
+                [opened]="true"
+                *ngIf="fixedDrawer; else routableDrawer"
             >
-                <router-outlet #outlet="outlet"></router-outlet>
+                <ng-content select="[rappFixedDrawer]"></ng-content>
             </mat-sidenav>
+
+            <ng-template #routableDrawer>
+                <mat-sidenav
+                    mode="side"
+                    position="end"
+                    [disableClose]="true"
+                    [fixedInViewport]="true"
+                    [fixedTopGap]="fixedTopGap"
+                    [opened]="outlet.isActivated"
+                    (openedChange)="onOpenedChange($event)"
+                    *ngIf="(layoutMode$ | async) === 'triple'"
+                >
+                    <router-outlet #outlet="outlet"></router-outlet>
+                </mat-sidenav>
+            </ng-template>
+
             <mat-sidenav-content>
                 <ng-content></ng-content>
             </mat-sidenav-content>
@@ -56,6 +78,7 @@ import { StoreFacade } from '@rapp/store';
 })
 export class DrawerViewComponent implements AfterContentChecked {
     @ViewChild(MatSidenav, { static: true }) drawer!: MatSidenav;
+    @ContentChild(FixedDrawerViewDirective) fixedDrawer!: FixedDrawerViewDirective;
 
     @Input() hideBorder = false;
     @Output() openedChange = new EventEmitter<boolean>();

@@ -1,4 +1,6 @@
 <rapp-drawer-view [hideBorder]="true">
+    <rapp-newsfeed-aside rappFixedDrawer *ngIf="(layoutMode$ | async) === 'triple'"></rapp-newsfeed-aside>
+
     <rapp-view [showBottomNavbar]="true">
         <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
             <rapp-toolbar-left title="News"></rapp-toolbar-left>
