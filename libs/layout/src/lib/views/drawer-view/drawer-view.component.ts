@@ -13,9 +13,7 @@ import {
 import { MatSidenav } from '@angular/material/sidenav';
 import { StoreFacade } from '@rapp/store';
 
-@Directive({
-    selector: '[rappFixedDrawer]',
-})
+@Directive({ selector: '[rappFixedDrawer]' })
 export class FixedDrawerViewDirective {}
 
 @Component({
