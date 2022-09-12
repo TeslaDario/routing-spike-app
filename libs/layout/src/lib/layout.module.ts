@@ -13,7 +13,7 @@ import { FooterNavbarComponent } from './navigation/footer-navbar/footer-navbar.
 import { HeaderNavbarComponent } from './navigation/header-navbar/header-navbar.component';
 import { BackNavigationDirective } from './navigation/navigation.directive';
 import { CombinedViewComponent } from './views/combined-view/combined-view.component';
-import { DrawerViewComponent } from './views/drawer-view/drawer-view.component';
+import { DrawerViewComponent, FixedDrawerViewDirective } from './views/drawer-view/drawer-view.component';
 import { ModalViewComponent } from './views/modal-view/modal-view.component';
 import { ViewComponent } from './views/view/view.component';
 
@@ -32,6 +32,7 @@ import { ViewComponent } from './views/view/view.component';
         CombinedViewComponent,
         ModalViewComponent,
         DrawerViewComponent,
+        FixedDrawerViewDirective,
 
         BackNavigationDirective,
     ],
@@ -48,6 +49,7 @@ import { ViewComponent } from './views/view/view.component';
         CombinedViewComponent,
         ModalViewComponent,
         DrawerViewComponent,
+        FixedDrawerViewDirective,
 
         BackNavigationDirective,
     ],
