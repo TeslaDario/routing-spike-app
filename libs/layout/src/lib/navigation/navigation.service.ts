@@ -1,10 +1,11 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-    constructor(private location: Location, private dialog: MatDialog) {}
+    constructor(private location: Location, private router: Router, private dialog: MatDialog) {}
 
     public goBack(relativePosition?: number | undefined): void {
         const currentPath = this.location.path();
@@ -24,7 +25,14 @@ export class NavigationService {
                 if (currentPath === this.location.path()) {
                     this.location.back();
                 }
-            }, 250);
+
+                // force to redirect first route in state to newsfeed if link opened directly in new tab
+                setTimeout(() => {
+                    if (currentPath === this.location.path()) {
+                        this.router.navigate(['/newsfeed'], { replaceUrl: true });
+                    }
+                }, 150);
+            }, 150);
         }
     }
 }
