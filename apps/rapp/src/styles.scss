@@ -18,6 +18,10 @@ body {
 .spacer {
     flex: 1 1 100%;
 }
+.flex-no-shrink {
+    flex-shrink: 0;
+}
+
 .small-spacer {
     padding: 0 5px;
 }

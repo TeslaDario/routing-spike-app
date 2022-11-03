@@ -10,8 +10,7 @@ import { MatMenu } from '@angular/material/menu';
                 <button mat-icon-button color="primary">
                     <mat-icon>close</mat-icon>
                 </button>
-                <h2 *ngIf="!hasSearch">{{ title }}</h2>
-                <rapp-search-input *ngIf="hasSearch" (click)="$event.stopPropagation()"></rapp-search-input>
+                <h2>{{ title }}</h2>
             </div>
             <div class="header-menu-panel__content">
                 <ng-content></ng-content>
@@ -22,5 +21,4 @@ import { MatMenu } from '@angular/material/menu';
 export class MenuPanelComponent extends MatMenu {
     @ViewChild(MatMenu, { static: true }) menu!: MatMenu;
     @Input() title!: string;
-    @Input() hasSearch = false;
 }

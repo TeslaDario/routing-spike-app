@@ -54,7 +54,9 @@ import { StoreFacade } from '@rapp/store';
                 }
 
                 &-detail {
-                    flex: 0 0 var(--detail-width);
+                    flex-grow: 0;
+                    flex-shrink: var(--combined-detail-shrink);
+                    flex-basis: var(--detail-width);
                     overflow: scroll;
                     transition: transform 150ms ease-in-out;
                     z-index: 1;
@@ -81,5 +83,8 @@ import { StoreFacade } from '@rapp/store';
 })
 export class CombinedViewComponent {
     readonly layoutMode$ = this.storeFacade.getMode();
-    constructor(private storeFacade: StoreFacade) {}
+
+    constructor(private storeFacade: StoreFacade) {
+        document.documentElement.style.setProperty('--combined-detail-shrink', '0');
+    }
 }
