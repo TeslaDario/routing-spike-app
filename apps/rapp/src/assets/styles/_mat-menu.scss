@@ -38,25 +38,24 @@
     }
 }
 
+.header-menu-panel-backdrop,
+.header-menu-panel-backdrop--search {
+    background-color: rgba($light, 0.2);
+}
 .header-menu-panel-backdrop + div {
     right: 10px !important;
 }
 
-.home-menu-panel-backdrop + div {
-    --home-item-size: 150px;
-
-    @media (max-width: $l) {
-        --home-item-column: 3;
-    }
-
+.header-menu-panel-backdrop--search + div {
     left: 50% !important;
     transform: translateX(-50%);
-    max-width: calc(
-        (var(--home-item-column) * var(--home-item-size)) + (var(--home-item-column) * var(--home-item-gap)) +
-            var(--home-item-gap)
-    );
+    max-width: $contentWidth;
 
+    .cdk-overlay-pane {
+        width: inherit;
+    }
     .mat-menu-panel {
-        height: calc(2 * var(--home-item-size) + 3 * var(--home-item-gap));
+        height: 50vh;
+        width: inherit;
     }
 }

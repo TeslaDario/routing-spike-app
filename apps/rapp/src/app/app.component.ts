@@ -11,23 +11,22 @@ import { UserService } from '@rapp/users';
                     <img [routerLink]="'/'" class="toolbar-app-logo" src="assets/imgs/logo.png" />
                 </rapp-toolbar-left>
 
-                <rapp-toolbar-center>
-                    <rapp-header-navbar></rapp-header-navbar>
+                <rapp-toolbar-center class="spacer">
+                    <rapp-search-input
+                        [matMenuTriggerFor]="homeMenu"
+                        #homeMenuTrigger="matMenuTrigger"
+                        (click)="$event.stopPropagation()"
+                    ></rapp-search-input>
+                    <mat-menu
+                        #homeMenu="matMenu"
+                        class="header-menu-panel"
+                        backdropClass="header-menu-panel-backdrop--search"
+                    >
+                        <rapp-search-results></rapp-search-results>
+                    </mat-menu>
                 </rapp-toolbar-center>
 
                 <rapp-toolbar-right>
-                    <button
-                        mat-icon-button
-                        [matMenuTriggerFor]="searchMenu.menu"
-                        #searchMenuTrigger="matMenuTrigger"
-                        [ngClass]="{ 'mat-primary': searchMenuTrigger.menuOpen }"
-                    >
-                        <mat-icon class="toolbar-icon">search</mat-icon>
-                    </button>
-                    <rapp-menu-panel #searchMenu="menuPanel" [hasSearch]="true">
-                        <rapp-search-results></rapp-search-results>
-                    </rapp-menu-panel>
-
                     <button
                         mat-icon-button
                         [matMenuTriggerFor]="notificationMenu.menu"
@@ -62,7 +61,24 @@ import { UserService } from '@rapp/users';
                 </rapp-toolbar-right>
             </rapp-toolbar>
             <rapp-content>
-                <router-outlet></router-outlet>
+                <router-outlet *ngIf="(layoutMode$ | async) === 'single'"></router-outlet>
+
+                <mat-sidenav-container class="root-sidenav" *ngIf="(layoutMode$ | async) !== 'single'">
+                    <mat-sidenav mode="side" [disableClose]="true" [opened]="true">
+                        <rapp-view>
+                            <rapp-toolbar>
+                                <rapp-toolbar-left title="Apps"></rapp-toolbar-left>
+                            </rapp-toolbar>
+
+                            <rapp-content>
+                                <rapp-home-items></rapp-home-items>
+                            </rapp-content>
+                        </rapp-view>
+                    </mat-sidenav>
+                    <mat-sidenav-content>
+                        <router-outlet></router-outlet>
+                    </mat-sidenav-content>
+                </mat-sidenav-container>
             </rapp-content>
         </rapp-view>
 
@@ -75,9 +91,37 @@ import { UserService } from '@rapp/users';
             @use 'apps/rapp/src/assets/styles' as *;
 
             .toolbar-app-logo {
-                height: $navbarHeight;
+                height: calc($navbarHeight - 1px);
                 cursor: pointer;
                 user-select: none;
+            }
+
+            .root-sidenav {
+                --combined-detail-shrink: 1;
+
+                .mat-drawer {
+                    rapp-toolbar {
+                        display: none;
+                    }
+
+                    --home-item-size: 40px;
+                    --home-item-column: 1;
+
+                    @media (min-width: $l) {
+                        --home-item-size: 86px;
+                        --home-item-column: 2;
+                        rapp-toolbar {
+                            display: block;
+                        }
+                    }
+                    @media (min-width: $xl) {
+                        --home-item-column: 3;
+                    }
+                }
+                .mat-drawer-content {
+                    z-index: 3;
+                    height: calc(100vh - 50px);
+                }
             }
         `,
     ],

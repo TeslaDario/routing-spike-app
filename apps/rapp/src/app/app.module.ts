@@ -7,10 +7,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ActivitiesSharedModule } from '@rapp/activities-shared';
+import { HomeSharedModule } from '@rapp/home-shared';
 import { LayoutModule } from '@rapp/layout';
 import { SharedComponentsModule } from '@rapp/shared';
 import { AppStoreModule } from '@rapp/store';
-import { AvatarModule, ItemModule, MaterialModule, MenuPanelModule } from '@rapp/ui';
+import { AvatarModule, ItemModule, MaterialModule, MenuPanelModule, SearchInputModule } from '@rapp/ui';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -42,6 +43,8 @@ import { AppRoutes } from './app.routes';
         AppStoreModule,
         MaterialModule,
         LayoutModule,
+        HomeSharedModule,
+        SearchInputModule,
         MenuPanelModule,
         AvatarModule,
         ItemModule,

@@ -1,15 +1,4 @@
-import {
-    AfterContentChecked,
-    ChangeDetectorRef,
-    Component,
-    ContentChild,
-    Directive,
-    ElementRef,
-    EventEmitter,
-    Input,
-    Output,
-    ViewChild,
-} from '@angular/core';
+import { Component, ContentChild, Directive, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { StoreFacade } from '@rapp/store';
 
@@ -24,8 +13,6 @@ export class FixedDrawerViewDirective {}
                 mode="side"
                 position="end"
                 [disableClose]="true"
-                [fixedInViewport]="true"
-                [fixedTopGap]="fixedTopGap"
                 [opened]="true"
                 *ngIf="fixedDrawer; else routableDrawer"
             >
@@ -37,8 +24,6 @@ export class FixedDrawerViewDirective {}
                     mode="side"
                     position="end"
                     [disableClose]="true"
-                    [fixedInViewport]="true"
-                    [fixedTopGap]="fixedTopGap"
                     [opened]="outlet.isActivated"
                     (openedChange)="onOpenedChange($event)"
                     *ngIf="(layoutMode$ | async) === 'triple'"
@@ -74,29 +59,18 @@ export class FixedDrawerViewDirective {}
         `,
     ],
 })
-export class DrawerViewComponent implements AfterContentChecked {
+export class DrawerViewComponent {
     @ViewChild(MatSidenav, { static: true }) drawer!: MatSidenav;
     @ContentChild(FixedDrawerViewDirective) fixedDrawer!: FixedDrawerViewDirective;
 
     @Input() hideBorder = false;
     @Output() openedChange = new EventEmitter<boolean>();
 
-    fixedTopGap = 0;
     readonly layoutMode$ = this.storeFacade.getMode();
 
-    constructor(
-        private elRef: ElementRef<HTMLElement>,
-        private storeFacade: StoreFacade,
-        private cdRef: ChangeDetectorRef
-    ) {}
+    constructor(private storeFacade: StoreFacade) {}
 
     onOpenedChange(event: boolean) {
         this.openedChange.emit(event);
-    }
-
-    ngAfterContentChecked(): void {
-        const el = this.elRef.nativeElement;
-        this.fixedTopGap = el.getBoundingClientRect().top;
-        this.cdRef.detectChanges();
     }
 }

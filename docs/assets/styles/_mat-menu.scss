@@ -43,20 +43,11 @@
 }
 
 .home-menu-panel-backdrop + div {
-    --home-item-size: 150px;
-
-    @media (max-width: $l) {
-        --home-item-column: 3;
-    }
-
     left: 50% !important;
     transform: translateX(-50%);
-    max-width: calc(
-        (var(--home-item-column) * var(--home-item-size)) + (var(--home-item-column) * var(--home-item-gap)) +
-            var(--home-item-gap)
-    );
+    max-width: $contentWidth;
 
     .mat-menu-panel {
-        height: calc(2 * var(--home-item-size) + 3 * var(--home-item-gap));
+        height: 50vh;
     }
 }
