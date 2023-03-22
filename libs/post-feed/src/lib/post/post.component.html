@@ -4,7 +4,7 @@
         <div class="details">
             <div class="author">
                 <div matRipple (click)="openProfile()">{{ author?.name }}</div>
-                <span class="small-spacer">></span>
+                <span> > </span>
                 <div matRipple [routerLink]="['/newsfeed', post.groupId]">{{ group?.groupName }}</div>
             </div>
             <span class="date">{{ post.createdAt | date }}</span>

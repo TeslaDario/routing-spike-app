@@ -5,8 +5,8 @@ import { MatMenu } from '@angular/material/menu';
     selector: 'rapp-menu-panel',
     exportAs: 'menuPanel',
     template: `
-        <mat-menu class="header-menu-panel" backdropClass="header-menu-panel-backdrop">
-            <div class="header-menu-panel__header">
+        <mat-menu class="header-menu-panel" [backdropClass]="backdropClass">
+            <div class="header-menu-panel__header" *ngIf="title">
                 <button mat-icon-button color="primary">
                     <mat-icon>close</mat-icon>
                 </button>
@@ -21,4 +21,5 @@ import { MatMenu } from '@angular/material/menu';
 export class MenuPanelComponent extends MatMenu {
     @ViewChild(MatMenu, { static: true }) menu!: MatMenu;
     @Input() title!: string;
+    @Input() override backdropClass = 'header-menu-panel-backdrop';
 }

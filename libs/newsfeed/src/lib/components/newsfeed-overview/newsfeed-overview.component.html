@@ -1,31 +1,29 @@
-<rapp-drawer-view [hideBorder]="true">
-    <rapp-newsfeed-aside rappFixedDrawer *ngIf="(layoutMode$ | async) === 'triple'"></rapp-newsfeed-aside>
+<rapp-view [showBottomNavbar]="true">
+    <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
+        <rapp-toolbar-left title="News"></rapp-toolbar-left>
 
-    <rapp-view [showBottomNavbar]="true">
-        <rapp-toolbar *ngIf="(layoutMode$ | async) === 'single'">
-            <rapp-toolbar-left title="News"></rapp-toolbar-left>
+        <rapp-toolbar-right>
+            <button mat-icon-button class="ml-4" (click)="openGroups()">
+                <mat-icon class="toolbar-icon">groups</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="toolbar-icon" (click)="openSearch()">search</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="toolbar-icon" (click)="openActivities()">notifications_none</mat-icon>
+            </button>
+        </rapp-toolbar-right>
+    </rapp-toolbar>
 
-            <rapp-toolbar-right>
-                <button mat-icon-button class="ml-4" (click)="openGroups()">
-                    <mat-icon class="toolbar-icon">groups</mat-icon>
-                </button>
-                <button mat-icon-button>
-                    <mat-icon class="toolbar-icon" (click)="openSearch()">search</mat-icon>
-                </button>
-                <button mat-icon-button>
-                    <mat-icon class="toolbar-icon" (click)="openActivities()">notifications_none</mat-icon>
-                </button>
-            </rapp-toolbar-right>
-        </rapp-toolbar>
+    <rapp-content [showBackgroundImage]="true">
+        <rapp-floating-action-button
+            text="Post"
+            (click)="addPost()"
+            *ngIf="(layoutMode$ | async) !== 'triple'"
+        ></rapp-floating-action-button>
 
-        <rapp-content [showBackgroundImage]="true">
-            <rapp-floating-action-button
-                text="Post"
-                (click)="addPost()"
-                *ngIf="(layoutMode$ | async) !== 'triple'"
-            ></rapp-floating-action-button>
-
-            <rapp-post-feed [posts]="posts" class="spacer">
+        <div class="newsfeed-overview-content">
+            <rapp-post-feed [posts]="posts">
                 <div class="item-wrapper mb-20" *ngIf="(layoutMode$ | async) !== 'triple'">
                     <rapp-item
                         leftIcon="access_time"
@@ -35,6 +33,7 @@
                     ></rapp-item>
                 </div>
             </rapp-post-feed>
-        </rapp-content>
-    </rapp-view>
-</rapp-drawer-view>
+            <rapp-newsfeed-aside *ngIf="(layoutMode$ | async) === 'triple'"></rapp-newsfeed-aside>
+        </div>
+    </rapp-content>
+</rapp-view>

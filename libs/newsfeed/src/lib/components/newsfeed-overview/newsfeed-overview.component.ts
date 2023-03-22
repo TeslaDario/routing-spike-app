@@ -5,6 +5,25 @@ import { MOCK_POSTS, Post, StoreFacade } from '@rapp/store';
 @Component({
     selector: 'rapp-newsfeed-overview',
     templateUrl: 'newsfeed-overview.component.html',
+    styles: [
+        `
+            .newsfeed-overview-content {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: 100%;
+
+                rapp-post-feed {
+                    flex: 1 1 100%;
+                    overflow: scroll;
+                }
+                rapp-newsfeed-aside {
+                    flex: 0 0 var(--master-width);
+                    overflow: scroll;
+                }
+            }
+        `,
+    ],
 })
 export class NewsfeedOverviewComponent {
     posts: Post[] = MOCK_POSTS;

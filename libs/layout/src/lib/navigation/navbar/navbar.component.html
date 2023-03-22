@@ -1,0 +1,48 @@
+<button mat-button class="nav-item" (click)="toggleApps(!appsOpened)" [ngClass]="{ active: appsOpened }">
+    <mat-icon>window</mat-icon>
+</button>
+<!-- <button
+    mat-button
+    class="nav-item"
+    (click)="toggleApps(!appsOpened)"
+    [ngClass]="{ active: appsOpened }"
+    *ngIf="((detailWidth$ | async) ?? 0) >= 768; else menuApps"
+>
+    <mat-icon>window</mat-icon>
+</button>
+<ng-template #menuApps>
+    <button
+        mat-button
+        class="nav-item"
+        [matMenuTriggerFor]="homeMenu.menu"
+        #homeMenuTrigger="matMenuTrigger"
+        [ngClass]="{ active: homeMenuTrigger.menuOpen }"
+    >
+        <mat-icon>window</mat-icon>
+    </button>
+    <rapp-menu-panel #homeMenu="menuPanel" title="Apps" backdropClass="header-menu-panel-backdrop--home">
+        <rapp-home-items></rapp-home-items>
+    </rapp-menu-panel>
+</ng-template> -->
+
+<button mat-button class="nav-item" routerLink="/newsfeed" routerLinkActive="active" (click)="toggleApps(false)">
+    <mat-icon>newspaper</mat-icon>
+</button>
+<button
+    mat-button
+    class="nav-item"
+    [routerLink]="['/messages', firstChatId]"
+    [ngClass]="{ active: activeRoute === 'messages' }"
+    (click)="toggleApps(false)"
+>
+    <mat-icon>chat</mat-icon>
+</button>
+<button
+    mat-button
+    class="nav-item"
+    [routerLink]="['/tasks', firstTaskId]"
+    [ngClass]="{ active: activeRoute === 'tasks' }"
+    (click)="toggleApps(false)"
+>
+    <mat-icon>check_circle_outline</mat-icon>
+</button>

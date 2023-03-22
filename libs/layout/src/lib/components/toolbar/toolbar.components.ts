@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
             }
             :host:first-of-type .toolbar-wrapper {
                 padding-top: var(--safe-area-inset-top, 0px);
-                height: calc($navbarHeight + var(--safe-area-inset-top, 0px));
+                height: calc($toolbarHeight + var(--safe-area-inset-top, 0px));
             }
             .toolbar-wrapper {
                 display: flex;
@@ -31,7 +31,7 @@ import { Component } from '@angular/core';
                 align-items: center;
                 padding-left: 10px;
                 padding-right: 10px;
-                height: $navbarHeight;
+                height: $toolbarHeight;
                 border-bottom: 1px solid $ultraLight;
                 box-sizing: border-box;
             }

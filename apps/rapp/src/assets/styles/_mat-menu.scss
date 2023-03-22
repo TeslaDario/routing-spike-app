@@ -38,8 +38,7 @@
     }
 }
 
-.header-menu-panel-backdrop,
-.header-menu-panel-backdrop--search {
+[class*='header-menu-panel-backdrop'] {
     background-color: rgba($light, 0.2);
 }
 .header-menu-panel-backdrop + div {
@@ -59,3 +58,10 @@
         width: inherit;
     }
 }
+
+// .header-menu-panel-backdrop--home + div {
+//     --home-item-size: 125px;
+//     --home-item-column: 2;
+
+//     left: calc($navbarWidth + 5px) !important;
+// }

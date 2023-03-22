@@ -1,0 +1,28 @@
+@use 'apps/rapp/src/assets/styles' as *;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    box-sizing: border-box;
+    width: $navbarWidth;
+    // border-right: 1px solid $ultraLight;
+
+    .nav-item {
+        min-width: $navbarWidth;
+        flex: 0 0 $navbarWidth;
+        padding: 0;
+        color: $light;
+
+        .mat-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 32px;
+        }
+
+        &.active {
+            color: $primary;
+        }
+    }
+}

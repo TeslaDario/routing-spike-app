@@ -13,17 +13,13 @@ import { UserService } from '@rapp/users';
 
                 <rapp-toolbar-center class="spacer">
                     <rapp-search-input
-                        [matMenuTriggerFor]="homeMenu"
+                        [matMenuTriggerFor]="homeMenu.menu"
                         #homeMenuTrigger="matMenuTrigger"
                         (click)="$event.stopPropagation()"
                     ></rapp-search-input>
-                    <mat-menu
-                        #homeMenu="matMenu"
-                        class="header-menu-panel"
-                        backdropClass="header-menu-panel-backdrop--search"
-                    >
+                    <rapp-menu-panel #homeMenu="menuPanel" backdropClass="header-menu-panel-backdrop--search">
                         <rapp-search-results></rapp-search-results>
-                    </mat-menu>
+                    </rapp-menu-panel>
                 </rapp-toolbar-center>
 
                 <rapp-toolbar-right>
@@ -62,23 +58,54 @@ import { UserService } from '@rapp/users';
             </rapp-toolbar>
             <rapp-content>
                 <router-outlet *ngIf="(layoutMode$ | async) === 'single'"></router-outlet>
+                <div *ngIf="(layoutMode$ | async) !== 'single'" class="root-container">
+                    <!--  -->
+                    <mat-sidenav-container class="root-sidenav">
+                        <mat-sidenav mode="side" [disableClose]="true" [opened]="appsOpened" position="end">
+                            <rapp-view>
+                                <rapp-toolbar>
+                                    <rapp-toolbar-left title="Apps"></rapp-toolbar-left>
 
-                <mat-sidenav-container class="root-sidenav" *ngIf="(layoutMode$ | async) !== 'single'">
-                    <mat-sidenav mode="side" [disableClose]="true" [opened]="true">
+                                    <rapp-toolbar-right>
+                                        <button mat-icon-button (click)="appsOpened = false">
+                                            <mat-icon class="toolbar-icon">keyboard_double_arrow_left</mat-icon>
+                                        </button>
+                                    </rapp-toolbar-right>
+                                </rapp-toolbar>
+
+                                <rapp-content>
+                                    <rapp-home-items></rapp-home-items>
+                                </rapp-content>
+                            </rapp-view>
+                        </mat-sidenav>
+                        <mat-sidenav-content>
+                            <rapp-navbar [(appsOpened)]="appsOpened"></rapp-navbar>
+                        </mat-sidenav-content>
+                    </mat-sidenav-container>
+
+                    <!-- <div class="root-nav">
                         <rapp-view>
-                            <rapp-toolbar>
+                            <rapp-content>
+                                <rapp-navbar
+                                    *ngIf="(layoutMode$ | async) !== 'single'"
+                                    (openApps)="toggleApps($event)"
+                                ></rapp-navbar>
+                            </rapp-content>
+                        </rapp-view>
+
+                        <rapp-view *ngIf="appsOpened">
+                            <rapp-toolbar *ngIf="(layoutMode$ | async) !== 'single'">
                                 <rapp-toolbar-left title="Apps"></rapp-toolbar-left>
                             </rapp-toolbar>
-
                             <rapp-content>
                                 <rapp-home-items></rapp-home-items>
                             </rapp-content>
                         </rapp-view>
-                    </mat-sidenav>
-                    <mat-sidenav-content>
+                    </div> -->
+                    <div class="root-content">
                         <router-outlet></router-outlet>
-                    </mat-sidenav-content>
-                </mat-sidenav-container>
+                    </div>
+                </div>
             </rapp-content>
         </rapp-view>
 
@@ -91,36 +118,37 @@ import { UserService } from '@rapp/users';
             @use 'apps/rapp/src/assets/styles' as *;
 
             .toolbar-app-logo {
-                height: calc($navbarHeight - 1px);
+                height: calc($toolbarHeight - 1px);
                 cursor: pointer;
                 user-select: none;
             }
 
-            .root-sidenav {
-                --combined-detail-shrink: 1;
+            .root-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: 100%;
 
-                .mat-drawer {
-                    rapp-toolbar {
-                        display: none;
-                    }
+                .root-sidenav {
+                    border-right: 1px solid $ultraLight;
+                    --home-item-size: 115px;
+                    --home-item-column: 2;
 
-                    --home-item-size: 40px;
-                    --home-item-column: 1;
-
-                    @media (min-width: $l) {
-                        --home-item-size: 86px;
-                        --home-item-column: 2;
-                        rapp-toolbar {
-                            display: block;
-                        }
-                    }
-                    @media (min-width: $xl) {
-                        --home-item-column: 3;
+                    .mat-drawer {
+                        width: calc(var(--master-width) - 50px - 1px);
                     }
                 }
-                .mat-drawer-content {
-                    z-index: 3;
-                    height: calc(100vh - 50px);
+                /* .root-nav {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    border-right: 1px solid $ultraLight;
+                    --home-item-size: 125px;
+                    --home-item-column: 2;
+                } */
+                .root-content {
+                    flex: 1 1 0;
+                    /* flex: 0 0 calc(var(--master-width) + var(--detail-width)); */
                 }
             }
         `,
@@ -128,6 +156,7 @@ import { UserService } from '@rapp/users';
 })
 export class AppComponent {
     title = 'Routing App';
+    appsOpened = false;
     readonly layoutMode$ = this.storeFacade.getMode();
 
     constructor(private storeFacade: StoreFacade, private userService: UserService) {}
@@ -135,14 +164,4 @@ export class AppComponent {
     openProfile() {
         this.userService.openActor();
     }
-    // constructor(private router: Router, private route: ActivatedRoute) {
-    //     this.router.events
-    //         .pipe(filter((e) => e instanceof NavigationEnd || e instanceof NavigationStart))
-    //         .subscribe((e) => console.log(e));
-    //     const urlWithoutAuxiliaryRoute = this.router
-    //         .createUrlTree(['.'], { relativeTo: this.route })
-    //         .root.children[PRIMARY_OUTLET].toString();
-    //     console.log(urlWithoutAuxiliaryRoute);
-    //     this.router.navigate([urlWithoutAuxiliaryRoute]);
-    // }
 }
